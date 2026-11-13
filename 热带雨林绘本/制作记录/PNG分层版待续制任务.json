@@ -279,11 +279,14 @@
       1254
     ],
     "output_pixels": [
-      2508,
-      2508
+      1254,
+      1254
     ],
-    "model": "CUnet scale2 noise=-1",
-    "post_inference_resize": false,
-    "archive_native_source": true
+    "preserve_actual_generated_dimensions": true,
+    "agent_super_resolution": false,
+    "agent_interpolation_upscale": false,
+    "archive_native_source": true,
+    "super_resolution_owner": "user_local_computer",
+    "local_output_directory": "CUnet/output/"
   }
 }

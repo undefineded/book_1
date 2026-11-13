@@ -1,17 +1,14 @@
 #!/usr/bin/env python3
-"""Export image-generator artwork and paired raster lettering sheets, without SVG.
+"""Archive native artwork and export paired raster lettering sheets, without SVG.
 
-Pillow/numpy inspect alpha and dimensions only. ImageMagick performs format,
-crop and resize operations; CUnet performs illustration super-resolution.
+Scene files are copied byte-for-byte without super-resolution or resizing.
+ImageMagick only handles the independently generated lettering sheets.
 The manifest records the image generator's source paths and manuscript copy.
 """
-import argparse,json,os,subprocess,sys,time
+import argparse,hashlib,json,shutil,subprocess,time
 from pathlib import Path
 import numpy as np
 from PIL import Image
-
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from CUnet.upscale import upscale_image
 
 def run(*args):
     subprocess.run([str(x) for x in args],check=True,stdout=subprocess.DEVNULL)
@@ -44,13 +41,16 @@ def crop_sheet(source,root,layer):
         metadata.append({'name':name,'source_crop':geom})
     return metadata
 
-def scene(source,destination,cpu,model):
-    im=Image.open(source);assert im.size==(1254,1254),f'Expected native 1254px source, got {im.size}'
-    metadata=upscale_image(source,destination,cpu,model,overwrite=True)
-    archived=destination.parent/'插画原图-1254px.png'
-    run('magick',source,'-units','PixelsPerInch','-density','300','-define','png:color-type=2',archived)
-    assert Image.open(archived).tobytes()==im.convert('RGB').tobytes()
-    return {**metadata,'archived_source':archived.name}
+def scene(source,destination):
+    source,destination=Path(source),Path(destination)
+    with Image.open(source) as im:
+        assert im.mode=='RGB' and im.width==im.height,(im.mode,im.size)
+        size=list(im.size)
+    digest=hashlib.sha256(source.read_bytes()).hexdigest()
+    if source.resolve()!=destination.resolve():shutil.copy2(source,destination)
+    assert hashlib.sha256(destination.read_bytes()).hexdigest()==digest
+    return {'source_size':size,'output_size':size,'method':'Native source archived byte-for-byte; no super-resolution or resizing',
+            'super_resolution_performed':False,'source_sha256':digest,'output_sha256':digest,'archived_source':destination.name}
 
 def process(args):
     pages={p['page']:p for p in json.loads(args.pages.read_text())}
@@ -72,7 +72,9 @@ def process(args):
             try:
                 source=Path(r['path'])
                 with Image.open(source) as im:im.verify()
-                if r['kind']=='scene':meta=scene(source,root/'01-原图-2508px.png',args.cpu,args.model)
+                if r['kind']=='scene':
+                    with Image.open(source) as im:width=im.width
+                    meta=scene(source,root/f'插画原图-{width}px.png')
                 else:meta=crop_sheet(source,root,p['layer'])
                 entry={**r,'export':meta};done[r['id']]=entry
                 with donefile.open('a') as f:f.write(json.dumps(entry,ensure_ascii=False)+'\n')
@@ -88,7 +90,5 @@ if __name__=='__main__':
     ap.add_argument('--pages',type=Path,required=True)
     ap.add_argument('--results',type=Path,required=True)
     ap.add_argument('--output',type=Path,required=True)
-    ap.add_argument('--cpu',type=Path,required=True)
-    ap.add_argument('--model',type=Path,required=True)
     ap.add_argument('--watch',action='store_true');ap.add_argument('--expected',type=int,default=76)
     process(ap.parse_args())

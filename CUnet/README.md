@@ -2,6 +2,8 @@
 
 集中维护本仓库雨林、鸟类绘本共用的CUnet推理代码。使用waifu2x的现成模型，通过ncnn在CPU上以FP32推理；固定两倍放大、noise=-1，不额外降噪。
 
+**当前规则：本工具仅保留供用户在自己电脑上手动使用。后续云端Agent不再执行任何超分，绘本导出只保存原尺寸场景。下列安装、编译与运行命令均为用户本地参考。**
+
 **1254×1254输入直接输出2508×2508。超分之后只转换PNG格式、设置PPI，不再插值或resize；最终排版缩放由使用者决定。** 同样支持其他尺寸的RGB图，输出宽高均为输入的两倍。
 
 ## 目录
@@ -52,7 +54,7 @@ sha256sum CUnet/models-cunet/scale2.0x_model.*
 ## 3. 使用
 
 ```bash
-python CUnet/upscale.py 输入.png 输出-2508px.png
+python CUnet/upscale.py 输入.png CUnet/output/输出-2508px.png
 ```
 
 默认调用`CUnet/build/cpu_upscale`与`CUnet/models-cunet/`，输出PNG标记300 PPI，并打印输入尺寸、输出尺寸和原推理像素SHA-256。
@@ -68,7 +70,7 @@ python CUnet/upscale.py 输入.png 输出.png \
 
 输入为RGB图片；透明标题、正文和百科素材应独立保留，不传入本工具。工具不生成场景、不修字，也不裁切或移动人物。AI新增细节由模型推测，不称为原生高分辨率重绘。
 
-PNG写入临时文件，通过尺寸与像素校验后再替换目标。已有输出需加`--overwrite`。Python也可以调用`CUnet.upscale.upscale_image`；雨林[分层导出脚本](../热带雨林绘本/制作记录/制作PNG分层版.py)已复用此入口，另负责1254px源图归档与透明纸签裁切。
+PNG写入临时文件，通过尺寸与像素校验后再替换目标。已有输出需加`--overwrite`。用户本地也可以调用`CUnet.upscale.upscale_image`。`CUnet/output/`已加入Git忽略；雨林[分层导出脚本](../热带雨林绘本/制作记录/制作PNG分层版.py)已停止调用本模块，只原样归档场景及裁切透明文字素材。
 
 底层PPM接口仍为：
 
