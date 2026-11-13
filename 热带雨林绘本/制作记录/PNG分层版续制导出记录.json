@@ -1,0 +1,366 @@
+[
+  {
+    "id": "P31-scene",
+    "page": 31,
+    "kind": "scene",
+    "generated_filename": "exec-0b19542c-de5b-4cf7-b7b8-70aa4936bab7.png",
+    "generated_sha256": "39f21f197a8dc3d2eeca4ab87b1118bea92324b7a21151ef738aeb57816293d1",
+    "export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "39f21f197a8dc3d2eeca4ab87b1118bea92324b7a21151ef738aeb57816293d1",
+      "output_sha256": "39f21f197a8dc3d2eeca4ab87b1118bea92324b7a21151ef738aeb57816293d1",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "id": "P31-sheet",
+    "page": 31,
+    "kind": "sheet",
+    "generated_filename": "exec-ad906d67-a10e-4c8a-95b7-f032d188df0a.png",
+    "generated_sha256": "fc5bbb41940bbeac13cc9a3a3ad8441ed8244860a52f4215a9c670ee5c574215",
+    "export": [
+      {
+        "name": "02-标题与正文-透明底.png",
+        "source_crop": "947x724+0+87"
+      },
+      {
+        "name": "03-雨林小百科-透明底.png",
+        "source_crop": "655x653+1038+117"
+      }
+    ]
+  },
+  {
+    "id": "P32-sheet",
+    "page": 32,
+    "kind": "sheet",
+    "generated_filename": "exec-2d713ae1-d0da-4161-88c9-b7e201e020f9.png",
+    "generated_sha256": "29cb3306eade05187bed6e5457b9f4cd91fec4f7f8099d150e7fde4c44b8c0d8",
+    "export": [
+      {
+        "name": "02-标题与正文-透明底.png",
+        "source_crop": "939x660+11+114"
+      },
+      {
+        "name": "03-雨林小百科-透明底.png",
+        "source_crop": "644x653+1043+118"
+      }
+    ]
+  },
+  {
+    "id": "P33-scene",
+    "page": 33,
+    "kind": "scene",
+    "generated_filename": "exec-e1d73b7b-9d60-4190-8034-55bfd84271a0.png",
+    "generated_sha256": "e493ff7d14605563afcef6dee98a5e1ac0a6550d1d50ef204ffedfdfc866a58b",
+    "export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "e493ff7d14605563afcef6dee98a5e1ac0a6550d1d50ef204ffedfdfc866a58b",
+      "output_sha256": "e493ff7d14605563afcef6dee98a5e1ac0a6550d1d50ef204ffedfdfc866a58b",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "id": "P33-sheet",
+    "page": 33,
+    "kind": "sheet",
+    "generated_filename": "exec-5ab77577-8710-4e16-9f52-c41b25fe6878.png",
+    "generated_sha256": "f1e35cc705911ba6e35eb00118272d65ba4a15e3a939e58a48e1d24c98039c07",
+    "export": [
+      {
+        "name": "02-标题与正文-透明底.png",
+        "source_crop": "938x678+2+106"
+      },
+      {
+        "name": "03-雨林小百科-透明底.png",
+        "source_crop": "650x666+1039+112"
+      }
+    ]
+  },
+  {
+    "id": "P34-scene",
+    "page": 34,
+    "kind": "scene",
+    "generated_filename": "exec-4dadba7f-7804-4a8e-9a14-9e12154fbb58.png",
+    "generated_sha256": "b523f785d2a3a41dde9b93594d5e7bdf621faab7074187e0138288c2b312e47f",
+    "export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "b523f785d2a3a41dde9b93594d5e7bdf621faab7074187e0138288c2b312e47f",
+      "output_sha256": "b523f785d2a3a41dde9b93594d5e7bdf621faab7074187e0138288c2b312e47f",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "id": "P34-sheet",
+    "page": 34,
+    "kind": "sheet",
+    "generated_filename": "exec-7987866c-880a-47a2-adee-8cf81d19325e.png",
+    "generated_sha256": "92ace09d74ead6ae300cff1a2047309c0de053d0a9e639761a4c32f6fce45543",
+    "export": [
+      {
+        "name": "02-标题与正文-透明底.png",
+        "source_crop": "948x679+0+107"
+      },
+      {
+        "name": "03-雨林小百科-透明底.png",
+        "source_crop": "674x665+1035+117"
+      }
+    ]
+  },
+  {
+    "id": "P35-scene",
+    "page": 35,
+    "kind": "scene",
+    "generated_filename": "exec-9a622bf0-be2a-4eb7-a9a3-e9fe8e88216f.png",
+    "generated_sha256": "ece5f35e097ab0d2c14b8941c1921f763671078c91b47f60cae684025bc2bfca",
+    "export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "ece5f35e097ab0d2c14b8941c1921f763671078c91b47f60cae684025bc2bfca",
+      "output_sha256": "ece5f35e097ab0d2c14b8941c1921f763671078c91b47f60cae684025bc2bfca",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "id": "P35-sheet",
+    "page": 35,
+    "kind": "sheet",
+    "generated_filename": "exec-a5dd0731-12eb-45d2-bfd7-7b82ab700e25.png",
+    "generated_sha256": "287b0e9e75e893b4c948d41449b1654b41075e4626c4c766f55014adb88e3a7b",
+    "export": [
+      {
+        "name": "02-标题与正文-透明底.png",
+        "source_crop": "981x719+0+92"
+      },
+      {
+        "name": "03-雨林小百科-透明底.png",
+        "source_crop": "708x679+1022+114"
+      }
+    ]
+  },
+  {
+    "id": "P36-scene",
+    "page": 36,
+    "kind": "scene",
+    "generated_filename": "exec-329c9b1e-673c-468d-b03d-c0efc3340338.png",
+    "generated_sha256": "bebd41bc9380d2cbc162db40dfc701397f8d3039e89fc7ef3eed61a275441694",
+    "export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "bebd41bc9380d2cbc162db40dfc701397f8d3039e89fc7ef3eed61a275441694",
+      "output_sha256": "bebd41bc9380d2cbc162db40dfc701397f8d3039e89fc7ef3eed61a275441694",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "id": "P36-sheet",
+    "page": 36,
+    "kind": "sheet",
+    "generated_filename": "exec-562b1ce0-ba97-4eeb-b028-6883b6b634b9.png",
+    "generated_sha256": "d1ecdbe1a302369c9890a8ceba7b3686696b19f31d917730c087117092f22349",
+    "export": [
+      {
+        "name": "02-标题与正文-透明底.png",
+        "source_crop": "977x689+0+103"
+      },
+      {
+        "name": "03-雨林小百科-透明底.png",
+        "source_crop": "676x646+1036+117"
+      }
+    ]
+  },
+  {
+    "id": "P37-scene",
+    "page": 37,
+    "kind": "scene",
+    "generated_filename": "exec-0df1c8b6-3eaf-47d1-9c71-a1c935782a48.png",
+    "generated_sha256": "f4f9a6fa23807be1ae70500c44f31cc898366d3c5473e07d6242ce100c760de8",
+    "export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "f4f9a6fa23807be1ae70500c44f31cc898366d3c5473e07d6242ce100c760de8",
+      "output_sha256": "f4f9a6fa23807be1ae70500c44f31cc898366d3c5473e07d6242ce100c760de8",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "id": "P37-sheet",
+    "page": 37,
+    "kind": "sheet",
+    "generated_filename": "exec-2434ecc6-88a2-4fc7-a889-5e276257ed4f.png",
+    "generated_sha256": "6ce34e38d2551fbdf9c95315f442144957456ecdae367f32bc3464ed49c7f3eb",
+    "export": [
+      {
+        "name": "02-标题与正文-透明底.png",
+        "source_crop": "896x617+7+145"
+      },
+      {
+        "name": "03-观察记录-透明底.png",
+        "source_crop": "785x896+903+0"
+      }
+    ]
+  },
+  {
+    "id": "P38-scene",
+    "page": 38,
+    "kind": "scene",
+    "generated_filename": "exec-6f95fe1e-defc-4fe3-9699-3792f1faac5b.png",
+    "generated_sha256": "8a10d60f8defab67ecdceb14a239a52bc59cbd9f6e873580ce2cc0a4317f19f8",
+    "export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "8a10d60f8defab67ecdceb14a239a52bc59cbd9f6e873580ce2cc0a4317f19f8",
+      "output_sha256": "8a10d60f8defab67ecdceb14a239a52bc59cbd9f6e873580ce2cc0a4317f19f8",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "id": "P38-sheet",
+    "page": 38,
+    "kind": "sheet",
+    "generated_filename": "exec-b69a061c-acc3-4599-936e-c44b0b5b5e45.png",
+    "generated_sha256": "2a756ece7f5f0b821d257bb4222ece81b31dacffa376298a578bd36e9b0de03c",
+    "export": [
+      {
+        "name": "02-标题与正文-透明底.png",
+        "source_crop": "1690x849+15+32"
+      }
+    ]
+  },
+  {
+    "id": "P39-scene",
+    "page": 39,
+    "kind": "scene",
+    "generated_filename": "exec-6d9c3927-262c-4784-bc4d-ed48bda372e9.png",
+    "generated_sha256": "b3e2c7b59c9a5abf1a0c07e96e5098014f556f059e5f087ff8f5e80803c2dcf6",
+    "export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "b3e2c7b59c9a5abf1a0c07e96e5098014f556f059e5f087ff8f5e80803c2dcf6",
+      "output_sha256": "b3e2c7b59c9a5abf1a0c07e96e5098014f556f059e5f087ff8f5e80803c2dcf6",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "id": "P39-sheet",
+    "page": 39,
+    "kind": "sheet",
+    "generated_filename": "exec-53e7653f-e69c-4f89-9e24-86ad254540c4.png",
+    "generated_sha256": "57b078b01dcc10cb5f0180cddd2381835cab01af87c76ea33430cc1875e64edf",
+    "export": [
+      {
+        "name": "02-标题与正文-透明底.png",
+        "source_crop": "946x700+0+91"
+      },
+      {
+        "name": "03-亲子延伸-透明底.png",
+        "source_crop": "670x677+1032+114"
+      }
+    ]
+  },
+  {
+    "id": "P40-scene",
+    "page": 40,
+    "kind": "scene",
+    "generated_filename": "exec-639cacb9-ad61-445e-acf6-aac67d63ce72.png",
+    "generated_sha256": "8fb783fd741114d445ca3e29244cc6b647fb02128c7e495ee7c77c9b8dfefb77",
+    "export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "8fb783fd741114d445ca3e29244cc6b647fb02128c7e495ee7c77c9b8dfefb77",
+      "output_sha256": "8fb783fd741114d445ca3e29244cc6b647fb02128c7e495ee7c77c9b8dfefb77",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "id": "P40-sheet",
+    "page": 40,
+    "kind": "sheet",
+    "generated_filename": "exec-ffd09eed-83ed-4200-93e1-203de156a938.png",
+    "generated_sha256": "66328e55a96fbfd881057143d24dbd5ad3577050b002a52adfd102a22541874c",
+    "export": [
+      {
+        "name": "02-标题与正文-透明底.png",
+        "source_crop": "963x711+0+94"
+      },
+      {
+        "name": "03-回想提示-透明底.png",
+        "source_crop": "700x665+1030+109"
+      }
+    ]
+  }
+]

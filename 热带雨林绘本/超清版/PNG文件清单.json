@@ -2264,35 +2264,93 @@
   },
   {
     "page": 31,
-    "title": "第四章／谁把夜晚点亮了（分两行）",
-    "status": "pending",
-    "pending": "无字场景、标题正文、专用纸签",
+    "title": "第四章／谁把夜晚点亮了",
+    "status": "complete",
     "assets": [
       {
-        "path": "P31｜第四章：谁把夜晚点亮了/旧版含字整页-3000px.png",
+        "path": "P31｜第四章：谁把夜晚点亮了/00-标题与百科合画-透明底.png",
         "size": [
-          3000,
-          3000
+          1754,
+          896
         ],
-        "sha256": "caffe6bb107976c8bff3f58730962938e73b160703c78208e58f92598bfed416",
-        "bytes": 13701890
+        "sha256": "4302a8691ee89ef17e1bd193bbcd8d3c499fd942287695467d0538d413cee149",
+        "bytes": 1321503
+      },
+      {
+        "path": "P31｜第四章：谁把夜晚点亮了/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1835
+        ],
+        "sha256": "3fe835133013e0916a4046ec773a3caaa2684abd9cbf7a09d278ef985ef51799",
+        "bytes": 3258267
+      },
+      {
+        "path": "P31｜第四章：谁把夜晚点亮了/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1994
+        ],
+        "sha256": "f8082b3908a57931410749a70532ad4614c99b41d10f6343ce970b00c1544d9f",
+        "bytes": 2853228
+      },
+      {
+        "path": "P31｜第四章：谁把夜晚点亮了/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "39f21f197a8dc3d2eeca4ab87b1118bea92324b7a21151ef738aeb57816293d1",
+        "bytes": 3273060
       }
-    ]
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-0b19542c-de5b-4cf7-b7b8-70aa4936bab7.png",
+        "sha256": "39f21f197a8dc3d2eeca4ab87b1118bea92324b7a21151ef738aeb57816293d1"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-ad906d67-a10e-4c8a-95b7-f032d188df0a.png",
+        "sha256": "fc5bbb41940bbeac13cc9a3a3ad8441ed8244860a52f4215a9c670ee5c574215"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "39f21f197a8dc3d2eeca4ab87b1118bea92324b7a21151ef738aeb57816293d1",
+      "output_sha256": "39f21f197a8dc3d2eeca4ab87b1118bea92324b7a21151ef738aeb57816293d1",
+      "archived_source": "插画原图-1254px.png"
+    },
+    "review": {
+      "scene": "reviewed",
+      "hands": "enlarged visual check; natural occlusion",
+      "lettering": "final PNG visually checked against manuscript",
+      "transparency": "RGBA; transparent corners; crop complete"
+    }
   },
   {
     "page": 32,
     "title": "叶子下面的歌手",
-    "status": "pending",
-    "pending": "标题正文、小百科纸签（无字图已完成）",
+    "status": "complete",
     "assets": [
       {
-        "path": "P32｜叶子下面的歌手/旧版含字整页-3000px.png",
+        "path": "P32｜叶子下面的歌手/00-标题与百科合画-透明底.png",
         "size": [
-          3000,
-          3000
+          1754,
+          896
         ],
-        "sha256": "520577ca187812c48ec96ecbead65147a91f3d78c8f27adccbc18495c82667d9",
-        "bytes": 12908641
+        "sha256": "4be7fdf04db8e283f84e786605f7fcf6a1b2090f6e0fc947e6a902cd89bfe560",
+        "bytes": 1195566
       },
       {
         "path": "P32｜叶子下面的歌手/01-原图-2508px.png",
@@ -2302,6 +2360,24 @@
         ],
         "sha256": "ba5da30178a5f41ee2d0d0d64a7f999d0536b403af85ebd791de2c3596e1ca72",
         "bytes": 10418519
+      },
+      {
+        "path": "P32｜叶子下面的歌手/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1687
+        ],
+        "sha256": "3669e5c98358fee595404d64d9a66904ec8983cced3f1629f39f847bdac3c613",
+        "bytes": 2890777
+      },
+      {
+        "path": "P32｜叶子下面的歌手/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          2028
+        ],
+        "sha256": "2ceaa937a27af39676bed59a8a97dc60a04ea26c7515d6189b3afa51f9314220",
+        "bytes": 2800454
       },
       {
         "path": "P32｜叶子下面的歌手/插画原图-1254px.png",
@@ -2325,142 +2401,618 @@
       "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
       "native_pixel_sha256": "9b63e6ced83dc7b2578627964b814083d8b247801b647378d74a5a87950aa5fb",
       "archived_source": "插画原图-1254px.png"
+    },
+    "imagegen_sources": [
+      {
+        "kind": "sheet",
+        "filename": "exec-2d713ae1-d0da-4161-88c9-b7e201e020f9.png",
+        "sha256": "29cb3306eade05187bed6e5457b9f4cd91fec4f7f8099d150e7fde4c44b8c0d8"
+      }
+    ],
+    "review": {
+      "scene": "reviewed",
+      "hands": "enlarged visual check; natural occlusion",
+      "lettering": "final PNG visually checked against manuscript",
+      "transparency": "RGBA; transparent corners; crop complete"
     }
   },
   {
     "page": 33,
     "title": "夜里的花客人",
-    "status": "pending",
-    "pending": "无字场景、标题正文、专用纸签",
+    "status": "complete",
     "assets": [
       {
-        "path": "P33｜夜里的花客人/旧版含字整页-3000px.png",
+        "path": "P33｜夜里的花客人/00-标题与百科合画-透明底.png",
         "size": [
-          3000,
-          3000
+          1754,
+          896
         ],
-        "sha256": "fac2c1ad137acd657a06faaa23b5daed80e51de0bff512393cc85fee69999d1d",
-        "bytes": 12967455
+        "sha256": "d2405598f61cf23578d13729064f2278d6a78a71e04f3ee295eb124c8adfe31e",
+        "bytes": 1258854
+      },
+      {
+        "path": "P33｜夜里的花客人/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1735
+        ],
+        "sha256": "da1959abc62e4504736cdfcedbd322b1f05d37842c602d53b0042f85757ae14d",
+        "bytes": 2900859
+      },
+      {
+        "path": "P33｜夜里的花客人/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          2049
+        ],
+        "sha256": "eaada0bb3ca29b07e586454280332b4031a97f2606c34b7dc747ffeee8086fa8",
+        "bytes": 3208334
+      },
+      {
+        "path": "P33｜夜里的花客人/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "e493ff7d14605563afcef6dee98a5e1ac0a6550d1d50ef204ffedfdfc866a58b",
+        "bytes": 3176435
       }
-    ]
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-e1d73b7b-9d60-4190-8034-55bfd84271a0.png",
+        "sha256": "e493ff7d14605563afcef6dee98a5e1ac0a6550d1d50ef204ffedfdfc866a58b"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-5ab77577-8710-4e16-9f52-c41b25fe6878.png",
+        "sha256": "f1e35cc705911ba6e35eb00118272d65ba4a15e3a939e58a48e1d24c98039c07"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "e493ff7d14605563afcef6dee98a5e1ac0a6550d1d50ef204ffedfdfc866a58b",
+      "output_sha256": "e493ff7d14605563afcef6dee98a5e1ac0a6550d1d50ef204ffedfdfc866a58b",
+      "archived_source": "插画原图-1254px.png"
+    },
+    "review": {
+      "scene": "reviewed",
+      "hands": "enlarged visual check; natural occlusion",
+      "lettering": "final PNG visually checked against manuscript",
+      "transparency": "RGBA; transparent corners; crop complete"
+    }
   },
   {
     "page": 34,
     "title": "一点亮，一点暗",
-    "status": "pending",
-    "pending": "无字场景、标题正文、专用纸签",
+    "status": "complete",
     "assets": [
       {
-        "path": "P34｜一点亮，一点暗/旧版含字整页-3000px.png",
+        "path": "P34｜一点亮，一点暗/00-标题与百科合画-透明底.png",
         "size": [
-          3000,
-          3000
+          1754,
+          896
         ],
-        "sha256": "2c6b0ded4cc8e382085f2cb36595cdbc029f78a0b6273d4786e422281fd95fe5",
-        "bytes": 12184722
+        "sha256": "7e7d8fcff0f767f9951318e4075b195ce269993344e81aaaff63161a3f79998c",
+        "bytes": 1338784
+      },
+      {
+        "path": "P34｜一点亮，一点暗/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1719
+        ],
+        "sha256": "0e14310bfe2e7232786f625e95e97b2154658c695520ae3cef05ecd5410b15db",
+        "bytes": 3079001
+      },
+      {
+        "path": "P34｜一点亮，一点暗/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1973
+        ],
+        "sha256": "02aba91001f93cca037452a6761445f9b1031d06ff6449e05bc22c83fe119228",
+        "bytes": 2995351
+      },
+      {
+        "path": "P34｜一点亮，一点暗/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "b523f785d2a3a41dde9b93594d5e7bdf621faab7074187e0138288c2b312e47f",
+        "bytes": 3154146
       }
-    ]
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-4dadba7f-7804-4a8e-9a14-9e12154fbb58.png",
+        "sha256": "b523f785d2a3a41dde9b93594d5e7bdf621faab7074187e0138288c2b312e47f"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-7987866c-880a-47a2-adee-8cf81d19325e.png",
+        "sha256": "92ace09d74ead6ae300cff1a2047309c0de053d0a9e639761a4c32f6fce45543"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "b523f785d2a3a41dde9b93594d5e7bdf621faab7074187e0138288c2b312e47f",
+      "output_sha256": "b523f785d2a3a41dde9b93594d5e7bdf621faab7074187e0138288c2b312e47f",
+      "archived_source": "插画原图-1254px.png"
+    },
+    "review": {
+      "scene": "reviewed",
+      "hands": "enlarged visual check; natural occlusion",
+      "lettering": "final PNG visually checked against manuscript",
+      "transparency": "RGBA; transparent corners; crop complete"
+    }
   },
   {
     "page": 35,
     "title": "长鼻子轻轻卷起叶子",
-    "status": "pending",
-    "pending": "无字场景、标题正文、专用纸签",
+    "status": "complete",
     "assets": [
       {
-        "path": "P35｜长鼻子轻轻卷起叶子/旧版含字整页-3000px.png",
+        "path": "P35｜长鼻子轻轻卷起叶子/00-标题与百科合画-透明底.png",
         "size": [
-          3000,
-          3000
+          1754,
+          896
         ],
-        "sha256": "b7af597976aded7acdec731d083eca9f5643041da121eb37b2f4eeefab45d1e0",
-        "bytes": 13082162
+        "sha256": "cf357b81cce3846365daf05de7794a624699135d9a4f6540cc95f2a79225e173",
+        "bytes": 1462122
+      },
+      {
+        "path": "P35｜长鼻子轻轻卷起叶子/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1759
+        ],
+        "sha256": "386bf83f0902b064b0c0b2e205a42fd1a72e2b495ddbc24523b57b2772bbb2df",
+        "bytes": 3109271
+      },
+      {
+        "path": "P35｜长鼻子轻轻卷起叶子/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1918
+        ],
+        "sha256": "b52df7cb6b2c6fc3125e45da3c441a0112c4241c34f8a8da59ef0f84891620b6",
+        "bytes": 3396670
+      },
+      {
+        "path": "P35｜长鼻子轻轻卷起叶子/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "ece5f35e097ab0d2c14b8941c1921f763671078c91b47f60cae684025bc2bfca",
+        "bytes": 3448497
       }
-    ]
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-9a622bf0-be2a-4eb7-a9a3-e9fe8e88216f.png",
+        "sha256": "ece5f35e097ab0d2c14b8941c1921f763671078c91b47f60cae684025bc2bfca"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-a5dd0731-12eb-45d2-bfd7-7b82ab700e25.png",
+        "sha256": "287b0e9e75e893b4c948d41449b1654b41075e4626c4c766f55014adb88e3a7b"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "ece5f35e097ab0d2c14b8941c1921f763671078c91b47f60cae684025bc2bfca",
+      "output_sha256": "ece5f35e097ab0d2c14b8941c1921f763671078c91b47f60cae684025bc2bfca",
+      "archived_source": "插画原图-1254px.png"
+    },
+    "review": {
+      "scene": "reviewed",
+      "hands": "enlarged visual check; natural occlusion",
+      "lettering": "final PNG visually checked against manuscript",
+      "transparency": "RGBA; transparent corners; crop complete"
+    }
   },
   {
     "page": 36,
     "title": "带走发现，留下家园",
-    "status": "pending",
-    "pending": "无字场景、标题正文、专用纸签",
+    "status": "complete",
     "assets": [
       {
-        "path": "P36｜带走发现，留下家园/旧版含字整页-3000px.png",
+        "path": "P36｜带走发现，留下家园/00-标题与百科合画-透明底.png",
         "size": [
-          3000,
-          3000
+          1754,
+          896
         ],
-        "sha256": "947633c23c433b1a11a9cf928253abf6d0a7b5ba29288d05625b0ae8d21a9852",
-        "bytes": 12578307
+        "sha256": "07f858e5bc70bcf919112ea863ef548e1ce3a13754fc8f0c5b71e5c8d05732bc",
+        "bytes": 1371700
+      },
+      {
+        "path": "P36｜带走发现，留下家园/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1693
+        ],
+        "sha256": "9664548c1683c42803ad73773cf45d5d20e91298b858613f013d1c0b6145cef7",
+        "bytes": 3123419
+      },
+      {
+        "path": "P36｜带走发现，留下家园/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1911
+        ],
+        "sha256": "0df9ac0dceafc7e717768c2ebe8d7f4cac466323b2068e66601a021bfa3906b6",
+        "bytes": 3229147
+      },
+      {
+        "path": "P36｜带走发现，留下家园/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "bebd41bc9380d2cbc162db40dfc701397f8d3039e89fc7ef3eed61a275441694",
+        "bytes": 3240601
       }
-    ]
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-329c9b1e-673c-468d-b03d-c0efc3340338.png",
+        "sha256": "bebd41bc9380d2cbc162db40dfc701397f8d3039e89fc7ef3eed61a275441694"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-562b1ce0-ba97-4eeb-b028-6883b6b634b9.png",
+        "sha256": "d1ecdbe1a302369c9890a8ceba7b3686696b19f31d917730c087117092f22349"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "bebd41bc9380d2cbc162db40dfc701397f8d3039e89fc7ef3eed61a275441694",
+      "output_sha256": "bebd41bc9380d2cbc162db40dfc701397f8d3039e89fc7ef3eed61a275441694",
+      "archived_source": "插画原图-1254px.png"
+    },
+    "review": {
+      "scene": "reviewed",
+      "hands": "enlarged visual check; natural occlusion",
+      "lettering": "final PNG visually checked against manuscript",
+      "transparency": "RGBA; transparent corners; crop complete"
+    }
   },
   {
     "page": 37,
     "title": "我的雨林观察笔记",
-    "status": "pending",
-    "pending": "无字场景、标题正文、专用纸签",
+    "status": "complete",
     "assets": [
       {
-        "path": "P37｜我的雨林观察笔记/旧版含字整页-3000px.png",
+        "path": "P37｜我的雨林观察笔记/00-标题与百科合画-透明底.png",
         "size": [
-          3000,
-          3000
+          1754,
+          896
         ],
-        "sha256": "f2624b63d7db1ac4ba07aad975161400c90d11c985c84168bdca5f810a08e21c",
-        "bytes": 13092359
+        "sha256": "a653de3f7d00494e200af9f1f008e0d7010432217aa4dcfc4b5a9715c6f3dc1a",
+        "bytes": 1669369
+      },
+      {
+        "path": "P37｜我的雨林观察笔记/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1653
+        ],
+        "sha256": "d54c91432b27720b3bb7b0b0d7da9ffda1e53ed553343752cb647ac9dd6e7fe2",
+        "bytes": 2781601
+      },
+      {
+        "path": "P37｜我的雨林观察笔记/03-观察记录-透明底.png",
+        "size": [
+          2000,
+          2283
+        ],
+        "sha256": "5a40f12e495d7ca27bc40096ed2ce4029dafe474ff61528b2f4a26f5d32e27a8",
+        "bytes": 4048092
+      },
+      {
+        "path": "P37｜我的雨林观察笔记/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "f4f9a6fa23807be1ae70500c44f31cc898366d3c5473e07d6242ce100c760de8",
+        "bytes": 2965167
       }
-    ]
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-0df1c8b6-3eaf-47d1-9c71-a1c935782a48.png",
+        "sha256": "f4f9a6fa23807be1ae70500c44f31cc898366d3c5473e07d6242ce100c760de8"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-2434ecc6-88a2-4fc7-a889-5e276257ed4f.png",
+        "sha256": "6ce34e38d2551fbdf9c95315f442144957456ecdae367f32bc3464ed49c7f3eb"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "f4f9a6fa23807be1ae70500c44f31cc898366d3c5473e07d6242ce100c760de8",
+      "output_sha256": "f4f9a6fa23807be1ae70500c44f31cc898366d3c5473e07d6242ce100c760de8",
+      "archived_source": "插画原图-1254px.png"
+    },
+    "review": {
+      "scene": "reviewed",
+      "hands": "enlarged visual check; natural occlusion",
+      "lettering": "final PNG visually checked against manuscript",
+      "transparency": "RGBA; transparent corners; crop complete"
+    }
   },
   {
     "page": 38,
     "title": "献给一起发现的人",
-    "status": "pending",
-    "pending": "无字场景、标题正文、专用纸签",
+    "status": "complete",
     "assets": [
       {
-        "path": "P38｜献给一起发现的人/旧版含字整页-3000px.png",
+        "path": "P38｜献给一起发现的人/00-标题与百科合画-透明底.png",
         "size": [
-          3000,
-          3000
+          1754,
+          896
         ],
-        "sha256": "98d0a0a68a0069bb4ad894df1fa8da5c9c5878a26924a454f70b8431409e691e",
-        "bytes": 11612977
+        "sha256": "ea97e5145e70bab0dd9ce2b14664a0cca90e872635ee6f83cbae21f5cbca555a",
+        "bytes": 1626092
+      },
+      {
+        "path": "P38｜献给一起发现的人/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1206
+        ],
+        "sha256": "768bcac563365b6e66ec8f5615df907866722c18c5c0ad38177841af3dfe6898",
+        "bytes": 2729827
+      },
+      {
+        "path": "P38｜献给一起发现的人/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "8a10d60f8defab67ecdceb14a239a52bc59cbd9f6e873580ce2cc0a4317f19f8",
+        "bytes": 3885374
       }
-    ]
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-6f95fe1e-defc-4fe3-9699-3792f1faac5b.png",
+        "sha256": "8a10d60f8defab67ecdceb14a239a52bc59cbd9f6e873580ce2cc0a4317f19f8"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-b69a061c-acc3-4599-936e-c44b0b5b5e45.png",
+        "sha256": "2a756ece7f5f0b821d257bb4222ece81b31dacffa376298a578bd36e9b0de03c"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "8a10d60f8defab67ecdceb14a239a52bc59cbd9f6e873580ce2cc0a4317f19f8",
+      "output_sha256": "8a10d60f8defab67ecdceb14a239a52bc59cbd9f6e873580ce2cc0a4317f19f8",
+      "archived_source": "插画原图-1254px.png"
+    },
+    "review": {
+      "scene": "reviewed",
+      "hands": "enlarged visual check; natural occlusion",
+      "lettering": "final PNG visually checked against manuscript",
+      "transparency": "RGBA; transparent corners; crop complete"
+    }
   },
   {
     "page": 39,
     "title": "一粒种子的以后",
-    "status": "pending",
-    "pending": "无字场景、标题正文、专用纸签",
+    "status": "complete",
     "assets": [
       {
-        "path": "P39｜封三：一粒种子的以后/旧版含字整页-3000px.png",
+        "path": "P39｜封三：一粒种子的以后/00-标题与百科合画-透明底.png",
         "size": [
-          3000,
-          3000
+          1754,
+          896
         ],
-        "sha256": "71c69cdd5d6cc011a6fa1324d2ff60b2955f29fb6312ef454cad6dc922bb5745",
-        "bytes": 13342267
+        "sha256": "dbe0f6437a45d015adfb4be75e587a74a003b8456210c60a0df70f15722918ea",
+        "bytes": 1378121
+      },
+      {
+        "path": "P39｜封三：一粒种子的以后/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1776
+        ],
+        "sha256": "56e4818d6eb32806f0cdd5daca0b7ef85d9ee09f8655b9e0d6ccf2da753d6f20",
+        "bytes": 3153980
+      },
+      {
+        "path": "P39｜封三：一粒种子的以后/03-亲子延伸-透明底.png",
+        "size": [
+          2000,
+          2021
+        ],
+        "sha256": "6d195b5587c61676690256ab53dc068d04c55a86663a066009cff9e7316e1fbb",
+        "bytes": 3499609
+      },
+      {
+        "path": "P39｜封三：一粒种子的以后/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "b3e2c7b59c9a5abf1a0c07e96e5098014f556f059e5f087ff8f5e80803c2dcf6",
+        "bytes": 3337813
       }
-    ]
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-6d9c3927-262c-4784-bc4d-ed48bda372e9.png",
+        "sha256": "b3e2c7b59c9a5abf1a0c07e96e5098014f556f059e5f087ff8f5e80803c2dcf6"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-53e7653f-e69c-4f89-9e24-86ad254540c4.png",
+        "sha256": "57b078b01dcc10cb5f0180cddd2381835cab01af87c76ea33430cc1875e64edf"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "b3e2c7b59c9a5abf1a0c07e96e5098014f556f059e5f087ff8f5e80803c2dcf6",
+      "output_sha256": "b3e2c7b59c9a5abf1a0c07e96e5098014f556f059e5f087ff8f5e80803c2dcf6",
+      "archived_source": "插画原图-1254px.png"
+    },
+    "review": {
+      "scene": "reviewed",
+      "hands": "enlarged visual check; natural occlusion",
+      "lettering": "final PNG visually checked against manuscript",
+      "transparency": "RGBA; transparent corners; crop complete"
+    }
   },
   {
     "page": 40,
     "title": "雨林还在沙沙响",
-    "status": "pending",
-    "pending": "无字场景、标题正文、专用纸签",
+    "status": "complete",
     "assets": [
       {
-        "path": "P40｜封底：雨林还在沙沙响/旧版含字整页-3000px.png",
+        "path": "P40｜封底：雨林还在沙沙响/00-标题与百科合画-透明底.png",
         "size": [
-          3000,
-          3000
+          1754,
+          896
         ],
-        "sha256": "2ce5afc67f8d59a93c44c4b463fa37b655a93d2f6b646e83d3d8d980b7ab132d",
-        "bytes": 14194668
+        "sha256": "da92b1c37c4b4229e95c2f4e3fc8dfddf5805a7ccaa1c664b9d5829334f4a849",
+        "bytes": 1352399
+      },
+      {
+        "path": "P40｜封底：雨林还在沙沙响/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1772
+        ],
+        "sha256": "773b12c3636f47613289c21086864ed2e3ea7fdce5cb30d7c9f7087b873b6a1e",
+        "bytes": 3001197
+      },
+      {
+        "path": "P40｜封底：雨林还在沙沙响/03-回想提示-透明底.png",
+        "size": [
+          2000,
+          1900
+        ],
+        "sha256": "02764e588c944a5a4650d5aeb9f9531d66baf8ec20c867915215ad4fbca3d0de",
+        "bytes": 3111919
+      },
+      {
+        "path": "P40｜封底：雨林还在沙沙响/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "8fb783fd741114d445ca3e29244cc6b647fb02128c7e495ee7c77c9b8dfefb77",
+        "bytes": 3696448
       }
-    ]
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-639cacb9-ad61-445e-acf6-aac67d63ce72.png",
+        "sha256": "8fb783fd741114d445ca3e29244cc6b647fb02128c7e495ee7c77c9b8dfefb77"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-ffd09eed-83ed-4200-93e1-203de156a938.png",
+        "sha256": "66328e55a96fbfd881057143d24dbd5ad3577050b002a52adfd102a22541874c"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        1254,
+        1254
+      ],
+      "method": "Native source archived byte-for-byte; no super-resolution or resizing",
+      "super_resolution_performed": false,
+      "source_sha256": "8fb783fd741114d445ca3e29244cc6b647fb02128c7e495ee7c77c9b8dfefb77",
+      "output_sha256": "8fb783fd741114d445ca3e29244cc6b647fb02128c7e495ee7c77c9b8dfefb77",
+      "archived_source": "插画原图-1254px.png"
+    },
+    "review": {
+      "scene": "reviewed",
+      "hands": "enlarged visual check; natural occlusion",
+      "lettering": "final PNG visually checked against manuscript",
+      "transparency": "RGBA; transparent corners; crop complete"
+    }
   }
 ]
