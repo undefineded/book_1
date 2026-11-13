@@ -1,0 +1,4 @@
+# PNG 与阅读 PDF 按二进制保存；Markdown 行尾双空格用于正文断行。
+*.png binary
+*.pdf binary
+*.md whitespace=-blank-at-eol

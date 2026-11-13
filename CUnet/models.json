@@ -1,0 +1,14 @@
+{
+  "upstream": "https://github.com/nihui/waifu2x-ncnn-vulkan",
+  "release": "20250915",
+  "download_url": "https://github.com/nihui/waifu2x-ncnn-vulkan/releases/download/20250915/waifu2x-ncnn-vulkan-20250915-linux.zip",
+  "model_directory": "models-cunet",
+  "scale": 2,
+  "noise": -1,
+  "files": {
+    "scale2.0x_model.bin": "d82ed30207fd07e1c16726a9ca838ce44e6e25a105b0278c7ca681516ee0e18e",
+    "scale2.0x_model.param": "ccc3b2f1c9fad829ecdda40cac8dc853fcddf14917170efba888b256fbf9074a"
+  },
+  "ncnn_release": "20250916",
+  "ncnn_sdk_url": "https://github.com/Tencent/ncnn/releases/download/20250916/ncnn-20250916-ubuntu-2204-shared.zip"
+}

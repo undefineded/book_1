@@ -1,0 +1,2466 @@
+[
+  {
+    "page": 1,
+    "title": "热带雨林大冒险",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P1｜封面/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1461
+        ],
+        "sha256": "73f12a055a37392dcf2f19fdf8951441bf9ce219fc2642398a765948a810ae68",
+        "bytes": 3201523
+      },
+      {
+        "path": "P1｜封面/00-标题与百科合画-透明底.png",
+        "size": [
+          1622,
+          970
+        ],
+        "sha256": "2373d504ccfe91649e598050e574249372f024a5cc105a5b2f5af7f614182110",
+        "bytes": 1600938
+      },
+      {
+        "path": "P1｜封面/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "31d6ce24dcc142de6cc58bdb674528cab6365d3defeac3c2eb84959cde81a4fe",
+        "bytes": 11131883
+      },
+      {
+        "path": "P1｜封面/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "397225fb01d364a030c8e8e14e59d652dcfd9faef263166d94cac9e65f4f5d20",
+        "bytes": 3499895
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-8e4374e4-2e10-4d8e-9a19-2515e533cbbf.png",
+        "sha256": "fe0cea269cd8bb27c228166a24cf01b18f7f22cdb41225675f51c2c2b01634dc"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-ee3b892a-e3ad-4bc2-8328-2fe54a54cd96.png",
+        "sha256": "218b73cce1c3d979048a3eed13723c5140d54353aff5eb19fb68b012ec608a26"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "4da51315a76f304f0dbd1a14abe1c257035bc8e468e125872059192b4d8ad6cc",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 2,
+    "title": "书里传来沙沙声",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P2｜扉页：书里传来沙沙声/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1310
+        ],
+        "sha256": "93176c8c1121ea5fc885fcf21d8bdf7ec62bce90d747ff9a5308ddd90544bdc9",
+        "bytes": 2911801
+      },
+      {
+        "path": "P2｜扉页：书里传来沙沙声/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "ea07d9dda9a38914d705a3b6fa4fa9d27940b94411924f7601786fdec60c3277",
+        "bytes": 1666466
+      },
+      {
+        "path": "P2｜扉页：书里传来沙沙声/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "bedc23147875bb84dcfeb9982be3d7e0f5afe7b695fd94f0802b8ac86d0a8ef5",
+        "bytes": 9796068
+      },
+      {
+        "path": "P2｜扉页：书里传来沙沙声/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "7d43d4f4f4be3bec6bc5e0073dec25d5053bd3f0089ff756634d82a15013789e",
+        "bytes": 3104399
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-9e792d57-fbba-4f9f-b3f2-0bf9be869106.png",
+        "sha256": "11f0b62e19f4584e6328687f5f9400a14ed004a3ebcd5e678a7a482c0e3d2ecb"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-8a9a6910-19ad-410b-affa-75072507997c.png",
+        "sha256": "427c98544daaf4f5afad947b04d6e94031467ade3a6ede018d472190bc660526"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "2c33b54de5054d08d73e90c6f6647fd9e4787be2174fac2d04612cd98708580a",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 3,
+    "title": "第一章／走进绿色迷宫（分两行）",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P3｜第一章：走进绿色迷宫/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1861
+        ],
+        "sha256": "22da2b682a60317995ff564ab1e0ec28469efe278cea852dbf877fd3b2a91b76",
+        "bytes": 3249419
+      },
+      {
+        "path": "P3｜第一章：走进绿色迷宫/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          2012
+        ],
+        "sha256": "e4e7e679466457e1a502c76f05680b13d0fc9663b8f3b2f561d20e78b41d7012",
+        "bytes": 2841180
+      },
+      {
+        "path": "P3｜第一章：走进绿色迷宫/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "41c5026821156f7aa0b92a8726eb4b3ecffd007580dea02c04286f247b7fae2d",
+        "bytes": 1304782
+      },
+      {
+        "path": "P3｜第一章：走进绿色迷宫/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "d78754b15300ce9a45b5fa19435f5f8af78f29a82d36cc9780fd26fe9a9d00c9",
+        "bytes": 11133235
+      },
+      {
+        "path": "P3｜第一章：走进绿色迷宫/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "b4195c3e66fe1dd86d3fe64b9e5b8783848260b6d38173bfd5b40e8d4e7ebb5a",
+        "bytes": 3497201
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-af97aac4-24a6-44a8-a447-5eab7e406bf6.png",
+        "sha256": "3e6c1a8410477f2c103868dcfd369daa19272bd2a06a69b2022fccb0efa943e3"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-1a6c9a4a-0db9-453f-a604-d92b727f8042.png",
+        "sha256": "086f00d0db7a39f0b193d3cf593d068e526efd97e247da6bc32213a95b271a9a"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "d841796cffe5d0986b8d6571771a6a0e832b6408c7d1931d554d45753182e4d0",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 4,
+    "title": "会走路的叶子",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P4｜会走路的叶子/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1780
+        ],
+        "sha256": "f1c12d96da4950e030d89caf409d68222577bae87b61b53d1d8fcdad55e7d28d",
+        "bytes": 3124857
+      },
+      {
+        "path": "P4｜会走路的叶子/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1883
+        ],
+        "sha256": "169b12ef63208f7774508af1a0a55f61a0f35a0f9aaf85b96c3e378c20f5117f",
+        "bytes": 2685945
+      },
+      {
+        "path": "P4｜会走路的叶子/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "5fbad7de04a1ed4599fbf2c62b4e31195c3a87503d9979218c298bae8b4a45f4",
+        "bytes": 1317418
+      },
+      {
+        "path": "P4｜会走路的叶子/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "96b0666cd26c6f1be7317d1ac857529346176ca415c2bcf3f5dd316627342e3f",
+        "bytes": 10625194
+      },
+      {
+        "path": "P4｜会走路的叶子/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "758e7554212cc3bf435c9008ffffa8fd0ea8ab4b6ad9ecea14451059ab7e00c6",
+        "bytes": 3377247
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-55480228-ba84-4d1e-bfc7-4307cf0e8c34.png",
+        "sha256": "7dc7117842a46924cb5969fe4201158a79df0dcb5f047aec7edf18c11c278a41"
+      },
+      {
+        "kind": "sheet",
+        "filename": "P4-sheet-corrected.png",
+        "sha256": "98fe20c5e375dbf53450194151bd4dbb0a27d7c4f279950589bf19b9eae5b7b2"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "5e739bb0f0e366a149f59417ca415125c75f719213fb76c741e4e7247cfedda2",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 5,
+    "title": "大树的宽脚掌",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P5｜大树的宽脚掌/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1707
+        ],
+        "sha256": "d8f1f3a985cf0868dd2cd68e41f1be96c1931b5dd134683ffd2d9fff622b782e",
+        "bytes": 2952071
+      },
+      {
+        "path": "P5｜大树的宽脚掌/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          2021
+        ],
+        "sha256": "67d8d0b657d0b53da94749ec71475d620ab256d3e9660d9f90ae45f2d381b8fa",
+        "bytes": 2852064
+      },
+      {
+        "path": "P5｜大树的宽脚掌/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "74199766b695d026a82d7811f4024b8863dfd8f83faa70a1a0402691142902f9",
+        "bytes": 1220111
+      },
+      {
+        "path": "P5｜大树的宽脚掌/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "12ec8c07cbc511523113a23c481a25f04e1aa28ba6056a209875f29bbe9469b9",
+        "bytes": 10997004
+      },
+      {
+        "path": "P5｜大树的宽脚掌/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "3cb190c2bf2dbace3a13fe4747c6dd4a1a71182246c8ab76e5b76cc1cf9caa09",
+        "bytes": 3465173
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "sheet",
+        "filename": "exec-4ad0cb3c-a349-42cf-b7a3-c757b6a16b44.png",
+        "sha256": "b9fce927f297c4cfad6b6945345e6aa12c336207a0a829bd79549356e11df2eb"
+      },
+      {
+        "kind": "scene",
+        "filename": "exec-716670a5-1d60-4bb4-92ae-5e38576aa157.png",
+        "sha256": "4915b37ade087b0585165adc4efd6de8d08124bf77a70450f723fe9a67412b4d"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "354754e61e6401d9e2c33b81b67c7a572f691bf5348944daa521c6c71938140c",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 6,
+    "title": "往上爬的绿绳子",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P6｜往上爬的绿绳子/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1706
+        ],
+        "sha256": "57690c6140d503536fb8422bb368d19802ecda7fc09147daf86bc05d73abde36",
+        "bytes": 2841832
+      },
+      {
+        "path": "P6｜往上爬的绿绳子/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          2039
+        ],
+        "sha256": "ba5dfdcfbe8a85680c4ad502c07542f382b6332ea1b1f026e4e2cf9950494046",
+        "bytes": 3197395
+      },
+      {
+        "path": "P6｜往上爬的绿绳子/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "7b2f02cb219b9fcd0139e93971df9b1bac00624a36560296c3c5ae42c3f2a49d",
+        "bytes": 1289458
+      },
+      {
+        "path": "P6｜往上爬的绿绳子/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "4f5dbbcf49e8451eec80a43019b13a49d0cdfa0cf57097ef41cfd4945be0909a",
+        "bytes": 11063031
+      },
+      {
+        "path": "P6｜往上爬的绿绳子/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "785f90627fcd16d1ab9963ea7ee7bca8469ef2dce9fa8640821b5f8dbe3e2389",
+        "bytes": 3482579
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "sheet",
+        "filename": "exec-f19fb166-dc8e-483f-8535-b91e31693107.png",
+        "sha256": "91148f2f0b3b32e072252cb8971a36d0abbae02f258485224992087ba1ebb8d0"
+      },
+      {
+        "kind": "scene",
+        "filename": "exec-8881f8ce-631c-487a-b872-e77f0037630c.png",
+        "sha256": "14639537d5a2a735a83c499e08cb18ced1b8b8f7d6ae82c0051642613c44f83e"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "ece8eebc363d54da655f0f0ed8a5ddcc868159366c3b8f4699883e0622e4b1cd",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 7,
+    "title": "蓝光忽然不见了",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P7｜蓝光忽然不见了/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1849
+        ],
+        "sha256": "694ef6dcf050c56a96eacd2298971c34d7b2a18daccdee01c55aadb595311cdd",
+        "bytes": 3059205
+      },
+      {
+        "path": "P7｜蓝光忽然不见了/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1992
+        ],
+        "sha256": "d63f93c9f292b9a2d7f23d2c3ff6bb4201d812523d20f7cbf556389e3b92e62c",
+        "bytes": 3440574
+      },
+      {
+        "path": "P7｜蓝光忽然不见了/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "c5a54b41a1323541130e6a3f91ea7e820aaf7e8d9661958d12309154bc6d7bf0",
+        "bytes": 1460678
+      },
+      {
+        "path": "P7｜蓝光忽然不见了/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "07bedb8d1a46416ddf182afe77fe9714a486f3efa22c3f94785e5dd0e6fa8a27",
+        "bytes": 11048601
+      },
+      {
+        "path": "P7｜蓝光忽然不见了/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "1980ff392003b001da740bf546328e6450fa6b41de8f1677c0c7e5d4204a833d",
+        "bytes": 3471968
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "sheet",
+        "filename": "exec-c9d688da-ee46-4b90-b5b3-9d6e2e25e7a0.png",
+        "sha256": "401bb6fb019b1c05da57eaee430ebe5a83b582203b9a8536b00486b1d8989370"
+      },
+      {
+        "kind": "scene",
+        "filename": "exec-0fa20f09-13d7-4b7e-b7c9-20b6a036f37a.png",
+        "sha256": "87649364b71d77d66ebda310b60fe2f072d5098535f88b728f1c5105538c30db"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "dd88c7ccd572db63c146b60ebf144b2f6aef5b901c31aaf6ced7555a969b8f11",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 8,
+    "title": "落叶上的小亮点",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P8｜落叶上的小亮点/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1726
+        ],
+        "sha256": "71304cfb2cf650cbdab4d32fff705a86a16c11be34c238d5d7b8dfa4e6e5919a",
+        "bytes": 3063881
+      },
+      {
+        "path": "P8｜落叶上的小亮点/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1956
+        ],
+        "sha256": "7b88258a8bc776c8e33b0ed69d040d0e45e19bafd9260705d78bba5e159911d2",
+        "bytes": 3020059
+      },
+      {
+        "path": "P8｜落叶上的小亮点/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "bee064b1505c5f3a25685ae9078ab29a6107f5c9c1c236371bf389db04f555ec",
+        "bytes": 1324304
+      },
+      {
+        "path": "P8｜落叶上的小亮点/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "50cbf114000c442f98f0b78d1871babe61e1742ba8224145d7f692e0ab239104",
+        "bytes": 10384167
+      },
+      {
+        "path": "P8｜落叶上的小亮点/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "56f3d2cee7653ac4f305b1e83cc66cae45e0300ade12d39a389b43ae6eb9ff5d",
+        "bytes": 3308653
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-3427f38a-9a55-4734-a186-3d83b050552f.png",
+        "sha256": "5e9f2a8070fa6afd98fd32f124f1f9e0ffd7cd6fc6e342970da9b467df070af3"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-7a1285c1-6b34-4d34-9186-1b531ab4687d.png",
+        "sha256": "3cc1e15d450df21e61656af332fc33e402b8f3a11df2f768ba1a3767df408269"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "02e415e1ebf722f41d90719d524d7c315e3845f435e78ffef39735f3ca92cc18",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 9,
+    "title": "落叶去哪儿了",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P9｜落叶去哪儿了/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1799
+        ],
+        "sha256": "b73594476cb73bc41c8c7a67ad510a132453cf3dce7719c06ad631701176da53",
+        "bytes": 3130610
+      },
+      {
+        "path": "P9｜落叶去哪儿了/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1946
+        ],
+        "sha256": "24028ed01dd267e0ab5208e0b9f93fa814169770276aaec729a993fde1c01765",
+        "bytes": 2980810
+      },
+      {
+        "path": "P9｜落叶去哪儿了/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "a2b5f22e1a6986926fa65f0850b4adb293b30ae8c15a7720cb7884a27618e9e3",
+        "bytes": 1299348
+      },
+      {
+        "path": "P9｜落叶去哪儿了/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "7e73a92f70b151f17b1181d76fb77210469d90b7051d692b82583d8d999d382c",
+        "bytes": 11227630
+      },
+      {
+        "path": "P9｜落叶去哪儿了/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "f41d5ba2820d5339c51a1aa8a810f1f821389da1c4e509b9e8f55adb49855b67",
+        "bytes": 3505580
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-79e3c3e4-84fc-4003-aea9-14d6f4a5d503.png",
+        "sha256": "cc5d427fad5006e6c317ce210bf45bd48d08cd1355e9119743c2cfbc37eb1f47"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-0e3af76d-aa09-4693-ba59-ceca61174243.png",
+        "sha256": "fd31922c6daaf177fa83c16f30553b537ebc6c0d1e9701f28a345ff0d9da65e8"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "74fd447d761d4c793ca3dfedc83ad44a2e10f371bff1e2b34f9da3c143cbfd74",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 10,
+    "title": "抱着果子的邻居",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P10｜抱着果子的邻居/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1725
+        ],
+        "sha256": "60f8d3ea71d8e9016d33e71a5d61d24146ee4b5e440696a78d0c21c636cfcbe3",
+        "bytes": 2932816
+      },
+      {
+        "path": "P10｜抱着果子的邻居/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          2021
+        ],
+        "sha256": "6a3ff110f2d34acffffa977e8f81fc85b7f55d020d7622040f06b9c210fae20b",
+        "bytes": 3003056
+      },
+      {
+        "path": "P10｜抱着果子的邻居/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "dba11b8f5abeb64db3bdc4b77fb55b1d26f7de06b846e5aba850ce00b59fdf5c",
+        "bytes": 1244138
+      },
+      {
+        "path": "P10｜抱着果子的邻居/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "68dd45729cbffb6caa9985e254b47ea297face87114639a6c049275c779ca3b3",
+        "bytes": 10940849
+      },
+      {
+        "path": "P10｜抱着果子的邻居/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "383bf8af1b67d8b6cf5070a671ffb86691961977d8a7d9220b3c485dd58f62c4",
+        "bytes": 3463127
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-37393f20-e9c8-4bc3-bd47-b73620fa757a.png",
+        "sha256": "ac32057e463ba7646bd690ee772ceaac0f67505501d059d65d4f70f9a9c08436"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-b28ff461-8edf-471f-adf6-6ec795a7f7d5.png",
+        "sha256": "21f06a05d66ce4d9719f5da543dd5356ea8427f160e0a00d8a8b42c7b73fb32d"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "5c08f0ac85a259babac96402ddb231a69f8a078a5ceb587e54759cc597222c6b",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 11,
+    "title": "叶尖上的小水珠",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P11｜叶尖上的小水珠/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1754
+        ],
+        "sha256": "0ca70cf182ac3bd234ab1d3987a790df92b91012e52b7b947e4dd516b732e381",
+        "bytes": 3061102
+      },
+      {
+        "path": "P11｜叶尖上的小水珠/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1899
+        ],
+        "sha256": "5c659374d8cb8cc7deafe6f8781ac8538161275cde20086bc63247f44652eb2f",
+        "bytes": 2652785
+      },
+      {
+        "path": "P11｜叶尖上的小水珠/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "ad352fc49b8e096020d91e9951932a2382769ff3a79951d3604dbde0e4b8c23b",
+        "bytes": 1301838
+      },
+      {
+        "path": "P11｜叶尖上的小水珠/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "1a4869344e91b9e7e74e99a32fea397ae206cebaf7532a72a4aa3f516f8c8b4b",
+        "bytes": 10890469
+      },
+      {
+        "path": "P11｜叶尖上的小水珠/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "a12bf8d84c260074c145599acfb156bdc0672cbcead9ba3b970cb32c912d0be0",
+        "bytes": 3430875
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "sheet",
+        "filename": "exec-7a847666-5417-47dd-aa79-f2bf82590aa1.png",
+        "sha256": "7adf87231668711dd3e786de547c6285a4bcc80d2573226f9c32baec4363b921"
+      },
+      {
+        "kind": "scene",
+        "filename": "exec-e1c5e793-d22d-4a4b-a13d-49869c91c955.png",
+        "sha256": "a870611e4d9147a1447a6f65156aaee96b87e9734fc4f292d77af252c833abaf"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "5a3187985ae12ded9ea89ecd1076bb9bf3882402f1f463aa830e185fced88a4b",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 12,
+    "title": "把小路画进本子",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P12｜把小路画进本子/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1794
+        ],
+        "sha256": "01b22f7893499c09aad805d1b94b5d9a3e3517f1c95e847eb4641b1ce4d639de",
+        "bytes": 3101394
+      },
+      {
+        "path": "P12｜把小路画进本子/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          2032
+        ],
+        "sha256": "172a4fb80fbdacf5d9b1e26c785aed8f33da173f487daba2a4cb754984a7d2a2",
+        "bytes": 3401079
+      },
+      {
+        "path": "P12｜把小路画进本子/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "f573d9b20b578b3e7b01153556c7f92f0870be2879e4df23d19d8f12c205d665",
+        "bytes": 1422205
+      },
+      {
+        "path": "P12｜把小路画进本子/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "7094b0d8c63d6cdecd6f026c0c3eff135796b5f8e1a9112f1be577e1c0177981",
+        "bytes": 10890691
+      },
+      {
+        "path": "P12｜把小路画进本子/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "70f184edf55b4c80d28c7caf2f3b59cda921fa020c8f83b39c6166b1c2134ea0",
+        "bytes": 3440545
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "sheet",
+        "filename": "exec-bdf76577-afd5-4770-8ec1-1f2fcb5ceeac.png",
+        "sha256": "0d1da8fdf6e48588aac35aeeae8270f9e1267f1609878f8cdba8bc5fe7298762"
+      },
+      {
+        "kind": "scene",
+        "filename": "exec-6310eb53-1fc3-488e-a3bb-cf9ca2759529.png",
+        "sha256": "0a310ecc8637c2c7ca4d7a4f053097054814b5b1f3fdb637274d8b17c223c84e"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "0092983acb98c38f03ed90e494655a1415f9a87a8ec1ff954800937a3e67a0da",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 13,
+    "title": "第二章／树梢上的奇妙邻居（分两行）",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P13｜第二章：树梢上的奇妙邻居/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1753
+        ],
+        "sha256": "a02225838d802a2d274c99ed122041c89a3bfd6a0ef496c21f348b102172c012",
+        "bytes": 3253657
+      },
+      {
+        "path": "P13｜第二章：树梢上的奇妙邻居/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1988
+        ],
+        "sha256": "9ec3b0aff4226e0f4c5879b202c028ae8d45093daa06b5c8d4fdf12bd6326e27",
+        "bytes": 3323241
+      },
+      {
+        "path": "P13｜第二章：树梢上的奇妙邻居/00-标题与百科合画-透明底.png",
+        "size": [
+          1755,
+          896
+        ],
+        "sha256": "74189360cab5069b26d88e1e4d48b3ecebb88d9a46aa481fe3c1a566c0835c94",
+        "bytes": 1379454
+      },
+      {
+        "path": "P13｜第二章：树梢上的奇妙邻居/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "052402984640e68140476f1a0dbe14275bf99f570d2686dd0bf1bb1ea459790c",
+        "bytes": 10226641
+      },
+      {
+        "path": "P13｜第二章：树梢上的奇妙邻居/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "62cd69d0210c58896b4769247e997cd57e623889884c8bbd0cb6fb44c4814b75",
+        "bytes": 3232163
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-85d9a470-4b82-47a7-859d-f65beb316d62.png",
+        "sha256": "221178f079a48d0c22ea8d5a0b4b3f52d03fd02b39921f559af68fdec94897c3"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-e3c42eed-2099-4cfa-a6e5-9a4ca0a50f06.png",
+        "sha256": "030f21ae767f9b8d7920dc9c0192fd6db94f3aec18be0342def5467b75bffc5c"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "e5532188710fe3f8c3bd088321bca97319e2014b744a2748c1c7ea908abcc812",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 14,
+    "title": "倒挂着的慢邻居",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P14｜倒挂着的慢邻居/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1745
+        ],
+        "sha256": "da9217a739b1974b311e5244b3f827a1f3a17e7dcaf10bef270d02a56f0d33c9",
+        "bytes": 3377427
+      },
+      {
+        "path": "P14｜倒挂着的慢邻居/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1997
+        ],
+        "sha256": "d274d812a0b943de624cb801f31f4617585bc9955c99bc6479f0c113f9d7cd97",
+        "bytes": 3153543
+      },
+      {
+        "path": "P14｜倒挂着的慢邻居/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "e99f7e5bcceeb67396f4a280511fa259979c833223e30881eff7c3c06bbabb2b",
+        "bytes": 1386825
+      },
+      {
+        "path": "P14｜倒挂着的慢邻居/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "619dd59d9f4469fd976fdc865bd286c7928c45154b98aa626616032b9d83431a",
+        "bytes": 10831394
+      },
+      {
+        "path": "P14｜倒挂着的慢邻居/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "1f4d1f744d22c9c3b8a795c09b6a2c6097de132e30ce99e38b8b2c9cccadf052",
+        "bytes": 3419394
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-9439f0b3-5c52-41c6-83ef-fbb09b1e7d10.png",
+        "sha256": "fd755804e334cab1d50f3c123d4e1040ebd4889f73be5f4e03be37a8ddf51792"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-471083cc-3126-4ee8-b0ab-a8fb1c36864b.png",
+        "sha256": "1b2b585e032082f7375451ecfe580c70c6fbe8e4603e66da8c0c259daa9d56cd"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "feb87950f50bc9e74f9b83baf0e535d355eb2061ccb41259e91a21500d796469",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 15,
+    "title": "树枝间的小跳跃",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P15｜树枝间的小跳跃/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1144
+        ],
+        "sha256": "9943219b6f9929c881a745acbeec2ad27036113ee293f3a21b0e1a49c743259a",
+        "bytes": 2264631
+      },
+      {
+        "path": "P15｜树枝间的小跳跃/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          2000
+        ],
+        "sha256": "b2cc8829d99846bc01635e0400a38730ce0d02b61165666c630e3d63493dd410",
+        "bytes": 3345127
+      },
+      {
+        "path": "P15｜树枝间的小跳跃/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "bf62c9f0ce918972501ea254cd43cb22aae93650bbde9f7606fcc11df02b6245",
+        "bytes": 9402763
+      },
+      {
+        "path": "P15｜树枝间的小跳跃/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "7fbb3e3daba5bf747971ed954a52de51d3d3b70b4fb315e85383e2b0f7fe6c09",
+        "bytes": 3062449
+      }
+    ],
+    "imagegen_sources": [],
+    "reuse": "用户确认的文字素材原样复用；场景从确认的1254px源图重跑CUnet两倍超分",
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "b3f85316b057ea03fdc727828388f8f51730090c483a8d8ef9037d3c1ac5a94a",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 16,
+    "title": "远处是谁在打鼓",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P16｜远处是谁在打鼓/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1649
+        ],
+        "sha256": "3e1367851e8a2c5eeb4e19819c2c1767824004dbe4282c12be677544a3524a2d",
+        "bytes": 3015517
+      },
+      {
+        "path": "P16｜远处是谁在打鼓/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          2040
+        ],
+        "sha256": "8c7928aac6ac2b4a8fa5a5ae52edbf36947c134b49e277f809794a91cd658e60",
+        "bytes": 3180765
+      },
+      {
+        "path": "P16｜远处是谁在打鼓/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          897
+        ],
+        "sha256": "c82be94a9b5fa15aebebb4bc1b3df7211c34f98ae8acc0ee6612778bd0f7989f",
+        "bytes": 1280748
+      },
+      {
+        "path": "P16｜远处是谁在打鼓/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "1c162c4ca43ef2e764a29a0be4a8781a4171c411e6bdfe67a0f8b4c27b233c86",
+        "bytes": 10387468
+      },
+      {
+        "path": "P16｜远处是谁在打鼓/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "c9de86c018889c0474ca5eba4428d55c5293d11087c7cc3dc1ff7df35ecad674",
+        "bytes": 3321243
+      }
+    ],
+    "imagegen_sources": [],
+    "reuse": "用户确认的文字素材原样复用；场景从确认的1254px源图重跑CUnet两倍超分",
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "d3113354215ce325a0023d2a8896023a0010e0fef67370ede3bf0c8609ffe30c",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 17,
+    "title": "大嘴巴夹起小果子",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P17｜大嘴巴夹起小果子/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1732
+        ],
+        "sha256": "7df2760e92110f2e7cf47a53c9a1ecf1269f44fc60ca688afc4c5477baeee95e",
+        "bytes": 3012897
+      },
+      {
+        "path": "P17｜大嘴巴夹起小果子/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1912
+        ],
+        "sha256": "c1abbb16d65f6a7a43f6eb8d4d87dd1e29ce1133ed9c8153257b7edc3234eaf6",
+        "bytes": 3031884
+      },
+      {
+        "path": "P17｜大嘴巴夹起小果子/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "3c917b030fda37e22682882e3c74ff1cf3b1e3f066069f4a16fbf823f817362a",
+        "bytes": 1329052
+      },
+      {
+        "path": "P17｜大嘴巴夹起小果子/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "7c8114a06dd7fcb70a6930f4039cb4347bd0dc849ca2cd5da358405b90b2f47b",
+        "bytes": 10858597
+      },
+      {
+        "path": "P17｜大嘴巴夹起小果子/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "d605e816e98c98ea93a8460c68de9e4c8bfa8548b45d0e00a5d77364574e2853",
+        "bytes": 3432283
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-5220b66e-552a-4322-b626-487c1bd66560.png",
+        "sha256": "74e5f798ca311d87b5f388829723d3af0f983cd150c3c4374fc6bab16cc3f8f2"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-c9f2c667-d582-4e27-b291-bda861183135.png",
+        "sha256": "a5c09b674a27d573ae944731a320776dc0cbfd10fb168bda90ee5a451f1f9b77"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "46a3e83c3714a2214dfb84498c6faa66fc45e7edc64f0d1c75c38f54d7ba6afa",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 18,
+    "title": "果子壳裂开了",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P18｜果子壳裂开了/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1789
+        ],
+        "sha256": "83b50365bdbba5c988f57fadafde9b83ce1247c66a81daafcdf0d074a349cc01",
+        "bytes": 3208403
+      },
+      {
+        "path": "P18｜果子壳裂开了/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          2024
+        ],
+        "sha256": "b6c0db5eac3828e4f8f180c89039b38861d82d8fd815049cff225a6d29129939",
+        "bytes": 2993947
+      },
+      {
+        "path": "P18｜果子壳裂开了/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "1c9ec393369f2636c7608069f97e942832aaae7513eeb4686db1c25537d033fc",
+        "bytes": 1336412
+      },
+      {
+        "path": "P18｜果子壳裂开了/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "d1fb086a5a43f3fa2ce454629a93028f01cc65998da64679e95ae068c6175355",
+        "bytes": 11115900
+      },
+      {
+        "path": "P18｜果子壳裂开了/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "66866e55acf7a6235b1ab013fbb8103d7fa6204939fad9c64da2a2954b58a41e",
+        "bytes": 3489127
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "sheet",
+        "filename": "exec-0ffb2d15-c8ff-4a2f-bda5-2aa4446ab4f1.png",
+        "sha256": "445cc8482b52c2efd2d6f5611dacc4095f0f193fb82d34bdac4cd5988fd0c223"
+      },
+      {
+        "kind": "scene",
+        "filename": "exec-844ab0ed-2d78-4935-9cd4-768c9aa5ab8f.png",
+        "sha256": "4dbcf96012bbca757db50c024fd30cb6e2316cabc7b608bc5fdb7220007f773c"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "52c7edf30c7ae113821449dc7d94d0cfee83fedaf7f0d765ada0c007450bda51",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 19,
+    "title": "树上藏着小水池",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P19｜树上藏着小水池/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1721
+        ],
+        "sha256": "78f354fbff2687e9cc9e56847da3c3f5711131ebf75e0f8a7cd39bce97cec94b",
+        "bytes": 2761577
+      },
+      {
+        "path": "P19｜树上藏着小水池/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1948
+        ],
+        "sha256": "974566f7065ac6d17e207f0e561ec369a09f2e4d196116204637cd0f86d6d6de",
+        "bytes": 2971595
+      },
+      {
+        "path": "P19｜树上藏着小水池/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "f257f4498159ffe0aa892819505b035a963354e6c040bb3c90e15b1db6553f64",
+        "bytes": 1272784
+      },
+      {
+        "path": "P19｜树上藏着小水池/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "3e72c81b13765cbf6bb37fb3d3fea54f49d8773efa64a109cbdf1a14d0e9272d",
+        "bytes": 10573840
+      },
+      {
+        "path": "P19｜树上藏着小水池/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "f3bc1899d7744126cca3f0efa4353e68de6017ac3c79da3dca57a6736dcba24d",
+        "bytes": 3347658
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-e1b0b7ba-8e80-4d08-bfab-6f51cf392cfa.png",
+        "sha256": "af244f80455053051036f8d504d2cdd83593f5061b66105c6f6d0140e702cc69"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-b49a0b1d-217a-4c1a-b0de-b68259616814.png",
+        "sha256": "e11f53f4b9555f375cec0f93d3d55758f3271f03ddb3cce5b7dd50bcac98eb55"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "ddd380149418c387b33fd6a814569d6f8f6a53ed8445eaa99d2959302bd4dbfc",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 20,
+    "title": "雨点敲响了屋顶",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P20｜雨点敲响了屋顶/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1707
+        ],
+        "sha256": "fbdaf768e31091f61feb31b7d382806241f077280dfe4ee9fae25b43ddee6163",
+        "bytes": 3053711
+      },
+      {
+        "path": "P20｜雨点敲响了屋顶/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1991
+        ],
+        "sha256": "5b0f40a91b1629068d578ecdb19ba7745581e0d48248848a190778b2491afdf3",
+        "bytes": 2798287
+      },
+      {
+        "path": "P20｜雨点敲响了屋顶/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "c97e98fbf58b4ebf64f93d05b69d1ad8800d455cf28e9802ea3ca595680baf85",
+        "bytes": 1253435
+      },
+      {
+        "path": "P20｜雨点敲响了屋顶/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "5812fbb120c961ff46c3376926f4433feddf011cd045f1f83b0f4e1068e5cfff",
+        "bytes": 10298156
+      },
+      {
+        "path": "P20｜雨点敲响了屋顶/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "c5c6f657e0856c5ce345db86a93d112205805fc4bafabb374385609d21a9ef53",
+        "bytes": 3260227
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "sheet",
+        "filename": "exec-8e5c1053-f28e-40b9-9790-a7b75e4eeac9.png",
+        "sha256": "fa2fc9f168fb8a75a4bd874342092464a7de6de02224df2b6f93b09f6e9c058b"
+      },
+      {
+        "kind": "scene",
+        "filename": "exec-d9cf21c2-a889-4343-ab41-cbd33356f6ad.png",
+        "sha256": "126e7ef1668a7e0c8e10e60cf616c0a6d8124f4273a4a3ae3ac4ffd0e78c53a8"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "a36a679c20f8586995894029021d48b5cdc41b57c303f029cb69c6e101b7984f",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 21,
+    "title": "雨停后的第一声嗡",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P21｜雨停后的第一声嗡/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1671
+        ],
+        "sha256": "78a06150d306d897dd8fa9329bbc55848c3c583e699c5ed355bf583240328b2d",
+        "bytes": 2803139
+      },
+      {
+        "path": "P21｜雨停后的第一声嗡/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1979
+        ],
+        "sha256": "b574e551b0895fcf74e31fb8abecdee86a3befe47f860f5466f31c1ddc9eeaae",
+        "bytes": 3057850
+      },
+      {
+        "path": "P21｜雨停后的第一声嗡/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "aec1cc40dc52b2a0b75cd4e173e94a4bc9d9287e16dba70c06c336b505bdbfc4",
+        "bytes": 1257168
+      },
+      {
+        "path": "P21｜雨停后的第一声嗡/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "a81c240d7258d0d20127e30fe5c94387b7078b98a12e16cfece00e1856be9293",
+        "bytes": 10506087
+      },
+      {
+        "path": "P21｜雨停后的第一声嗡/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "436d0c3c101fcec4f548b10dc8627c5457639818a487473b3fe664b4be06128d",
+        "bytes": 3332250
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-53ebfdd4-b44b-4595-855a-d81828ec7d78.png",
+        "sha256": "8c9164588efa66e3bdcff536764db414e9ccc25199e7ab43e6eea8c0b8416058"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-9062f262-68cf-4ca6-8bec-713b9cc34aa0.png",
+        "sha256": "54eada47ef30ac621788f7719ccd149851daff04e0301d6d8517bbe49fb70526"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "7ea702edb1929d7c1fd1d7905422a1f17ca4fb0c7b19e465669355493b72c3a5",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 22,
+    "title": "一颗果子的新旅程",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P22｜一颗果子的新旅程/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1736
+        ],
+        "sha256": "5b2b482204acd3bf995e2f72b8bedf8e58626aee63e64579f866ef537fcab35b",
+        "bytes": 2885458
+      },
+      {
+        "path": "P22｜一颗果子的新旅程/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1937
+        ],
+        "sha256": "45caa1bfdcff74da20f129b68cfa41b75cb51d1334ecc3cd6900db10afeda8bd",
+        "bytes": 3116534
+      },
+      {
+        "path": "P22｜一颗果子的新旅程/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "75664205afe1ab620c07df02a5444bfa43c0ca56b4ac3c2f45b57acefc35355f",
+        "bytes": 1350048
+      },
+      {
+        "path": "P22｜一颗果子的新旅程/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "e5a113d5c24118226d192267df6b449de3944a334b89313c752caede1910da47",
+        "bytes": 10947522
+      },
+      {
+        "path": "P22｜一颗果子的新旅程/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "e2b69157333a03072c0b0e7288196ca70a776478c40ba73dd6257d7f6eeb355c",
+        "bytes": 3429944
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "sheet",
+        "filename": "exec-cd4ee6c1-7b71-4aae-910f-0cd6eb341ac7.png",
+        "sha256": "e05d796a546a556d9eb0871f6f049dcb3be4f1a13b045ff316d5e46a7666d47f"
+      },
+      {
+        "kind": "scene",
+        "filename": "exec-2a113b8f-6414-49aa-8ed9-5e34f22428fb.png",
+        "sha256": "19fec0e3709f1a4387f591cc70508e8bd95c28a6c324885bbdc653f40f186f27"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "ef7fb7c4b721d7eefd2ac40733f00e29db9981816816fee24a1347fa67bc533e",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 23,
+    "title": "第三章／沿着河流找朋友（分两行）",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P23｜第三章：沿着河流找朋友/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1777
+        ],
+        "sha256": "9574b7b373bd8e76272a9c302ed1ee8e1e827f8227fc5d59d1ca6a2daf340de5",
+        "bytes": 3130460
+      },
+      {
+        "path": "P23｜第三章：沿着河流找朋友/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1994
+        ],
+        "sha256": "cb067b7585cd4fd251b3475fa59de7ee8eb2140846e08da516733ec7cbe9ca57",
+        "bytes": 2918877
+      },
+      {
+        "path": "P23｜第三章：沿着河流找朋友/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "ab98c44da55a88dfe1571bb9f098c6530b19f344b2ae9647001a44b9f4e50a2c",
+        "bytes": 1322861
+      },
+      {
+        "path": "P23｜第三章：沿着河流找朋友/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "70424bc03578f3bd2f7382dc30b5b138e17a5f07cd4738f17d61fa4ec7168737",
+        "bytes": 10476310
+      },
+      {
+        "path": "P23｜第三章：沿着河流找朋友/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "52e122432e6c63a3381e1181a9df293bb145b6b69653f8a17c4bef55534c0f89",
+        "bytes": 3308010
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "sheet",
+        "filename": "exec-535adc27-1523-4e99-9227-012478d7b3d4.png",
+        "sha256": "211368e50de657f862843be527413087b71903c79f60ef8ac93388b74da25e40"
+      },
+      {
+        "kind": "scene",
+        "filename": "exec-102a9c95-2634-4678-87c6-19d97624cad3.png",
+        "sha256": "fddef32185ee875d9d363fb0d09dd83983ea967690027d3506e39aa0abd8c5fc"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "d076ac6946110af85913e9b7407a09c1a3c6d081d84b270b1b809afa1ba6b9e0",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 24,
+    "title": "泡在水里的大邻居",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P24｜泡在水里的大邻居/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1667
+        ],
+        "sha256": "a8991bb819d6166fe9f5540176a2de327ce602789c1a590ea16db70c1a64a0c0",
+        "bytes": 2891322
+      },
+      {
+        "path": "P24｜泡在水里的大邻居/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1962
+        ],
+        "sha256": "6193c516c83041da7215359fcea407433f5e75ca4fcd0013e7f52d9667924667",
+        "bytes": 2853349
+      },
+      {
+        "path": "P24｜泡在水里的大邻居/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "577390a6719de97f1cffc3a6dc170209d2249e9c849b16b5b5159df6c2e9189e",
+        "bytes": 1259663
+      },
+      {
+        "path": "P24｜泡在水里的大邻居/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "ef9a194ded48923aafa3777703a46748c0ad72b1869aad1036869dda5f7af71d",
+        "bytes": 11048379
+      },
+      {
+        "path": "P24｜泡在水里的大邻居/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "aecbbf5277ee53faf59ee0d654af7f89749a495f9b87fe851bf4da99ed625fbd",
+        "bytes": 3468920
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-e4e35435-359b-48dc-a0c1-f056a5238196.png",
+        "sha256": "af8b58be30fe38852e88b5bc2fb777515e5282866b7df7d26223918f2a87cc77"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-298a19d9-43d8-4aeb-96c7-7320a736ec18.png",
+        "sha256": "806a90c8512b4e4858c0d7cda33ff70933b12d91f62a881f650b2f51774c4852"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "9ee848048db0a19e93817faf1969a0cb7e0011e24c235cd38601916ef4af7423",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 25,
+    "title": "水面闪过粉红色",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P25｜水面闪过粉红色/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1712
+        ],
+        "sha256": "bab1fc31bc563de5b333eafe6f10059d28e8b5360d83d5d2d7e080ad7f14f118",
+        "bytes": 2998024
+      },
+      {
+        "path": "P25｜水面闪过粉红色/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          2018
+        ],
+        "sha256": "52c563dbe19c69d72977bf6a28d56ffa309bd621d27ff64fad1aca1198c5d98d",
+        "bytes": 3285991
+      },
+      {
+        "path": "P25｜水面闪过粉红色/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "e8780324443fd0b6692c041c9a3c9b427ed2a5b865dbec391722b28b3cbc6ab5",
+        "bytes": 1319898
+      },
+      {
+        "path": "P25｜水面闪过粉红色/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "25e5ff90c55cf7807ec8898719a7d505ace285654d98c5b6fb91d05ef5ef454f",
+        "bytes": 10622398
+      },
+      {
+        "path": "P25｜水面闪过粉红色/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "23244e68d58b0e1a3832e45091b9aacd764b00d037e21bda38580828e64c7bd7",
+        "bytes": 3354731
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-b95730b8-54ec-4678-b640-c42db3a38ecb.png",
+        "sha256": "f355125e5f6d6f457e2e441d1850d07ae8b1582e46bd4bb1de28ec5cdcb724df"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-d42dc02c-cab9-485f-bb69-26ca53edeaa3.png",
+        "sha256": "a7e2bd24c704dc228d42c9a15f861d79cf00309a6f81b5b53a0174caee0cecfc"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "76ee57fc616a9187f49e89828270e43b03a24a4921e1a6a01b7e046744ceea68",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 26,
+    "title": "树叶做的午饭",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P26｜树叶做的午饭/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1747
+        ],
+        "sha256": "27d1a2a7e9acbd9aeabcc1feea820a42c534d71569c5707a64f0d97a22bbdab8",
+        "bytes": 3042120
+      },
+      {
+        "path": "P26｜树叶做的午饭/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1971
+        ],
+        "sha256": "6a6288a47743bd4dcc2d76346d7ae54d1da96ab47ed6d7a489116f82dd4c5df0",
+        "bytes": 3184501
+      },
+      {
+        "path": "P26｜树叶做的午饭/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "b838f79607927e9f8005a3178289d4ac6453f025661f5598b18e1130cfd02191",
+        "bytes": 1372563
+      },
+      {
+        "path": "P26｜树叶做的午饭/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "c8a2994263498a224b51696e858b1910cb9e949d04e9a466f2df33bcd99bc808",
+        "bytes": 10990440
+      },
+      {
+        "path": "P26｜树叶做的午饭/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "c14cecd046dab2efa051411bbd9e7365d1d7b6b0fdafead040621d3dd9ae7694",
+        "bytes": 3460727
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-a0744a39-58b2-495c-8400-1ec8665ac012.png",
+        "sha256": "db25408dff339ddfc2e9741f32cf2a96145788b7fb1dc12739e9f63e70989114"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-e03b881b-7d52-4b60-8b6a-e5ce5e8f66df.png",
+        "sha256": "ee5c3a4eae170f9b5d80307fa9aedb82b0a3e47b482bc6277eee183c58462424"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "0f5d174e592a648279692b12af22fe9ffbc171fd58645c51dac4e996b698592c",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 27,
+    "title": "大叶子上的长脚趾",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P27｜大叶子上的长脚趾/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1787
+        ],
+        "sha256": "94122ccee32bb77807229130031fd3b6d48826d8242aca9745daa325db818ffa",
+        "bytes": 2952340
+      },
+      {
+        "path": "P27｜大叶子上的长脚趾/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1915
+        ],
+        "sha256": "e8e46d5023b8d4d6e428b5da29bbe85d72a98744f79c5b3c4b09990d2c75d969",
+        "bytes": 2793384
+      },
+      {
+        "path": "P27｜大叶子上的长脚趾/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "4fc5816cce89c5c04fa97d5175d5742807a67f0344484c9e9d9e0e0f734a9936",
+        "bytes": 1303686
+      },
+      {
+        "path": "P27｜大叶子上的长脚趾/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "7674cee9fdaa6f07c0f099fa069774a3b327bc83fc925480a150a637e4bd86df",
+        "bytes": 10762202
+      },
+      {
+        "path": "P27｜大叶子上的长脚趾/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "14434882087b5ca170a1b574989efac3d16559ec4b3df7923a3aa0f9f0f57d51",
+        "bytes": 3396596
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-49dbc5df-411e-4da5-849d-ea5f76a5b34e.png",
+        "sha256": "4ab1cdb8621ff57a1fa88c67f39324e72133f03b449f548462d6e8ee59af7f07"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-ee2f2d3d-1dfb-4ef6-8f17-947aa16ebeb7.png",
+        "sha256": "0f9f521bfb34c19c7e8fcabc87cf38ab1816cd7bf81078e0aba870146d9327b6"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "53318249dba481888c3d3b06969d7e4dcbeee0b216cc6831eb0499e2b434ce9f",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 28,
+    "title": "一根会眨眼的木头",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P28｜一根会眨眼的木头/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1708
+        ],
+        "sha256": "26140c2486648a533476c30600fa5f5348afab3e6e03360f4aff066e11acc05b",
+        "bytes": 3074034
+      },
+      {
+        "path": "P28｜一根会眨眼的木头/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          2012
+        ],
+        "sha256": "a4cc4080c68afc07664a3174156ad2051d545be87bc082fccc5020d5c6394863",
+        "bytes": 2954372
+      },
+      {
+        "path": "P28｜一根会眨眼的木头/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "a696c5d74adfe459b6df5ed9be97999823352914fbdf099d2a34f19efb0d72f2",
+        "bytes": 1307539
+      },
+      {
+        "path": "P28｜一根会眨眼的木头/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "097aea8e6a89de91b726d7b45c15b03dd47c92966bf310bbc3a22bafbcc3b804",
+        "bytes": 10393575
+      },
+      {
+        "path": "P28｜一根会眨眼的木头/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "cf5ea088d421092a00707fde3dedf3eb6739477ed2d04c5f1e8219e7d8588838",
+        "bytes": 3299551
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "sheet",
+        "filename": "exec-828f22eb-02a4-4383-9066-3c0965fddd7c.png",
+        "sha256": "11f1df509ef7294f0e12fb750e676f77ec01888a5180e5361561648e3a0e568c"
+      },
+      {
+        "kind": "scene",
+        "filename": "exec-2c08492c-3f1b-4482-ad2b-ca2188ae6e4b.png",
+        "sha256": "be57298c63e2c904c8b5c0f8b8f6feaa7496fdf5060dc28712e2476fcb023435"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "138331a56ca996536eeab9efdc3badf38c5a68dc7149f15c6fc9bbe10cd68f21",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 29,
+    "title": "游过来的长尾巴",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P29｜游过来的长尾巴/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1771
+        ],
+        "sha256": "82648a21bdffef34a8a2b6f2c422a880e1a000c1d56cb6aa621b82d9ea5d1c87",
+        "bytes": 3176029
+      },
+      {
+        "path": "P29｜游过来的长尾巴/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1954
+        ],
+        "sha256": "38adcefe899fed170ed6d34275d4e33fe7f9d631c96397c5916309bd31c094ce",
+        "bytes": 2825676
+      },
+      {
+        "path": "P29｜游过来的长尾巴/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "f394e45d147b1d5448dc8e5268189593cf43c627d7b3a03605c8969752889457",
+        "bytes": 1333661
+      },
+      {
+        "path": "P29｜游过来的长尾巴/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "89ea95c267767d8e317e3b3a615961ddc9d1fa16822ee594af42bfb73eed00d4",
+        "bytes": 10817534
+      },
+      {
+        "path": "P29｜游过来的长尾巴/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "1343ddcb9fe3a57f1b338f7330b76cc7a6753dbced06e855307519f7c3d9827f",
+        "bytes": 3399297
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "sheet",
+        "filename": "exec-0eea258e-ea69-4f75-a8f2-e8a1c6dd60db.png",
+        "sha256": "04890e1c06fb5e5165b09a3733d574699a08f4f3ffb8f9e17f3ad777a244c6e8"
+      },
+      {
+        "kind": "scene",
+        "filename": "exec-6e864d86-6220-4b85-b1f0-01e4097eb254.png",
+        "sha256": "b61374dd7f8ec69706956952e6fd822582c7ad786196273774a0086bf7ca1b53"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "44a065f6170f4ac949eb396b7d1f3e12c50bf0e31c91b5eee06032503c482218",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 30,
+    "title": "把河流画成弯弯的线",
+    "status": "complete",
+    "assets": [
+      {
+        "path": "P30｜把河流画成弯弯的线/02-标题与正文-透明底.png",
+        "size": [
+          2400,
+          1732
+        ],
+        "sha256": "2e63ac28ab6696cc4f04045c2ac1618af2259d6af8fd9670d1dc59d803daef65",
+        "bytes": 2992461
+      },
+      {
+        "path": "P30｜把河流画成弯弯的线/03-雨林小百科-透明底.png",
+        "size": [
+          2000,
+          1968
+        ],
+        "sha256": "21db2eae0c9961f8228c1439ac26ea9f3be075a5da21db7e1290f7a10ffb6068",
+        "bytes": 3008914
+      },
+      {
+        "path": "P30｜把河流画成弯弯的线/00-标题与百科合画-透明底.png",
+        "size": [
+          1754,
+          896
+        ],
+        "sha256": "3ccb00e6e1991f9b78f2d34bc4398cf98a015abe9f79b162b58e1f43f8bf42f4",
+        "bytes": 1356171
+      },
+      {
+        "path": "P30｜把河流画成弯弯的线/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "7c4fdaf9bae1d63c8db4100bc90918a4337fd21b7e1831449818005e15146b0b",
+        "bytes": 9969546
+      },
+      {
+        "path": "P30｜把河流画成弯弯的线/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "d10be0371ab11d214f54d6e3a644562536310d79c04e340b011214d0fc1af117",
+        "bytes": 3155054
+      }
+    ],
+    "imagegen_sources": [
+      {
+        "kind": "scene",
+        "filename": "exec-e8fc2c31-7d9a-4a46-a770-0d02ab828312.png",
+        "sha256": "eaf8bd85fb1a9680c1e035edc22dfd7a893f7e2ff33eed231b6909e16b86cc9f"
+      },
+      {
+        "kind": "sheet",
+        "filename": "exec-ad9de22c-c6fb-439c-a4cd-c0cea3d092c1.png",
+        "sha256": "f5cf9edd6007492e26b0f9f10517ff88ca0f163dc5311956602782421ac516e2"
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "1771bfaaeec1328185ad2070d9a3b641c53b78902ab7ede1e394baca26b7c1f1",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 31,
+    "title": "第四章／谁把夜晚点亮了（分两行）",
+    "status": "pending",
+    "pending": "无字场景、标题正文、专用纸签",
+    "assets": [
+      {
+        "path": "P31｜第四章：谁把夜晚点亮了/旧版含字整页-3000px.png",
+        "size": [
+          3000,
+          3000
+        ],
+        "sha256": "caffe6bb107976c8bff3f58730962938e73b160703c78208e58f92598bfed416",
+        "bytes": 13701890
+      }
+    ]
+  },
+  {
+    "page": 32,
+    "title": "叶子下面的歌手",
+    "status": "pending",
+    "pending": "标题正文、小百科纸签（无字图已完成）",
+    "assets": [
+      {
+        "path": "P32｜叶子下面的歌手/旧版含字整页-3000px.png",
+        "size": [
+          3000,
+          3000
+        ],
+        "sha256": "520577ca187812c48ec96ecbead65147a91f3d78c8f27adccbc18495c82667d9",
+        "bytes": 12908641
+      },
+      {
+        "path": "P32｜叶子下面的歌手/01-原图-2508px.png",
+        "size": [
+          2508,
+          2508
+        ],
+        "sha256": "ba5da30178a5f41ee2d0d0d64a7f999d0536b403af85ebd791de2c3596e1ca72",
+        "bytes": 10418519
+      },
+      {
+        "path": "P32｜叶子下面的歌手/插画原图-1254px.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "sha256": "34386605896e93d7f6ef46f7afb2a4a9c01bd3a6fa1b7dc802cd622bded07357",
+        "bytes": 3308480
+      }
+    ],
+    "scene_export": {
+      "source_size": [
+        1254,
+        1254
+      ],
+      "output_size": [
+        2508,
+        2508
+      ],
+      "method": "CUnet scale2 noise=-1; native inference pixels, no final resize",
+      "native_pixel_sha256": "9b63e6ced83dc7b2578627964b814083d8b247801b647378d74a5a87950aa5fb",
+      "archived_source": "插画原图-1254px.png"
+    }
+  },
+  {
+    "page": 33,
+    "title": "夜里的花客人",
+    "status": "pending",
+    "pending": "无字场景、标题正文、专用纸签",
+    "assets": [
+      {
+        "path": "P33｜夜里的花客人/旧版含字整页-3000px.png",
+        "size": [
+          3000,
+          3000
+        ],
+        "sha256": "fac2c1ad137acd657a06faaa23b5daed80e51de0bff512393cc85fee69999d1d",
+        "bytes": 12967455
+      }
+    ]
+  },
+  {
+    "page": 34,
+    "title": "一点亮，一点暗",
+    "status": "pending",
+    "pending": "无字场景、标题正文、专用纸签",
+    "assets": [
+      {
+        "path": "P34｜一点亮，一点暗/旧版含字整页-3000px.png",
+        "size": [
+          3000,
+          3000
+        ],
+        "sha256": "2c6b0ded4cc8e382085f2cb36595cdbc029f78a0b6273d4786e422281fd95fe5",
+        "bytes": 12184722
+      }
+    ]
+  },
+  {
+    "page": 35,
+    "title": "长鼻子轻轻卷起叶子",
+    "status": "pending",
+    "pending": "无字场景、标题正文、专用纸签",
+    "assets": [
+      {
+        "path": "P35｜长鼻子轻轻卷起叶子/旧版含字整页-3000px.png",
+        "size": [
+          3000,
+          3000
+        ],
+        "sha256": "b7af597976aded7acdec731d083eca9f5643041da121eb37b2f4eeefab45d1e0",
+        "bytes": 13082162
+      }
+    ]
+  },
+  {
+    "page": 36,
+    "title": "带走发现，留下家园",
+    "status": "pending",
+    "pending": "无字场景、标题正文、专用纸签",
+    "assets": [
+      {
+        "path": "P36｜带走发现，留下家园/旧版含字整页-3000px.png",
+        "size": [
+          3000,
+          3000
+        ],
+        "sha256": "947633c23c433b1a11a9cf928253abf6d0a7b5ba29288d05625b0ae8d21a9852",
+        "bytes": 12578307
+      }
+    ]
+  },
+  {
+    "page": 37,
+    "title": "我的雨林观察笔记",
+    "status": "pending",
+    "pending": "无字场景、标题正文、专用纸签",
+    "assets": [
+      {
+        "path": "P37｜我的雨林观察笔记/旧版含字整页-3000px.png",
+        "size": [
+          3000,
+          3000
+        ],
+        "sha256": "f2624b63d7db1ac4ba07aad975161400c90d11c985c84168bdca5f810a08e21c",
+        "bytes": 13092359
+      }
+    ]
+  },
+  {
+    "page": 38,
+    "title": "献给一起发现的人",
+    "status": "pending",
+    "pending": "无字场景、标题正文、专用纸签",
+    "assets": [
+      {
+        "path": "P38｜献给一起发现的人/旧版含字整页-3000px.png",
+        "size": [
+          3000,
+          3000
+        ],
+        "sha256": "98d0a0a68a0069bb4ad894df1fa8da5c9c5878a26924a454f70b8431409e691e",
+        "bytes": 11612977
+      }
+    ]
+  },
+  {
+    "page": 39,
+    "title": "一粒种子的以后",
+    "status": "pending",
+    "pending": "无字场景、标题正文、专用纸签",
+    "assets": [
+      {
+        "path": "P39｜封三：一粒种子的以后/旧版含字整页-3000px.png",
+        "size": [
+          3000,
+          3000
+        ],
+        "sha256": "71c69cdd5d6cc011a6fa1324d2ff60b2955f29fb6312ef454cad6dc922bb5745",
+        "bytes": 13342267
+      }
+    ]
+  },
+  {
+    "page": 40,
+    "title": "雨林还在沙沙响",
+    "status": "pending",
+    "pending": "无字场景、标题正文、专用纸签",
+    "assets": [
+      {
+        "path": "P40｜封底：雨林还在沙沙响/旧版含字整页-3000px.png",
+        "size": [
+          3000,
+          3000
+        ],
+        "sha256": "2ce5afc67f8d59a93c44c4b463fa37b655a93d2f6b646e83d3d8d980b7ab132d",
+        "bytes": 14194668
+      }
+    ]
+  }
+]

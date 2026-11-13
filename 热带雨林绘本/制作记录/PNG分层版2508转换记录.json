@@ -1,0 +1,636 @@
+{
+  "date": "2026-11-13",
+  "policy": "1254 -> CUnet scale2 noise=-1 -> 2508; no interpolation after inference",
+  "previous_3000_delivery_commit": "5a6e98aef067b08a0a70ace85c1e70a1f9a09e24",
+  "model_sha256": "d82ed30207fd07e1c16726a9ca838ce44e6e25a105b0278c7ca681516ee0e18e",
+  "pages": [
+    {
+      "page": 1,
+      "source": "超清版/P1｜封面/插画原图-1254px.png",
+      "source_generator_filename": "exec-8e4374e4-2e10-4d8e-9a19-2515e533cbbf.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "397225fb01d364a030c8e8e14e59d652dcfd9faef263166d94cac9e65f4f5d20",
+      "source_pixel_sha256": "bc81b7fe689b8b23f17dc1087d685215c6fff9cc916fe7a6fd3c2ce939d39710",
+      "output": "超清版/P1｜封面/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "31d6ce24dcc142de6cc58bdb674528cab6365d3defeac3c2eb84959cde81a4fe",
+      "output_pixel_sha256": "4da51315a76f304f0dbd1a14abe1c257035bc8e468e125872059192b4d8ad6cc",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 2,
+      "source": "超清版/P2｜扉页：书里传来沙沙声/插画原图-1254px.png",
+      "source_generator_filename": "exec-9e792d57-fbba-4f9f-b3f2-0bf9be869106.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "7d43d4f4f4be3bec6bc5e0073dec25d5053bd3f0089ff756634d82a15013789e",
+      "source_pixel_sha256": "84c3683ea6e3a1bbe4b000922b5fcc17d64f7b7a5d67d0005f9bfa83afa9d97c",
+      "output": "超清版/P2｜扉页：书里传来沙沙声/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "bedc23147875bb84dcfeb9982be3d7e0f5afe7b695fd94f0802b8ac86d0a8ef5",
+      "output_pixel_sha256": "2c33b54de5054d08d73e90c6f6647fd9e4787be2174fac2d04612cd98708580a",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 3,
+      "source": "超清版/P3｜第一章：走进绿色迷宫/插画原图-1254px.png",
+      "source_generator_filename": "exec-af97aac4-24a6-44a8-a447-5eab7e406bf6.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "b4195c3e66fe1dd86d3fe64b9e5b8783848260b6d38173bfd5b40e8d4e7ebb5a",
+      "source_pixel_sha256": "9a909e3d9b1aec9213c56d1b278c139bf48685131f1918398713726f77274eb4",
+      "output": "超清版/P3｜第一章：走进绿色迷宫/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "d78754b15300ce9a45b5fa19435f5f8af78f29a82d36cc9780fd26fe9a9d00c9",
+      "output_pixel_sha256": "d841796cffe5d0986b8d6571771a6a0e832b6408c7d1931d554d45753182e4d0",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 4,
+      "source": "超清版/P4｜会走路的叶子/插画原图-1254px.png",
+      "source_generator_filename": "exec-55480228-ba84-4d1e-bfc7-4307cf0e8c34.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "758e7554212cc3bf435c9008ffffa8fd0ea8ab4b6ad9ecea14451059ab7e00c6",
+      "source_pixel_sha256": "4e30b575912ab7326569f36d26901c990ffe71d146a77a85f3fba9220ec1c20b",
+      "output": "超清版/P4｜会走路的叶子/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "96b0666cd26c6f1be7317d1ac857529346176ca415c2bcf3f5dd316627342e3f",
+      "output_pixel_sha256": "5e739bb0f0e366a149f59417ca415125c75f719213fb76c741e4e7247cfedda2",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 5,
+      "source": "超清版/P5｜大树的宽脚掌/插画原图-1254px.png",
+      "source_generator_filename": "exec-716670a5-1d60-4bb4-92ae-5e38576aa157.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "3cb190c2bf2dbace3a13fe4747c6dd4a1a71182246c8ab76e5b76cc1cf9caa09",
+      "source_pixel_sha256": "4e0ac9748d68e7844e4a82081055b01dfd26506e9f6758ce0dece2ab6f273d82",
+      "output": "超清版/P5｜大树的宽脚掌/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "12ec8c07cbc511523113a23c481a25f04e1aa28ba6056a209875f29bbe9469b9",
+      "output_pixel_sha256": "354754e61e6401d9e2c33b81b67c7a572f691bf5348944daa521c6c71938140c",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 6,
+      "source": "超清版/P6｜往上爬的绿绳子/插画原图-1254px.png",
+      "source_generator_filename": "exec-8881f8ce-631c-487a-b872-e77f0037630c.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "785f90627fcd16d1ab9963ea7ee7bca8469ef2dce9fa8640821b5f8dbe3e2389",
+      "source_pixel_sha256": "185953676bf2b0a5b65620721164f7c48a42113e9b91819a75f744a61526bc2f",
+      "output": "超清版/P6｜往上爬的绿绳子/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "4f5dbbcf49e8451eec80a43019b13a49d0cdfa0cf57097ef41cfd4945be0909a",
+      "output_pixel_sha256": "ece8eebc363d54da655f0f0ed8a5ddcc868159366c3b8f4699883e0622e4b1cd",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 7,
+      "source": "超清版/P7｜蓝光忽然不见了/插画原图-1254px.png",
+      "source_generator_filename": "exec-0fa20f09-13d7-4b7e-b7c9-20b6a036f37a.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "1980ff392003b001da740bf546328e6450fa6b41de8f1677c0c7e5d4204a833d",
+      "source_pixel_sha256": "69955add7aa245ca73d8bd5681dff2955b84c5f5584841d87f7fd35aad4f30a2",
+      "output": "超清版/P7｜蓝光忽然不见了/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "07bedb8d1a46416ddf182afe77fe9714a486f3efa22c3f94785e5dd0e6fa8a27",
+      "output_pixel_sha256": "dd88c7ccd572db63c146b60ebf144b2f6aef5b901c31aaf6ced7555a969b8f11",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 8,
+      "source": "超清版/P8｜落叶上的小亮点/插画原图-1254px.png",
+      "source_generator_filename": "exec-3427f38a-9a55-4734-a186-3d83b050552f.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "56f3d2cee7653ac4f305b1e83cc66cae45e0300ade12d39a389b43ae6eb9ff5d",
+      "source_pixel_sha256": "52886a48d2e26829adfd71fa2a5d3bdc4c7b7b01ae3695e3a2ab30a84fed84da",
+      "output": "超清版/P8｜落叶上的小亮点/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "50cbf114000c442f98f0b78d1871babe61e1742ba8224145d7f692e0ab239104",
+      "output_pixel_sha256": "02e415e1ebf722f41d90719d524d7c315e3845f435e78ffef39735f3ca92cc18",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 9,
+      "source": "超清版/P9｜落叶去哪儿了/插画原图-1254px.png",
+      "source_generator_filename": "exec-79e3c3e4-84fc-4003-aea9-14d6f4a5d503.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "f41d5ba2820d5339c51a1aa8a810f1f821389da1c4e509b9e8f55adb49855b67",
+      "source_pixel_sha256": "2ac8de7d8520367102a253852b43cc0ad9c90e7593b5b72b463300522e817df9",
+      "output": "超清版/P9｜落叶去哪儿了/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "7e73a92f70b151f17b1181d76fb77210469d90b7051d692b82583d8d999d382c",
+      "output_pixel_sha256": "74fd447d761d4c793ca3dfedc83ad44a2e10f371bff1e2b34f9da3c143cbfd74",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 10,
+      "source": "超清版/P10｜抱着果子的邻居/插画原图-1254px.png",
+      "source_generator_filename": "exec-37393f20-e9c8-4bc3-bd47-b73620fa757a.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "383bf8af1b67d8b6cf5070a671ffb86691961977d8a7d9220b3c485dd58f62c4",
+      "source_pixel_sha256": "45f9eebd17d7c335d275f95d012fe23e69899c3b7558a605bbd92e1e784f4fa8",
+      "output": "超清版/P10｜抱着果子的邻居/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "68dd45729cbffb6caa9985e254b47ea297face87114639a6c049275c779ca3b3",
+      "output_pixel_sha256": "5c08f0ac85a259babac96402ddb231a69f8a078a5ceb587e54759cc597222c6b",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 11,
+      "source": "超清版/P11｜叶尖上的小水珠/插画原图-1254px.png",
+      "source_generator_filename": "exec-e1c5e793-d22d-4a4b-a13d-49869c91c955.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "a12bf8d84c260074c145599acfb156bdc0672cbcead9ba3b970cb32c912d0be0",
+      "source_pixel_sha256": "22876fbb3530a683fc6d2d89fee6061d3e20bb9b97163f08fe8e902c05e1b335",
+      "output": "超清版/P11｜叶尖上的小水珠/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "1a4869344e91b9e7e74e99a32fea397ae206cebaf7532a72a4aa3f516f8c8b4b",
+      "output_pixel_sha256": "5a3187985ae12ded9ea89ecd1076bb9bf3882402f1f463aa830e185fced88a4b",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 12,
+      "source": "超清版/P12｜把小路画进本子/插画原图-1254px.png",
+      "source_generator_filename": "exec-6310eb53-1fc3-488e-a3bb-cf9ca2759529.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "70f184edf55b4c80d28c7caf2f3b59cda921fa020c8f83b39c6166b1c2134ea0",
+      "source_pixel_sha256": "8ad471b38cba6e5b902d7870f1a719a904ff55b5639cd2bc716d882bceec3a37",
+      "output": "超清版/P12｜把小路画进本子/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "7094b0d8c63d6cdecd6f026c0c3eff135796b5f8e1a9112f1be577e1c0177981",
+      "output_pixel_sha256": "0092983acb98c38f03ed90e494655a1415f9a87a8ec1ff954800937a3e67a0da",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 13,
+      "source": "超清版/P13｜第二章：树梢上的奇妙邻居/插画原图-1254px.png",
+      "source_generator_filename": "exec-85d9a470-4b82-47a7-859d-f65beb316d62.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "62cd69d0210c58896b4769247e997cd57e623889884c8bbd0cb6fb44c4814b75",
+      "source_pixel_sha256": "9ffc836646947044b8353894939c3a096ca1d7596879f6cd34868c41381f975d",
+      "output": "超清版/P13｜第二章：树梢上的奇妙邻居/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "052402984640e68140476f1a0dbe14275bf99f570d2686dd0bf1bb1ea459790c",
+      "output_pixel_sha256": "e5532188710fe3f8c3bd088321bca97319e2014b744a2748c1c7ea908abcc812",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 14,
+      "source": "超清版/P14｜倒挂着的慢邻居/插画原图-1254px.png",
+      "source_generator_filename": "exec-9439f0b3-5c52-41c6-83ef-fbb09b1e7d10.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "1f4d1f744d22c9c3b8a795c09b6a2c6097de132e30ce99e38b8b2c9cccadf052",
+      "source_pixel_sha256": "1422c3849a074efbf8c21fb64e90ef93d84d628f49b225cc0b0a083a1bbf5de2",
+      "output": "超清版/P14｜倒挂着的慢邻居/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "619dd59d9f4469fd976fdc865bd286c7928c45154b98aa626616032b9d83431a",
+      "output_pixel_sha256": "feb87950f50bc9e74f9b83baf0e535d355eb2061ccb41259e91a21500d796469",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 15,
+      "source": "超清版/P15｜树枝间的小跳跃/插画原图-1254px.png",
+      "source_generator_filename": "exec-4a36cdc6-d090-43c0-905b-b9eb0bafb299.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "7fbb3e3daba5bf747971ed954a52de51d3d3b70b4fb315e85383e2b0f7fe6c09",
+      "source_pixel_sha256": "27eec1c21f0c18def5d2917aacf1c026864a8f49d747d072bc68e6f429e8521e",
+      "output": "超清版/P15｜树枝间的小跳跃/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "bf62c9f0ce918972501ea254cd43cb22aae93650bbde9f7606fcc11df02b6245",
+      "output_pixel_sha256": "b3f85316b057ea03fdc727828388f8f51730090c483a8d8ef9037d3c1ac5a94a",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": {
+        "max_channel_error": 0,
+        "mean_error": 0.0
+      }
+    },
+    {
+      "page": 16,
+      "source": "超清版/P16｜远处是谁在打鼓/插画原图-1254px.png",
+      "source_generator_filename": "exec-699ff3b4-655c-4b03-9e4c-f6b73f948094.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "c9de86c018889c0474ca5eba4428d55c5293d11087c7cc3dc1ff7df35ecad674",
+      "source_pixel_sha256": "09fa126623d15b48feaea1b3786a292190fd9e6535c0f9071b7de678c05a638d",
+      "output": "超清版/P16｜远处是谁在打鼓/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "1c162c4ca43ef2e764a29a0be4a8781a4171c411e6bdfe67a0f8b4c27b233c86",
+      "output_pixel_sha256": "d3113354215ce325a0023d2a8896023a0010e0fef67370ede3bf0c8609ffe30c",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": {
+        "max_channel_error": 0,
+        "mean_error": 0.0
+      }
+    },
+    {
+      "page": 17,
+      "source": "超清版/P17｜大嘴巴夹起小果子/插画原图-1254px.png",
+      "source_generator_filename": "exec-5220b66e-552a-4322-b626-487c1bd66560.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "d605e816e98c98ea93a8460c68de9e4c8bfa8548b45d0e00a5d77364574e2853",
+      "source_pixel_sha256": "ccc64161f29816dac1a58306966348855f64ddcf3db703e858f6e389cc8bfe0f",
+      "output": "超清版/P17｜大嘴巴夹起小果子/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "7c8114a06dd7fcb70a6930f4039cb4347bd0dc849ca2cd5da358405b90b2f47b",
+      "output_pixel_sha256": "46a3e83c3714a2214dfb84498c6faa66fc45e7edc64f0d1c75c38f54d7ba6afa",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 18,
+      "source": "超清版/P18｜果子壳裂开了/插画原图-1254px.png",
+      "source_generator_filename": "exec-844ab0ed-2d78-4935-9cd4-768c9aa5ab8f.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "66866e55acf7a6235b1ab013fbb8103d7fa6204939fad9c64da2a2954b58a41e",
+      "source_pixel_sha256": "d0c0ddfd31e7c0a95358ceaef1a3c75595581c49b9ac00b98ef6290ebce4c3ec",
+      "output": "超清版/P18｜果子壳裂开了/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "d1fb086a5a43f3fa2ce454629a93028f01cc65998da64679e95ae068c6175355",
+      "output_pixel_sha256": "52c7edf30c7ae113821449dc7d94d0cfee83fedaf7f0d765ada0c007450bda51",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 19,
+      "source": "超清版/P19｜树上藏着小水池/插画原图-1254px.png",
+      "source_generator_filename": "exec-e1b0b7ba-8e80-4d08-bfab-6f51cf392cfa.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "f3bc1899d7744126cca3f0efa4353e68de6017ac3c79da3dca57a6736dcba24d",
+      "source_pixel_sha256": "d4b0159f4c49be1814660c90d4bb6a3c9482aa4d9cc40bfb517e4743dea9c050",
+      "output": "超清版/P19｜树上藏着小水池/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "3e72c81b13765cbf6bb37fb3d3fea54f49d8773efa64a109cbdf1a14d0e9272d",
+      "output_pixel_sha256": "ddd380149418c387b33fd6a814569d6f8f6a53ed8445eaa99d2959302bd4dbfc",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 20,
+      "source": "超清版/P20｜雨点敲响了屋顶/插画原图-1254px.png",
+      "source_generator_filename": "exec-d9cf21c2-a889-4343-ab41-cbd33356f6ad.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "c5c6f657e0856c5ce345db86a93d112205805fc4bafabb374385609d21a9ef53",
+      "source_pixel_sha256": "3838512933a30178351a0162ffcff28f5488e8b6d6ab16d7000790c0ab626532",
+      "output": "超清版/P20｜雨点敲响了屋顶/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "5812fbb120c961ff46c3376926f4433feddf011cd045f1f83b0f4e1068e5cfff",
+      "output_pixel_sha256": "a36a679c20f8586995894029021d48b5cdc41b57c303f029cb69c6e101b7984f",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 21,
+      "source": "超清版/P21｜雨停后的第一声嗡/插画原图-1254px.png",
+      "source_generator_filename": "exec-53ebfdd4-b44b-4595-855a-d81828ec7d78.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "436d0c3c101fcec4f548b10dc8627c5457639818a487473b3fe664b4be06128d",
+      "source_pixel_sha256": "089069769013125b33cc3c5c4dfae1776d257c3a204b38e860f095040f61e9db",
+      "output": "超清版/P21｜雨停后的第一声嗡/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "a81c240d7258d0d20127e30fe5c94387b7078b98a12e16cfece00e1856be9293",
+      "output_pixel_sha256": "7ea702edb1929d7c1fd1d7905422a1f17ca4fb0c7b19e465669355493b72c3a5",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 22,
+      "source": "超清版/P22｜一颗果子的新旅程/插画原图-1254px.png",
+      "source_generator_filename": "exec-2a113b8f-6414-49aa-8ed9-5e34f22428fb.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "e2b69157333a03072c0b0e7288196ca70a776478c40ba73dd6257d7f6eeb355c",
+      "source_pixel_sha256": "0a7b22be5ad1b28f0c199812c4e9ff4b2209e2e72bee733d984e8e2857dcf4a6",
+      "output": "超清版/P22｜一颗果子的新旅程/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "e5a113d5c24118226d192267df6b449de3944a334b89313c752caede1910da47",
+      "output_pixel_sha256": "ef7fb7c4b721d7eefd2ac40733f00e29db9981816816fee24a1347fa67bc533e",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 23,
+      "source": "超清版/P23｜第三章：沿着河流找朋友/插画原图-1254px.png",
+      "source_generator_filename": "exec-102a9c95-2634-4678-87c6-19d97624cad3.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "52e122432e6c63a3381e1181a9df293bb145b6b69653f8a17c4bef55534c0f89",
+      "source_pixel_sha256": "3cfb264670964c5af8b0f93004cd46d0d2f204d6a0a73675777bc01b0c94dbf5",
+      "output": "超清版/P23｜第三章：沿着河流找朋友/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "70424bc03578f3bd2f7382dc30b5b138e17a5f07cd4738f17d61fa4ec7168737",
+      "output_pixel_sha256": "d076ac6946110af85913e9b7407a09c1a3c6d081d84b270b1b809afa1ba6b9e0",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 24,
+      "source": "超清版/P24｜泡在水里的大邻居/插画原图-1254px.png",
+      "source_generator_filename": "exec-e4e35435-359b-48dc-a0c1-f056a5238196.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "aecbbf5277ee53faf59ee0d654af7f89749a495f9b87fe851bf4da99ed625fbd",
+      "source_pixel_sha256": "55e046217e240ccbce843a2c9a02c2878532407937770fc9e5ba883f9d4b8ae8",
+      "output": "超清版/P24｜泡在水里的大邻居/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "ef9a194ded48923aafa3777703a46748c0ad72b1869aad1036869dda5f7af71d",
+      "output_pixel_sha256": "9ee848048db0a19e93817faf1969a0cb7e0011e24c235cd38601916ef4af7423",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 25,
+      "source": "超清版/P25｜水面闪过粉红色/插画原图-1254px.png",
+      "source_generator_filename": "exec-b95730b8-54ec-4678-b640-c42db3a38ecb.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "23244e68d58b0e1a3832e45091b9aacd764b00d037e21bda38580828e64c7bd7",
+      "source_pixel_sha256": "c031a2139861e887473c68acfde3b719ff25769a4bcda86a7d57df7904bc1f52",
+      "output": "超清版/P25｜水面闪过粉红色/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "25e5ff90c55cf7807ec8898719a7d505ace285654d98c5b6fb91d05ef5ef454f",
+      "output_pixel_sha256": "76ee57fc616a9187f49e89828270e43b03a24a4921e1a6a01b7e046744ceea68",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 26,
+      "source": "超清版/P26｜树叶做的午饭/插画原图-1254px.png",
+      "source_generator_filename": "exec-a0744a39-58b2-495c-8400-1ec8665ac012.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "c14cecd046dab2efa051411bbd9e7365d1d7b6b0fdafead040621d3dd9ae7694",
+      "source_pixel_sha256": "13581ae708409a188c54c540913af2f84ccb72ee025e243dee8ae234dbe83bd5",
+      "output": "超清版/P26｜树叶做的午饭/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "c8a2994263498a224b51696e858b1910cb9e949d04e9a466f2df33bcd99bc808",
+      "output_pixel_sha256": "0f5d174e592a648279692b12af22fe9ffbc171fd58645c51dac4e996b698592c",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 27,
+      "source": "超清版/P27｜大叶子上的长脚趾/插画原图-1254px.png",
+      "source_generator_filename": "exec-49dbc5df-411e-4da5-849d-ea5f76a5b34e.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "14434882087b5ca170a1b574989efac3d16559ec4b3df7923a3aa0f9f0f57d51",
+      "source_pixel_sha256": "48347041db27a89b9ed8d373da1092bcb90dec26a15d43f717db4e85180a1026",
+      "output": "超清版/P27｜大叶子上的长脚趾/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "7674cee9fdaa6f07c0f099fa069774a3b327bc83fc925480a150a637e4bd86df",
+      "output_pixel_sha256": "53318249dba481888c3d3b06969d7e4dcbeee0b216cc6831eb0499e2b434ce9f",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 28,
+      "source": "超清版/P28｜一根会眨眼的木头/插画原图-1254px.png",
+      "source_generator_filename": "exec-2c08492c-3f1b-4482-ad2b-ca2188ae6e4b.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "cf5ea088d421092a00707fde3dedf3eb6739477ed2d04c5f1e8219e7d8588838",
+      "source_pixel_sha256": "cc768aee61e83cf3379386740704e249722405243655b45e87c58bab4ba0717d",
+      "output": "超清版/P28｜一根会眨眼的木头/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "097aea8e6a89de91b726d7b45c15b03dd47c92966bf310bbc3a22bafbcc3b804",
+      "output_pixel_sha256": "138331a56ca996536eeab9efdc3badf38c5a68dc7149f15c6fc9bbe10cd68f21",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 29,
+      "source": "超清版/P29｜游过来的长尾巴/插画原图-1254px.png",
+      "source_generator_filename": "exec-6e864d86-6220-4b85-b1f0-01e4097eb254.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "1343ddcb9fe3a57f1b338f7330b76cc7a6753dbced06e855307519f7c3d9827f",
+      "source_pixel_sha256": "a904a72baa151100da587609155627d145e00c6f4faf10040767d7d57957b82a",
+      "output": "超清版/P29｜游过来的长尾巴/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "89ea95c267767d8e317e3b3a615961ddc9d1fa16822ee594af42bfb73eed00d4",
+      "output_pixel_sha256": "44a065f6170f4ac949eb396b7d1f3e12c50bf0e31c91b5eee06032503c482218",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 30,
+      "source": "超清版/P30｜把河流画成弯弯的线/插画原图-1254px.png",
+      "source_generator_filename": "exec-e8fc2c31-7d9a-4a46-a770-0d02ab828312.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "d10be0371ab11d214f54d6e3a644562536310d79c04e340b011214d0fc1af117",
+      "source_pixel_sha256": "85619111c6b827866dbb3170d8b8ab1bd5c0ac991a85b5c9776820a38830a8ef",
+      "output": "超清版/P30｜把河流画成弯弯的线/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "7c4fdaf9bae1d63c8db4100bc90918a4337fd21b7e1831449818005e15146b0b",
+      "output_pixel_sha256": "1771bfaaeec1328185ad2070d9a3b641c53b78902ab7ede1e394baca26b7c1f1",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    },
+    {
+      "page": 32,
+      "source": "超清版/P32｜叶子下面的歌手/插画原图-1254px.png",
+      "source_generator_filename": "exec-22858b94-42ef-4d66-bd6e-6ed6a531e913.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "source_sha256": "34386605896e93d7f6ef46f7afb2a4a9c01bd3a6fa1b7dc802cd622bded07357",
+      "source_pixel_sha256": "44a6f13e3cc8677f33e3a434a79dfb29a7e5ff0a72961f8f67e2d39813162357",
+      "output": "超清版/P32｜叶子下面的歌手/01-原图-2508px.png",
+      "output_size": [
+        2508,
+        2508
+      ],
+      "output_sha256": "ba5da30178a5f41ee2d0d0d64a7f999d0536b403af85ebd791de2c3596e1ca72",
+      "output_pixel_sha256": "9b63e6ced83dc7b2578627964b814083d8b247801b647378d74a5a87950aa5fb",
+      "inference_output_pixels_equal_png": true,
+      "previous_3000_identity": null
+    }
+  ],
+  "historical_commit_retained_in_branch_history": false,
+  "local_legacy_git_objects_retained": true
+}

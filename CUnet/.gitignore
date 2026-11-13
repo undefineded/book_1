@@ -1,0 +1,5 @@
+/build/
+/models-cunet/
+/.downloads/
+__pycache__/
+*.pyc
