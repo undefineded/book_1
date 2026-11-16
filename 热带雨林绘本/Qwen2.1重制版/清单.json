@@ -1,0 +1,737 @@
+{
+  "generated": "2026-11-16 23:40:49",
+  "method": "Qwen-Image-2.1-Turbo 重制（非超分）：1254 源图作参考重绘 2496 → 颜色匹配回旧 CUnet → 2508 / 300DPI",
+  "model": "qwen_image_2.1_turbo_int8_convrot.safetensors",
+  "steps": 8,
+  "seed": 424242,
+  "cfg": 1.0,
+  "resolution": 2496,
+  "pending_pages": [],
+  "pages": [
+    {
+      "page": 1,
+      "folder": "P1｜封面",
+      "qwen_output": "p1_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 351.4,
+      "sharpness_qwen": 939.9,
+      "sha256": "28e198a4f37362a410589de3873bcd62b58542562ede2e3e345e84fffb2c8c9e",
+      "bytes": 12342322
+    },
+    {
+      "page": 2,
+      "folder": "P2｜扉页：书里传来沙沙声",
+      "qwen_output": "p2_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 209.3,
+      "sharpness_qwen": 747.9,
+      "sha256": "7f79316139e8214cf1c6d59b518745d9770729a0818d8c01cf3ded9d20f05e10",
+      "bytes": 11738656
+    },
+    {
+      "page": 3,
+      "folder": "P3｜第一章：走进绿色迷宫",
+      "qwen_output": "p3_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 384.3,
+      "sharpness_qwen": 969.0,
+      "sha256": "2c4bb48e7df5daf5ea42d45be487e8cd7d98f6ca9062ff6c1fceb0d151fad5a1",
+      "bytes": 12352658
+    },
+    {
+      "page": 4,
+      "folder": "P4｜会走路的叶子",
+      "qwen_output": "p4_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 234.9,
+      "sharpness_qwen": 693.6,
+      "sha256": "5b9025f1fcbf97fa84ee829cf3494c1519ef28d3717a852b2564954fda79a0ae",
+      "bytes": 11985648
+    },
+    {
+      "page": 5,
+      "folder": "P5｜大树的宽脚掌",
+      "qwen_output": "p5_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 281.8,
+      "sharpness_qwen": 849.8,
+      "sha256": "3d850cee7dfb5e4a054766c1e0ec47639ffb2207f64fc148820c19c3f8edc468",
+      "bytes": 12346880
+    },
+    {
+      "page": 6,
+      "folder": "P6｜往上爬的绿绳子",
+      "qwen_output": "p6_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 307.6,
+      "sharpness_qwen": 959.6,
+      "sha256": "5efb5d01c3c01d7492115ae917a9506a3870bbf66cffa6471d8d0c1461b7c6f0",
+      "bytes": 12385837
+    },
+    {
+      "page": 7,
+      "folder": "P7｜蓝光忽然不见了",
+      "qwen_output": "p7_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 327.2,
+      "sharpness_qwen": 828.9,
+      "sha256": "083a71366169c1088e11928caa4583e2b5858bfd23a71a6a0cf7aa2e8e8d3b74",
+      "bytes": 12202187
+    },
+    {
+      "page": 8,
+      "folder": "P8｜落叶上的小亮点",
+      "qwen_output": "p8_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 235.2,
+      "sharpness_qwen": 752.1,
+      "sha256": "a503575317372bacd4be853450306973bd1a50502e538b4d5555b2ae514f21c4",
+      "bytes": 11912210
+    },
+    {
+      "page": 9,
+      "folder": "P9｜落叶去哪儿了",
+      "qwen_output": "p9_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 372.5,
+      "sharpness_qwen": 913.2,
+      "sha256": "dc320a4fbf8f60f2abbd1524401c81aa103e8c338cfd95cf8ce5084e988535c3",
+      "bytes": 12369543
+    },
+    {
+      "page": 10,
+      "folder": "P10｜抱着果子的邻居",
+      "qwen_output": "p10_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 342.9,
+      "sharpness_qwen": 877.8,
+      "sha256": "4326aecb36a8b243c2370fcf0df1d9933828720f8bb9de2e0a6da14a965e34bc",
+      "bytes": 12246876
+    },
+    {
+      "page": 11,
+      "folder": "P11｜叶尖上的小水珠",
+      "qwen_output": "p11_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 304.9,
+      "sharpness_qwen": 939.5,
+      "sha256": "a69a9bd08e8c4feb34c456f8b292ede35b5783a2e2d7209a697ca7137ad193a4",
+      "bytes": 12201545
+    },
+    {
+      "page": 12,
+      "folder": "P12｜把小路画进本子",
+      "qwen_output": "p12_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 349.8,
+      "sharpness_qwen": 863.5,
+      "sha256": "b926f27d6d3f0c353355e815d3359e469242f84a5f3244fca8e6c4b9886ab71f",
+      "bytes": 11966289
+    },
+    {
+      "page": 13,
+      "folder": "P13｜第二章：树梢上的奇妙邻居",
+      "qwen_output": "p13_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 262.3,
+      "sharpness_qwen": 832.0,
+      "sha256": "9ed8d3449af37dd39ddf34cc4fdc19bb46d3167edcedfc085fbcd674e0c6f0cb",
+      "bytes": 11840934,
+      "source_revision_status": "includes_2026-11-16_railing_fix",
+      "contains_current_railing_fix": true,
+      "previous_reference_sha256": "62cd69d0210c58896b4769247e997cd57e623889884c8bbd0cb6fb44c4814b75",
+      "current_reference_sha256": "d1acb6e437d15a6e3fbd9f11b3695515d6c9d369fdc77aaaafeacc8e8b140863",
+      "note": "本文件已按 2026-11-16 修订后的 1254px 原图重新生成，包含两侧栏杆修正。"
+    },
+    {
+      "page": 14,
+      "folder": "P14｜倒挂着的慢邻居",
+      "qwen_output": "p14_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 285.4,
+      "sharpness_qwen": 857.2,
+      "sha256": "df511f98dabd096279f852777edd5080daeaa23db195dc59c15a747745b82c41",
+      "bytes": 12182753
+    },
+    {
+      "page": 15,
+      "folder": "P15｜树枝间的小跳跃",
+      "qwen_output": "p15_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 116.3,
+      "sharpness_qwen": 491.0,
+      "sha256": "54a52ff838395414facbae07b58b9254e51ba2a323a630de636d63b9d99c2728",
+      "bytes": 11446841
+    },
+    {
+      "page": 16,
+      "folder": "P16｜远处是谁在打鼓",
+      "qwen_output": "p16_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 218.0,
+      "sharpness_qwen": 935.1,
+      "sha256": "7a3b79bc92436519e3effbb4b663c067c6e5f2380255d8b3a3bd2a0f2e2b485c",
+      "bytes": 12179787
+    },
+    {
+      "page": 17,
+      "folder": "P17｜大嘴巴夹起小果子",
+      "qwen_output": "p17_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 307.6,
+      "sharpness_qwen": 1017.2,
+      "sha256": "68c422a02cee2c8a7df4fc5dbca73a4d8fe344729487b0d3f168ec03deec9f02",
+      "bytes": 12137940
+    },
+    {
+      "page": 18,
+      "folder": "P18｜果子壳裂开了",
+      "qwen_output": "p18_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 292.7,
+      "sharpness_qwen": 992.8,
+      "sha256": "17a781ddc30aec2c924f864b686c59cfcab42e503ab511031e1e918f02c873bc",
+      "bytes": 12340873
+    },
+    {
+      "page": 19,
+      "folder": "P19｜树上藏着小水池",
+      "qwen_output": "p19_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 259.3,
+      "sharpness_qwen": 882.1,
+      "sha256": "4863586332bb107312a968c7804724d537956f9c37a36c2c9838e6b862ad7cc2",
+      "bytes": 12078574
+    },
+    {
+      "page": 20,
+      "folder": "P20｜雨点敲响了屋顶",
+      "qwen_output": "p20_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 260.6,
+      "sharpness_qwen": 955.9,
+      "sha256": "bf8a0931e7ef41e08e5b44f9c084ad26cbaac0e0999be9d0d985858a78e58945",
+      "bytes": 12128213
+    },
+    {
+      "page": 21,
+      "folder": "P21｜雨停后的第一声嗡",
+      "qwen_output": "p21_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 251.6,
+      "sharpness_qwen": 942.5,
+      "sha256": "bfb4f3335e16fa29469c239f040408d136c104f1a6c9fea4e879f897163a9d19",
+      "bytes": 12240740
+    },
+    {
+      "page": 22,
+      "folder": "P22｜一颗果子的新旅程",
+      "qwen_output": "p22_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 329.4,
+      "sharpness_qwen": 828.7,
+      "sha256": "f7e98fac824759184302f34e64f571be47255a69e6ddb1516f859fc871211fc3",
+      "bytes": 12227856
+    },
+    {
+      "page": 23,
+      "folder": "P23｜第三章：沿着河流找朋友",
+      "qwen_output": "p23_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 303.8,
+      "sharpness_qwen": 766.8,
+      "sha256": "80766dfa0d4040b308c1e4674b31e342077fdbe34b7185bc0de3ea6596d85c22",
+      "bytes": 11797326
+    },
+    {
+      "page": 24,
+      "folder": "P24｜泡在水里的大邻居",
+      "qwen_output": "p24_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 348.9,
+      "sharpness_qwen": 1030.3,
+      "sha256": "ebb1990b69e83b1cf1dfca457bc7bd6840188118130e600d6492dab33ea151c5",
+      "bytes": 12481295
+    },
+    {
+      "page": 25,
+      "folder": "P25｜水面闪过粉红色",
+      "qwen_output": "p25_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 298.4,
+      "sharpness_qwen": 971.0,
+      "sha256": "2526d2c0415b07422dade794a6d78f15ac0e3113a829d0d74632219782d1c2d2",
+      "bytes": 12168610
+    },
+    {
+      "page": 26,
+      "folder": "P26｜树叶做的午饭",
+      "qwen_output": "p26_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 332.0,
+      "sharpness_qwen": 1031.3,
+      "sha256": "32db78d67962aec1218ff5ae5658d5fa50fe1510ab41469e8877736050808422",
+      "bytes": 12478408
+    },
+    {
+      "page": 27,
+      "folder": "P27｜大叶子上的长脚趾",
+      "qwen_output": "p27_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 325.6,
+      "sharpness_qwen": 955.2,
+      "sha256": "a7656e8dddb51cc922630741294680675ed07da5b39c09467f95122667c17977",
+      "bytes": 12199493
+    },
+    {
+      "page": 28,
+      "folder": "P28｜一根会眨眼的木头",
+      "qwen_output": "p28_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 264.8,
+      "sharpness_qwen": 770.5,
+      "sha256": "38e92bd89f4aa0181b445c6095eddb268450d683207e3575ad5684adf3cc7563",
+      "bytes": 11930260
+    },
+    {
+      "page": 29,
+      "folder": "P29｜游过来的长尾巴",
+      "qwen_output": "p29_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 373.8,
+      "sharpness_qwen": 1015.9,
+      "sha256": "3d8d216b159b8a07550e9c8eaf2f5733461cf4c8d3622439c3d4229f6a0a5508",
+      "bytes": 12218789
+    },
+    {
+      "page": 30,
+      "folder": "P30｜把河流画成弯弯的线",
+      "qwen_output": "p30_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 220.6,
+      "sharpness_qwen": 729.5,
+      "sha256": "c0f81ba58d9599fd64cfa8d8e6363c2f60d295c4bc2ebd41ff45e6cfeccdcb89",
+      "bytes": 11795468
+    },
+    {
+      "page": 31,
+      "folder": "P31｜第四章：谁把夜晚点亮了",
+      "qwen_output": "p31_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 178.8,
+      "sharpness_qwen": 683.3,
+      "sha256": "b2c7f0410c4db027a0f3b521ade179911cebeb39ab0daab667779fa143827308",
+      "bytes": 11496015
+    },
+    {
+      "page": 32,
+      "folder": "P32｜叶子下面的歌手",
+      "qwen_output": "p32_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 319.1,
+      "sharpness_qwen": 1119.4,
+      "sha256": "2d3dea893cdb11436aa85a1d9a6a576d9eb0f1cd255c5d5da3be26684a85b914",
+      "bytes": 11923117
+    },
+    {
+      "page": 33,
+      "folder": "P33｜夜里的花客人",
+      "qwen_output": "p33_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 179.1,
+      "sharpness_qwen": 718.7,
+      "sha256": "964883c8e845c9967f45709cbe065ac5ce8f347bf6c10e1ba6b32d7e75d1b6eb",
+      "bytes": 11387640
+    },
+    {
+      "page": 34,
+      "folder": "P34｜一点亮，一点暗",
+      "qwen_output": "p34_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 124.3,
+      "sharpness_qwen": 763.7,
+      "sha256": "4d8d5324c745df27544f09b366b566bbdc05f0be0c9e566e95bba38a538c6e91",
+      "bytes": 11620223
+    },
+    {
+      "page": 35,
+      "folder": "P35｜长鼻子轻轻卷起叶子",
+      "qwen_output": "p35_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 206.2,
+      "sharpness_qwen": 854.6,
+      "sha256": "c831c2890e9d857d54aec2ffa91d351c05cf53c5e5214a7996f1b9aa2ee2a612",
+      "bytes": 11986537
+    },
+    {
+      "page": 36,
+      "folder": "P36｜带走发现，留下家园",
+      "qwen_output": "p36_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 175.5,
+      "sharpness_qwen": 631.4,
+      "sha256": "1fdee0b35727b65120357054ad5bfd90d8ca1421be9a68634c02b332af423896",
+      "bytes": 11527877
+    },
+    {
+      "page": 37,
+      "folder": "P37｜我的雨林观察笔记",
+      "qwen_output": "p37_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 261.0,
+      "sharpness_qwen": 557.2,
+      "sha256": "14f13191406e22c2fe8c4fbcc420f3de1278dfe0256ece9cbeb87ba340e46e94",
+      "bytes": 10380211
+    },
+    {
+      "page": 38,
+      "folder": "P38｜献给一起发现的人",
+      "qwen_output": "p38_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 292.5,
+      "sharpness_qwen": 823.0,
+      "sha256": "354cf8cedc774efdf4eccd4bd97b9c7adbd21200016862aba7783362c3dfb055",
+      "bytes": 12262547
+    },
+    {
+      "page": 39,
+      "folder": "P39｜封三：一粒种子的以后",
+      "qwen_output": "p39_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 155.5,
+      "sharpness_qwen": 416.6,
+      "sha256": "b1f523fe65ca4a125a56d69542a22d96c08b59843e03d6a8cf89050e7cc8fa6d",
+      "bytes": 10993771
+    },
+    {
+      "page": 40,
+      "folder": "P40｜封底：雨林还在沙沙响",
+      "qwen_output": "p40_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_cunet": 197.3,
+      "sharpness_qwen": 732.4,
+      "sha256": "2ce7dfe44953a7191232b749da5ee1624b0a462a3345dd0a4d18a5415bf13a73",
+      "bytes": 12189098
+    }
+  ]
+}
