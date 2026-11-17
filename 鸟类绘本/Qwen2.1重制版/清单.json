@@ -1,0 +1,330 @@
+{
+  "generated": "2026-11-17 09:29:36",
+  "method": "Qwen-Image-2.1-Turbo 重绘（非超分）：1254 源图作参考重绘 2496 -> 颜色匹配回该页 1254 源图统计 -> 2508 / 300DPI",
+  "model": "qwen_image_2.1_turbo_int8_convrot.safetensors",
+  "vae": "qwen_image_2.1_vae_bf16.safetensors",
+  "text_encoder": "qwen3vl_8b_int8_convrot.safetensors",
+  "steps": 8,
+  "seed": 424242,
+  "cfg": 1.0,
+  "resolution": 2496,
+  "resample": "LANCZOS",
+  "colour_reference": "每页 1254px 无字源图（LANCZOS 放大到 Qwen 出图尺寸后取逐通道均值/标准差）",
+  "pending_pages": [
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "chapter": "00-开篇",
+      "folder": "P1｜封面",
+      "qwen_output": "p1_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 388.8,
+      "sharpness_baseline_2508": 35.6,
+      "sharpness_final": 366.4,
+      "gain_vs_baseline": 10.3,
+      "sha256_source": "c53c021ca5c8a359b5ab47cb425ebc9f799abd433cd45e00641ddc99d5bedbf4",
+      "sha256": "17e7114b84b3287286e23215c2cccbd70a57117ac51fab27d65cfe6edfb1fc26",
+      "bytes": 10767933
+    },
+    {
+      "page": 2,
+      "chapter": "00-开篇",
+      "folder": "P2｜扉页：会抖动的书",
+      "qwen_output": "p2_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 1019.1,
+      "sharpness_baseline_2508": 96.6,
+      "sharpness_final": 475.3,
+      "gain_vs_baseline": 4.92,
+      "sha256_source": "23e1ee1303b75af076c5a42f8b87400140b42feebe905ded16e1749b0c59a586",
+      "sha256": "12046ab0be0eb3b0cc3e286dd52926ac60afaaee2a86a9efc716d49e02b784f9",
+      "bytes": 10840580
+    },
+    {
+      "page": 3,
+      "chapter": "01-第一章：飞向世界",
+      "folder": "P3｜第一章：飞向世界",
+      "qwen_output": "p3_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 628.4,
+      "sharpness_baseline_2508": 58.5,
+      "sharpness_final": 347.4,
+      "gain_vs_baseline": 5.94,
+      "sha256_source": "6d19a3cc34691f7051577118f5bb9302dea1107bec257d1ebad024674a29cf6d",
+      "sha256": "dd4d5a095cce52bd7461e52bd5b74f62b1a88163d36d4e25c35a8c3b8a6892d4",
+      "bytes": 10616136
+    },
+    {
+      "page": 4,
+      "chapter": "01-第一章：飞向世界",
+      "folder": "P4｜书页飞起来了",
+      "qwen_output": "p4_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 1128.0,
+      "sharpness_baseline_2508": 104.2,
+      "sharpness_final": 491.2,
+      "gain_vs_baseline": 4.71,
+      "sha256_source": "ca6b654c7acb27c0d3c71ef52efae0ef1794864140addd6c6011eed432f622b9",
+      "sha256": "52bf1c88222fb4b532bf8593227f6aab58f54e493588cf798b6628cbcc467a44",
+      "bytes": 11033521
+    },
+    {
+      "page": 5,
+      "chapter": "01-第一章：飞向世界",
+      "folder": "P5｜城市里的麻雀",
+      "qwen_output": "p5_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 1027.3,
+      "sharpness_baseline_2508": 95.0,
+      "sharpness_final": 532.5,
+      "gain_vs_baseline": 5.6,
+      "sha256_source": "ccd6277e3a1855e55f482356b8b384acdf8156cbb14b8820dc9f06c21143e36e",
+      "sha256": "8be23894e194936abf34de9dfa5b5c7b819d2d79cc283757b35a3ac9c396ed15",
+      "bytes": 11211986
+    },
+    {
+      "page": 6,
+      "chapter": "01-第一章：飞向世界",
+      "folder": "P6｜布谷——布谷，声音地图",
+      "qwen_output": "p6_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 646.0,
+      "sharpness_baseline_2508": 60.3,
+      "sharpness_final": 483.3,
+      "gain_vs_baseline": 8.02,
+      "sha256_source": "b491485c79533915d18dec77319e63bf1d6d0e59e5bf60b2faea2ecc8e6af008",
+      "sha256": "84e404a0116941feecf485aaf48d87a3ac39458daf26a522e06d62f5befc5e29",
+      "bytes": 10765834
+    },
+    {
+      "page": 7,
+      "chapter": "01-第一章：飞向世界",
+      "folder": "P7｜枝头的布谷鸟",
+      "qwen_output": "p7_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 1291.3,
+      "sharpness_baseline_2508": 115.0,
+      "sharpness_final": 638.0,
+      "gain_vs_baseline": 5.55,
+      "sha256_source": "4894650890f952afa1d334ce8d6639913398018fa7e330ce6b9d10349162e0a5",
+      "sha256": "80f5f644a35498cd83c6b3db02810a6d91ce101387e7cc38de2bebfe0dc580e0",
+      "bytes": 11707611
+    },
+    {
+      "page": 8,
+      "chapter": "01-第一章：飞向世界",
+      "folder": "P8｜夜晚的猫头鹰",
+      "qwen_output": "p8_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 1119.2,
+      "sharpness_baseline_2508": 101.6,
+      "sharpness_final": 662.1,
+      "gain_vs_baseline": 6.52,
+      "sha256_source": "3c292ed983d2fb6c30bda18acc906fffd0613324513942103e2ee3979ff7622d",
+      "sha256": "72f12c2ed387df91c0f003aa54a8b27bd356f4535c23ade49473482727d23bdd",
+      "bytes": 11623205
+    },
+    {
+      "page": 9,
+      "chapter": "01-第一章：飞向世界",
+      "folder": "P9｜湿地丹顶鹤",
+      "qwen_output": "p9_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 611.6,
+      "sharpness_baseline_2508": 55.8,
+      "sharpness_final": 345.9,
+      "gain_vs_baseline": 6.2,
+      "sha256_source": "5aee13a1b2e7eb156622b6413636af489f54219d56c5c3a593464f0865f009b5",
+      "sha256": "ae8045c8f6c16ff8256d8ead6eef2c59aa31a6cd5c7be6b79fb024dc0fb8f067",
+      "bytes": 10657641
+    },
+    {
+      "page": 10,
+      "chapter": "01-第一章：飞向世界",
+      "folder": "P10｜雨林鹦鹉",
+      "qwen_output": "p10_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 985.8,
+      "sharpness_baseline_2508": 89.2,
+      "sharpness_final": 513.4,
+      "gain_vs_baseline": 5.75,
+      "sha256_source": "1b69c4510913bb588410951744dffe740ce50a7b4af9d5fcd1045cbf4211ed96",
+      "sha256": "394adba39ff3d00aaa96e351f7685200aea0f6872a3311c5fef71b11825d261c",
+      "bytes": 11482149
+    },
+    {
+      "page": 11,
+      "chapter": "01-第一章：飞向世界",
+      "folder": "P11｜屋檐下的燕子",
+      "qwen_output": "p11_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 1174.6,
+      "sharpness_baseline_2508": 108.2,
+      "sharpness_final": 547.6,
+      "gain_vs_baseline": 5.06,
+      "sha256_source": "0ea3ef3aada85b87c6be2ac245833a267fe170e1ac662552e9d7a810360dbff0",
+      "sha256": "369756c473f291ebc3f1f466f9a1b1787c27d3bf03e4231d7b59c91fb412fdf3",
+      "bytes": 11271568
+    },
+    {
+      "page": 12,
+      "chapter": "01-第一章：飞向世界",
+      "folder": "P12｜回到图书馆",
+      "qwen_output": "p12_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 866.6,
+      "sharpness_baseline_2508": 80.9,
+      "sharpness_final": 537.7,
+      "gain_vs_baseline": 6.65,
+      "sha256_source": "404c90b6cb7cb268e363726fb162e87c95a0b2bfbf69d02b43ed5269e5f07b5b",
+      "sha256": "c0e3519e8c8fa13c6599c917112495f12cf06c2372914060dee63abb64c48fc0",
+      "bytes": 11188460
+    },
+    {
+      "page": 24,
+      "chapter": "03-第三章：隐身大师与特技演员",
+      "folder": "P24｜风里的飞行高手",
+      "qwen_output": "p24_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 1271.2,
+      "sharpness_baseline_2508": 115.2,
+      "sharpness_final": 596.7,
+      "gain_vs_baseline": 5.18,
+      "sha256_source": "9f98e10ad209ca7d3829461fc128eecebb67200eeed04f148ae26242d337023e",
+      "sha256": "dcf249ef3a95051eacafe445a91776f1cbb178fe32e5c44f3ae5abcc9ca9ea2f",
+      "bytes": 11585801
+    }
+  ]
+}
