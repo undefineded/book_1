@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>字体对比 · 小百科手写体候选</title>
+<style>
+  @font-face{font-family:"冰莓粉可爱小狗手写体";src:url("字体/冰莓粉可爱小狗手写体.ttf") format("truetype");font-display:block;}
+  @font-face{font-family:"mini圆体";src:url("字体/mini圆体.ttf") format("truetype");font-display:block;}
+</style>
+<style>
+  :root{
+    --bg:#f6f2ea; --panel:#fffdf8; --ink:#2f2a22; --muted:#8d8272;
+    --line:#e6ddcd; --accent:#c0761a; --ok:#2f7d3a; --bad:#b23b2e;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Microsoft YaHei","PingFang SC",sans-serif;color:var(--ink);background:var(--bg);}
+  header{
+    position:sticky;top:0;z-index:10;background:rgba(255,253,248,.95);
+    border-bottom:1px solid var(--line);backdrop-filter:blur(8px);
+    padding:12px 20px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+  }
+  h1{font-size:15px;margin:0;font-weight:700;}
+  .grow{flex:1;}
+  textarea{font-family:inherit;font-size:13px;border:1px solid var(--line);border-radius:9px;
+    padding:8px 10px;background:#fff;color:var(--ink);outline:none;width:430px;height:38px;resize:vertical;}
+  input[type=range]{width:170px;}
+  label.inline{font-size:12px;color:var(--muted);display:inline-flex;align-items:center;gap:7px;}
+  main{padding:16px 20px 60px;}
+  section{margin-bottom:26px;}
+  h2{font-size:13px;margin:0 0 10px;color:var(--muted);font-weight:600;letter-spacing:.06em;}
+  .row{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:12px 16px;margin-bottom:10px;box-shadow:0 2px 10px rgba(120,90,50,.05);}
+  .row-head{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;}
+  .tag{font-size:11px;color:#fff;background:#b98a4a;border-radius:99px;padding:2px 9px;}
+  .fname{font-size:12px;color:var(--muted);flex:1;}
+  .badge{font-size:11px;padding:2px 9px;border-radius:99px;border:1px solid var(--line);}
+  .badge.ok{color:var(--ok);border-color:#c9e2cd;background:#f2faf3;}
+  .badge.bad{color:var(--bad);border-color:#eccdc8;background:#fdf4f2;}
+  .line{white-space:pre-wrap;line-height:1.5;}
+  .chars{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+  .ch{width:58px;height:66px;border:1px solid var(--line);border-radius:9px;
+    display:flex;align-items:center;justify-content:center;font-size:34px;
+    background:#fff;position:relative;}
+  .ch.miss{border-color:#e2a79f;background:#fdf3f1;}
+  .ch.miss::after{content:"缺";position:absolute;right:3px;top:1px;font-size:9px;color:var(--bad);}
+  .note{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.6;}
+  .warn{background:#fff8f6;border:1px solid #f0d9d4;border-radius:10px;padding:10px 12px;
+    font-size:12px;color:#8a4a3f;margin-bottom:14px;line-height:1.65;}
+</style>
+</head>
+<body>
+<header>
+  <h1>字体对比</h1>
+  <label class="inline">样张
+    <textarea id="sample">雨林小百科：戴胜鸟头顶有羽冠，喜欢用细长的嘴在土里找虫子。</textarea>
+  </label>
+  <label class="inline">字号 <input type="range" id="size" min="14" max="72" value="28">
+    <b id="sizeVal" style="color:var(--accent);display:inline-block;width:26px;text-align:right">28</b>
+  </label>
+</header>
+
+<main>
+  <div class="warn">
+    <b>先把结论说清楚：这两款都缺 <span id="missList">䴙 䴘 䴓</span>（CJK 扩展 A 区的三个鸟字）。</b><br>
+    浏览器渲染时这三个字会用系统字体补上，字形和手写体不统一——下面的逐字检查里已经标成红框「缺」。
+    其它生僻字（鹧鸪、鹌鹑、鹪鹩、鵟、鹗、鼯鼠、鸊鷉、鸻鹬）两款都有。
+  </div>
+
+  <section>
+    <h2>同一句 · 直接对比</h2>
+    <div id="paraList"></div>
+  </section>
+
+  <section>
+    <h2>生僻字逐字检查（红框 = 该字体没有这个字）</h2>
+    <div id="charList"></div>
+  </section>
+
+  <section>
+    <h2>含生僻字的整句 · 看字形是否打架</h2>
+    <div id="sentenceList"></div>
+  </section>
+
+  <section>
+    <h2>替代写法验证 · 改文案后能否正常渲染</h2>
+    <div class="note" style="margin-bottom:10px">
+      规则：<b>䴙䴘 → 鸊鷉</b>，<b>䴓 → 鳾</b>。下面这一行两款字体都能完整写出，不会掉系统字体。
+    </div>
+    <div id="altList"></div>
+  </section>
+</main>
+
+<script>
+(() => {
+  const FONTS = [
+    { file: '字体/冰莓粉可爱小狗手写体.ttf', label: '冰莓粉可爱小狗手写体' },
+    { file: '字体/mini圆体.ttf',             label: 'mini圆体' }
+  ];
+  const RARE = '䴙䴘鹧鸪鹌鹑鹪鹩鵟鹗鼯鼠鸊鷉䴓鸻鹬';
+  // 由 Python 侧用字体 cmap 实算（不是浏览器猜的）：五款都缺这三个
+  const MISSING = ['䴙', '䴘', '䴓'];
+  const SENTENCE = '䴙䴘在水面潜游，鹪鹩躲在灌丛里，鹧鸪和鹌鹑都在地上找吃的。';
+  const ALT = '鸊鷉在水面潜游，鳾顺着树干往下爬，鹪鹩躲在灌丛里。';
+
+  const $ = id => document.getElementById(id);
+  const sampleBox = $('sample'), sizeBox = $('size'), sizeVal = $('sizeVal');
+
+  function rowShell(container, tagText, nameText) {
+    const row = document.createElement('div');
+    row.className = 'row';
+    const head = document.createElement('div');
+    head.className = 'row-head';
+    const tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.textContent = tagText;
+    const name = document.createElement('span');
+    name.className = 'fname';
+    name.textContent = nameText;
+    const badge = document.createElement('span');
+    badge.className = 'badge';
+    head.append(tag, name, badge);
+    row.appendChild(head);
+    container.appendChild(row);
+    return { row, badge };
+  }
+
+  async function boot() {
+    await Promise.all(FONTS.map(f => document.fonts.load(`40px "${f.label}"`).catch(() => {})));
+    await document.fonts.ready;
+
+    const paraRows = FONTS.map(f => {
+      const { row, badge } = rowShell($('paraList'), '样本', f.label);
+      const line = document.createElement('div');
+      line.className = 'line';
+      row.appendChild(line);
+      return { f, line, badge };
+    });
+
+    const charRows = FONTS.map(f => {
+      const { row, badge } = rowShell($('charList'), '逐字', f.label);
+      const chars = document.createElement('div');
+      chars.className = 'chars';
+      row.appendChild(chars);
+      return { f, chars, badge };
+    });
+
+    const sentRows = FONTS.map(f => {
+      const { row, badge } = rowShell($('sentenceList'), '整句', f.label);
+      const line = document.createElement('div');
+      line.className = 'line';
+      row.appendChild(line);
+      return { f, line, badge };
+    });
+
+    const altRows = FONTS.map(f => {
+      const { row, badge } = rowShell($('altList'), '替代', f.label);
+      const line = document.createElement('div');
+      line.className = 'line';
+      row.appendChild(line);
+      return { f, line, badge };
+    });
+
+    FONTS.forEach((f, i) => {
+      const fam = `"${f.label}", serif`;
+
+      paraRows[i].line.style.fontFamily = fam;
+      paraRows[i].line.textContent = sampleBox.value;
+
+      const cr = charRows[i];
+      cr.chars.textContent = '';
+      let miss = 0;
+      [...RARE].forEach(ch => {
+        const cell = document.createElement('div');
+        cell.className = 'ch';
+        cell.style.fontFamily = fam;
+        cell.textContent = ch;
+        if (MISSING.includes(ch)) { cell.classList.add('miss'); miss++; }
+        cr.chars.appendChild(cell);
+      });
+      const total = [...RARE].length;
+      const text = miss ? `缺 ${miss}/${total}` : '生僻字齐全';
+      [paraRows[i].badge, cr.badge, sentRows[i].badge].forEach(b => {
+        b.textContent = text;
+        b.classList.add(miss ? 'bad' : 'ok');
+      });
+
+      sentRows[i].line.style.fontFamily = fam;
+      sentRows[i].line.textContent = SENTENCE;
+
+      altRows[i].line.style.fontFamily = fam;
+      altRows[i].line.textContent = ALT;
+      altRows[i].badge.textContent = '无缺字';
+      altRows[i].badge.classList.add('ok');
+    });
+
+    const sync = () => {
+      sizeVal.textContent = sizeBox.value;
+      const s = +sizeBox.value;
+      paraRows.forEach(r => { r.line.style.fontSize = s + 'px'; });
+      sentRows.forEach(r => { r.line.style.fontSize = s + 'px'; });
+      altRows.forEach(r => { r.line.style.fontSize = s + 'px'; });
+      charRows.forEach(r => {
+        r.chars.querySelectorAll('.ch').forEach(c => { c.style.fontSize = Math.round(s * 1.2) + 'px'; });
+      });
+    };
+    sampleBox.addEventListener('input', () => {
+      paraRows.forEach(r => { r.line.textContent = sampleBox.value; });
+    });
+    sizeBox.addEventListener('input', sync);
+    sync();
+  }
+
+  boot();
+})();
+</script>
+</body>
+</html>

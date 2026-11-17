@@ -1,0 +1,2297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>纸签编辑器 · 鸟类小百科</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 19c0-6 5-11 16-13-1 9-6 14-12 14' fill='%23ffbf2d'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#efe6d8;
+    --panel:#fffaf1;
+    --ink:#4b3524;
+    --muted:#9b8266;
+    --line:#e8dac6;
+    --accent:#ff8a0a;
+    --accent-deep:#e27300;
+    --gold:#ffbf2d;
+    --shadow:0 12px 32px rgba(105,72,35,.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(rgba(160,120,70,.10) 1px, transparent 1px) 0 0/18px 18px,
+      linear-gradient(180deg,#f5eee2 0%, #ece1d1 100%);
+    -webkit-font-smoothing:antialiased;
+    overflow:hidden;
+  }
+  .app{height:100vh;display:flex;flex-direction:column;}
+
+  /* ---------- 顶栏 ---------- */
+  .topbar{
+    height:60px;flex:none;display:flex;align-items:center;gap:14px;
+    padding:0 20px;background:rgba(255,250,241,.88);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:blur(8px);
+    position:relative;z-index:5;
+  }
+  .brand{display:flex;align-items:center;gap:10px;min-width:0;}
+  .brand .mark{
+    width:30px;height:30px;border-radius:9px;flex:none;
+    background:linear-gradient(140deg,#ffd168,#f3a712);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 10px rgba(226,115,0,.25);
+  }
+  .brand h1{font-size:15px;margin:0;font-weight:600;letter-spacing:.02em;white-space:nowrap;}
+  .brand .sub{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .topbar .spacer{flex:1;}
+  .top-actions{display:flex;align-items:center;gap:10px;}
+
+  .btn{
+    appearance:none;border:1px solid var(--line);background:#fffdf8;color:var(--ink);
+    height:36px;padding:0 16px;border-radius:10px;font-size:13px;font-weight:500;
+    cursor:pointer;transition:.18s ease;display:inline-flex;align-items:center;gap:7px;
+    font-family:inherit;white-space:nowrap;
+  }
+  .btn:hover{border-color:#d8c3a6;transform:translateY(-1px);}
+  .btn:active{transform:translateY(0);}
+  .btn.primary{
+    border:none;color:#4a2f05;
+    background:linear-gradient(140deg,#ffcf56,#ffb01f 60%,#f5a40f);
+    box-shadow:0 6px 16px rgba(242,158,10,.32);
+  }
+  .btn.primary:hover{box-shadow:0 9px 22px rgba(242,158,10,.4);}
+  .btn.ghost{background:transparent;}
+  .btn:disabled{opacity:.55;cursor:default;transform:none;}
+
+  /* ---------- 主体 ---------- */
+  .main{flex:1;display:flex;min-height:0;}
+
+  /* ---------- 侧栏 ---------- */
+  .panel{
+    width:312px;flex:none;background:var(--panel);
+    border-right:1px solid var(--line);
+    overflow-y:auto;padding:18px 18px 40px;
+    scrollbar-width:thin;
+  }
+  .panel::-webkit-scrollbar{width:8px;}
+  .panel::-webkit-scrollbar-thumb{background:#e3d3bd;border-radius:8px;}
+
+  .section{padding:16px 0 18px;border-bottom:1px dashed var(--line);}
+  .section:first-child{padding-top:2px;}
+  .section:last-child{border-bottom:none;}
+  .section-head{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+  .section-head::before{content:"";width:3px;height:14px;border-radius:2px;background:var(--accent);}
+  .section-head h2{font-size:13px;font-weight:600;margin:0;letter-spacing:.03em;}
+  .section-head .hint{font-size:11px;color:var(--muted);margin-left:auto;}
+
+  .field{margin-bottom:14px;}
+  .field:last-child{margin-bottom:0;}
+  .field-label{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:7px;}
+  .field-label span,.field-label label{font-size:12px;color:#6d5540;}
+  .field-label b{font-size:12px;font-weight:600;color:var(--accent-deep);font-variant-numeric:tabular-nums;}
+  .field-label .unit{font-weight:400;color:var(--muted);font-size:11px;margin-left:2px;}
+
+  input[type=range]{
+    -webkit-appearance:none;appearance:none;width:100%;height:22px;background:transparent;cursor:pointer;margin:0;
+  }
+  input[type=range]::-webkit-slider-runnable-track{
+    height:6px;border-radius:6px;background:linear-gradient(90deg,#ffe4b8,#f2dcc0);
+    border:1px solid #ecd9bd;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;width:18px;height:18px;margin-top:-7px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#ffd977,#ff9d0a 70%);
+    border:2px solid #fff;box-shadow:0 2px 6px rgba(214,132,12,.35);
+  }
+  input[type=range]::-moz-range-track{height:6px;border-radius:6px;background:#f2dcc0;}
+  input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#ff9d0a;border:2px solid #fff;}
+
+  .textarea{
+    width:100%;min-height:74px;resize:vertical;border:1px solid var(--line);border-radius:10px;
+    padding:10px 12px;font-family:inherit;font-size:13px;line-height:1.55;color:var(--ink);
+    background:#fffdf8;outline:none;transition:.16s;
+  }
+  .textarea:focus{border-color:#f0c07a;box-shadow:0 0 0 3px rgba(255,155,20,.12);}
+  .textarea:disabled{background:#f6efe4;color:#b7a591;}
+
+  .row{display:flex;gap:8px;}
+  .row > *{flex:1;min-width:0;}
+  select{
+    width:100%;height:34px;border:1px solid var(--line);border-radius:9px;background:#fffdf8;
+    font-family:inherit;font-size:12.5px;color:var(--ink);padding:0 8px;outline:none;cursor:pointer;
+  }
+  select:focus{border-color:#f0c07a;}
+
+  .num-line{display:flex;align-items:center;gap:10px;}
+  .num-line input[type=range]{flex:1;}
+  .num-line .val{
+    width:46px;height:30px;flex:none;border:1px solid var(--line);border-radius:8px;background:#fffdf8;
+    display:flex;align-items:center;justify-content:center;font-size:12px;font-variant-numeric:tabular-nums;color:#7a5c3c;
+  }
+
+  .seg{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#fffdf8;}
+  .seg button{
+    flex:1;height:32px;border:none;background:transparent;font-family:inherit;font-size:12px;color:#8a7054;
+    cursor:pointer;transition:.15s;
+  }
+  .seg button + button{border-left:1px solid var(--line);}
+  .seg button.on{background:linear-gradient(140deg,#ffe6b4,#ffd58a);color:#6b4306;font-weight:600;}
+
+  .color-row{display:flex;align-items:center;gap:10px;}
+  .color-row input[type=color]{
+    -webkit-appearance:none;appearance:none;width:38px;height:34px;border:1px solid var(--line);
+    border-radius:9px;background:#fffdf8;padding:3px;cursor:pointer;
+  }
+  .color-row input[type=color]::-webkit-color-swatch-wrapper{padding:0;}
+  .color-row input[type=color]::-webkit-color-swatch{border:none;border-radius:6px;}
+  .swatches{display:flex;gap:6px;flex-wrap:wrap;}
+  .swatches button{
+    width:20px;height:20px;border-radius:6px;cursor:pointer;border:1px solid rgba(120,80,30,.14);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.35);padding:0;
+  }
+  .swatches button:hover{transform:scale(1.08);}
+  .swatches button[aria-pressed=true]{outline:2px solid var(--accent);outline-offset:2px;}
+  .swatches{margin-top:9px;}
+  .color-hex,.number-input{
+    height:34px;min-width:0;border:1px solid var(--line);border-radius:8px;
+    padding:0 8px;background:#fffdf8;color:var(--ink);font:inherit;font-size:12px;
+    font-variant-numeric:tabular-nums;outline:none;
+  }
+  .color-hex{flex:1;width:110px;font-family:ui-monospace,monospace;text-transform:uppercase;}
+  .number-input{width:62px;flex:none;text-align:center;font-family:inherit;}
+  .number-unit{font-size:11px;color:var(--muted);flex:none;}
+  .color-error{font-size:11px;color:#ad3528;margin:5px 0 0;}
+  .color-error:empty{display:none;}
+  [aria-invalid=true]{border-color:#ad3528;}
+  button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{
+    outline:2px solid var(--accent);outline-offset:3px;
+  }
+  .editor-group{border-top:1px dashed var(--line);padding:14px 0 0;margin-top:16px;}
+  .editor-group summary{font-size:12px;font-weight:600;cursor:pointer;margin-bottom:14px;color:#7a5c3c;}
+  .field-note{font-size:11px;color:var(--muted);line-height:1.65;margin:6px 0 12px;}
+  .text-list{display:grid;gap:5px;margin-top:12px;max-height:132px;overflow:auto;padding:2px;}
+  .text-list:empty{display:none;}
+  .text-list button{
+    display:flex;gap:8px;align-items:center;min-width:0;width:100%;text-align:left;
+    border:1px solid var(--line);border-radius:8px;background:#fffdf8;
+    padding:8px 10px;font:inherit;font-size:12px;color:var(--ink);cursor:pointer;
+  }
+  .text-list button[aria-pressed=true]{border-color:#edba70;background:#fff0d5;}
+  .text-list .index{font-size:10px;color:var(--muted);}
+  .text-list .name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .text-actions .btn{justify-content:center;padding:0 8px;}
+  [hidden]{display:none !important;}
+
+  .toggle{
+    height:34px;border:1px solid var(--line);border-radius:9px;background:#fffdf8;font-family:inherit;
+    font-size:13px;cursor:pointer;color:#8a7054;width:100%;
+  }
+  .toggle.on{background:linear-gradient(140deg,#ffe6b4,#ffd58a);color:#6b4306;font-weight:700;border-color:#f3cf90;}
+
+  .add-text{
+    width:100%;height:42px;border-radius:12px;border:1.5px dashed #e6c391;background:linear-gradient(180deg,#fffdf6,#fff7e8);
+    color:#9a6a1e;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:.18s;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .add-text:hover{border-color:#f0b45c;background:#fff6e2;transform:translateY(-1px);}
+
+  .empty-tip{
+    font-size:12px;color:var(--muted);line-height:1.7;background:#fbf4e8;border:1px dashed #e9d8bf;
+    border-radius:10px;padding:12px 13px;
+  }
+
+  .tips{font-size:11.5px;color:#a88f73;line-height:1.8;margin:0;padding-left:16px;}
+  .tips li::marker{color:#e0b878;}
+
+  .export-line{display:flex;gap:8px;align-items:center;}
+  .export-line .btn{flex:1;justify-content:center;}
+
+  .status{font-size:11.5px;color:#b06a12;margin-top:8px;min-height:16px;}
+
+  /* ---------- 画布 ---------- */
+  .workspace{flex:1;min-width:0;min-height:0;position:relative;overflow:hidden;}
+  .stage{
+    position:absolute;inset:0;overflow:auto;overscroll-behavior:contain;
+    background:
+      radial-gradient(circle at 50% 40%, rgba(255,255,255,.55), transparent 62%),
+      repeating-conic-gradient(rgba(160,125,80,.045) 0% 25%, transparent 0% 50%) 0 0/22px 22px,
+      #e9dfd0;
+    user-select:none;-webkit-user-select:none;
+  }
+  .stage.scrollable{cursor:grab;}
+  .stage.panning{cursor:grabbing;}
+  .stage.panning *{cursor:grabbing !important;}
+  .stage::-webkit-scrollbar{width:10px;height:10px;}
+  .stage::-webkit-scrollbar-thumb{background:#d8c7ae;border-radius:8px;border:2px solid #e9dfd0;}
+  .stage::-webkit-scrollbar-track{background:transparent;}
+  .canvas{
+    min-width:100%;min-height:100%;display:flex;align-items:center;justify-content:center;
+    padding:34px;width:max-content;height:max-content;box-sizing:border-box;
+  }
+  .canvas.tight{align-items:flex-start;justify-content:flex-start;}
+  #art{
+    display:block;flex:none;margin:auto;
+    filter:drop-shadow(0 18px 28px rgba(80,52,18,.16));
+    user-select:none;
+  }
+  #art text{cursor:move;touch-action:none;}
+
+  .zoombar{
+    position:absolute;right:16px;bottom:16px;display:flex;align-items:center;gap:2px;
+    background:rgba(255,250,241,.94);border:1px solid var(--line);border-radius:11px;
+    box-shadow:0 6px 18px rgba(100,70,30,.1);padding:3px;backdrop-filter:blur(6px);z-index:3;
+  }
+  .zoombar button{
+    width:30px;height:28px;border:none;background:transparent;border-radius:8px;cursor:pointer;
+    color:#7a5c3c;font-size:15px;line-height:1;display:flex;align-items:center;justify-content:center;font-family:inherit;
+  }
+  .zoombar button:hover{background:#f6e9d5;}
+  .zoombar button:disabled{opacity:.35;cursor:default;}
+  .zoombar .fit{width:auto;padding:0 9px;font-size:11.5px;}
+  .zoombar .pct{width:46px;text-align:center;font-size:11.5px;color:#9b8266;font-variant-numeric:tabular-nums;}
+
+  .badge{
+    position:absolute;left:16px;bottom:16px;background:rgba(255,250,241,.9);border:1px solid var(--line);
+    border-radius:10px;padding:6px 11px;font-size:11px;color:#a08a70;z-index:3;backdrop-filter:blur(6px);
+  }
+  .badge b{color:#7a5c3c;font-weight:600;font-variant-numeric:tabular-nums;}
+
+  @media (max-width: 900px){
+    .panel{width:272px;padding:14px;}
+    .brand .sub{display:none;}
+    .badge{bottom:auto;top:16px;}
+  }
+  @media (max-width: 620px){
+    .panel{width:235px;padding:12px;}
+    .topbar{padding:0 12px;gap:8px;}
+    .brand h1{font-size:13px;}
+    .top-actions{gap:5px;}
+    .top-actions .btn{padding:0 9px;font-size:12px;}
+    .zoombar{right:8px;bottom:8px;gap:0;}
+    .zoombar .pct{width:36px;}
+    .zoombar .fit{padding:0 5px;}
+    .badge{left:8px;top:8px;padding:5px 7px;}
+  }
+</style>
+<style>
+  /* 章节文字 & 本地字体（2026-11-17 追加） */
+  .para-list{display:flex;flex-direction:column;gap:6px;max-height:300px;overflow-y:auto;padding-right:2px;}
+  .para-list::-webkit-scrollbar{width:7px;}
+  .para-list::-webkit-scrollbar-thumb{background:#e3d3bd;border-radius:8px;}
+  .para-list .para{
+    appearance:none;text-align:left;border:1px solid var(--line);background:#fffdf8;
+    border-radius:10px;padding:8px 10px;cursor:pointer;font-family:inherit;
+    color:var(--ink);transition:.15s ease;width:100%;
+  }
+  .para-list .para:hover{border-color:#e6b978;background:#fff7ea;transform:translateY(-1px);}
+  .para-list .para:active{transform:translateY(0);}
+  .para-ch{display:block;font-size:10px;color:var(--muted);margin-bottom:3px;letter-spacing:.04em;}
+  .para-text{display:block;font-size:12.5px;line-height:1.5;}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M4 19c0-6 5-11 16-13-1 9-6 14-12 14" fill="#fff7e2"/>
+          <path d="M6 20c2-5 6-8 11-10" stroke="#c17c08" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <h1>纸签编辑器</h1>
+        <div class="sub">鸟类小百科 · 无字背景</div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="top-actions">
+      <button class="btn ghost" id="btnReset" title="恢复原始纸签尺寸">重置尺寸</button>
+      <button class="btn primary" id="btnExportTop">导出 PNG</button>
+    </div>
+  </header>
+
+  <div class="main">
+    <aside class="panel">
+      <section class="section">
+        <div class="section-head"><h2>纸签尺寸</h2><span class="hint">装饰不会变形</span></div>
+
+        <div class="field">
+          <div class="field-label"><span>金黄标题条长度</span><b id="vBar">+0<span class="unit">px</span></b></div>
+          <input type="range" id="sBar" min="0" max="330" step="1" value="0">
+        </div>
+
+        <div class="field">
+          <div class="field-label"><span>内容区加宽</span><b id="vPaperW">+0<span class="unit">px</span></b></div>
+          <input type="range" id="sPaperW" min="0" max="330" step="1" value="0">
+        </div>
+
+        <div class="field">
+          <div class="field-label"><span>内容区加高</span><b id="vPaperH">+0<span class="unit">px</span></b></div>
+          <input type="range" id="sPaperH" min="0" max="240" step="1" value="0">
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><h2>章节文字</h2><span class="hint">导入后点选填入</span></div>
+
+        <div class="field">
+          <input type="file" id="chapterFile" accept=".txt,.md,.markdown,.json,application/json,text/plain" hidden>
+          <button class="btn ghost" id="btnLoadChapter" style="width:100%">导入文本 / 小百科 JSON</button>
+        </div>
+
+        <div class="field">
+          <div class="field-label"><label for="chapterRaw">或直接粘贴</label><span>空行分段 · ## 分章</span></div>
+          <textarea class="textarea" id="chapterRaw" placeholder="把整章文字贴进来，会自动拆成段落…" style="min-height:64px"></textarea>
+        </div>
+
+        <div class="field">
+          <div class="field-label"><label for="selChapter">章节</label></div>
+          <select id="selChapter" aria-label="章节"><option value="">全部章节</option></select>
+        </div>
+
+        <div class="field">
+          <input class="number-input" id="chapterFilter" placeholder="筛选关键字…" style="width:100%" aria-label="筛选段落">
+        </div>
+
+        <div class="para-list" id="paraList" aria-label="段落列表"></div>
+        <p class="field-note" id="chapterHint">点一下段落，填进当前选中的文字层；没有选中就新建一层。</p>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><h2>文字</h2><span class="hint">叠加在纸签上方</span></div>
+        <button class="add-text" id="btnAddText">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="#b0791f" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+          添加文字
+        </button>
+        <div class="text-list" id="textList" aria-label="文字图层"></div>
+
+        <div id="textEditor" style="margin-top:14px;display:none;">
+          <div class="field">
+            <div class="field-label"><label for="txtContent">内容</label></div>
+            <textarea class="textarea" id="txtContent" placeholder="输入文字…"></textarea>
+          </div>
+          <div class="field">
+            <div class="field-label"><label for="selFont">字体</label></div>
+            <select id="selFont">
+              <option value="pingfang">苹方 · 现代黑体</option>
+              <option value="songti">宋体 · 典雅</option>
+              <option value="kaiti">楷体 · 书卷气</option>
+              <option value="yuanti">圆体 · 柔和</option>
+              <option value="hannotate">手札体 · 手写感</option>
+            </select>
+            <input type="file" id="fontFile" accept=".ttf,.otf,.woff,.woff2" hidden>
+            <button class="btn ghost" id="btnLoadFont" style="width:100%;margin-top:8px">导入本地字体…</button>
+            <p class="field-note" id="fontHint">支持 ttf / otf / woff / woff2。导入的字体会随 PNG 一起导出，不用装到系统里。</p>
+          </div>
+          <div class="field">
+            <div class="field-label"><label for="nSize">字号</label><span>px</span></div>
+            <div class="num-line">
+              <input type="range" id="sSize" aria-label="字号滑块" min="12" max="160" step="1" value="44">
+              <input class="number-input" id="nSize" aria-label="字号" inputmode="decimal" value="44">
+            </div>
+          </div>
+          <div class="field">
+            <div class="field-label"><label for="txtColor">文字颜色</label><span>支持 HEX 色值</span></div>
+            <div class="color-row">
+              <input type="color" id="inpColor" aria-label="选择文字颜色" value="#230701">
+              <input class="color-hex" id="txtColor" aria-label="文字色值" aria-describedby="colorError" value="#230701" spellcheck="false" autocomplete="off">
+            </div>
+            <p class="color-error" id="colorError" role="status"></p>
+            <div class="swatches" aria-label="常用文字颜色">
+              <button data-color="#230701" aria-label="正文墨色 #230701" style="background:#230701"></button>
+              <button data-color="#502B03" aria-label="标题棕 #502B03" style="background:#502B03"></button>
+              <button data-color="#7a4a10" aria-label="棕色" style="background:#7a4a10"></button>
+              <button data-color="#3f2a12" aria-label="深棕色" style="background:#3f2a12"></button>
+              <button data-color="#ffffff" aria-label="白色" style="background:#ffffff"></button>
+              <button data-color="#c47512" aria-label="橙色" style="background:#c47512"></button>
+              <button data-color="#6f8a16" aria-label="绿色" style="background:#6f8a16"></button>
+              <button data-color="#b23b2e" aria-label="红色" style="background:#b23b2e"></button>
+            </div>
+          </div>
+          <div class="field">
+            <div class="row">
+              <button class="toggle" id="btnBold" aria-pressed="true">加粗</button>
+              <button class="toggle" id="btnItalic" aria-pressed="false">斜体</button>
+            </div>
+          </div>
+          <div class="field">
+            <div class="field-label"><span>对齐</span></div>
+            <div class="seg" id="segAlign">
+              <button data-align="left">左对齐</button>
+              <button data-align="center" class="on">居中</button>
+              <button data-align="right">右对齐</button>
+            </div>
+          </div>
+          <details class="editor-group" open>
+            <summary>间距与透明度</summary>
+            <div class="field">
+              <div class="field-label"><label for="nSpacing">字间距</label><span>px</span></div>
+              <div class="num-line">
+                <input type="range" id="sSpacing" aria-label="字间距滑块" min="-5" max="30" step=".5" value="0">
+                <input class="number-input" id="nSpacing" aria-label="字间距" inputmode="decimal" value="0">
+              </div>
+            </div>
+            <div class="field">
+              <div class="field-label"><label for="nLineHeight">行距</label><span>倍字号</span></div>
+              <div class="num-line">
+                <input type="range" id="sLineHeight" aria-label="行距滑块" min=".8" max="3" step=".01" value="1.26">
+                <input class="number-input" id="nLineHeight" aria-label="行距" inputmode="decimal" value="1.26">
+              </div>
+            </div>
+            <div class="field">
+              <div class="field-label"><label for="nOpacity">文字透明度</label><span>%</span></div>
+              <div class="num-line">
+                <input type="range" id="sOpacity" aria-label="文字透明度滑块" min="0" max="100" step="1" value="100">
+                <input class="number-input" id="nOpacity" aria-label="文字透明度" inputmode="decimal" value="100">
+              </div>
+            </div>
+          </details>
+          <details class="editor-group" open>
+            <summary>阴影与质感</summary>
+            <div class="field">
+              <div class="field-label"><label for="selEffect">效果预设</label></div>
+              <select id="selEffect">
+                <option value="none">原色 · 无效果</option>
+                <option value="shadow">柔和投影 · 轻盈层次</option>
+                <option value="raised">立体字 · 清晰厚度</option>
+                <option value="glow">柔光 · 发光边缘</option>
+              </select>
+            </div>
+            <div id="effectControls" hidden>
+              <div class="field">
+                <div class="field-label"><label for="txtEffectColor">效果颜色</label></div>
+                <div class="color-row">
+                  <input type="color" id="inpEffectColor" aria-label="选择效果颜色" value="#4b3524">
+                  <input class="color-hex" id="txtEffectColor" aria-label="效果色值" aria-describedby="effectColorError" value="#4B3524" spellcheck="false" autocomplete="off">
+                </div>
+                <p class="color-error" id="effectColorError" role="status"></p>
+              </div>
+              <div class="field">
+                <div class="field-label"><label for="nEffectOpacity">效果强度</label><span>%</span></div>
+                <div class="num-line">
+                  <input type="range" id="sEffectOpacity" aria-label="效果强度滑块" min="0" max="100" step="1" value="40">
+                  <input class="number-input" id="nEffectOpacity" aria-label="效果强度" inputmode="decimal" value="40">
+                </div>
+              </div>
+              <div class="field" id="effectBlurField">
+                <div class="field-label"><label for="nEffectBlur">模糊半径</label><span>px</span></div>
+                <div class="num-line">
+                  <input type="range" id="sEffectBlur" aria-label="模糊半径滑块" min="0" max="24" step=".5" value="3">
+                  <input class="number-input" id="nEffectBlur" aria-label="模糊半径" inputmode="decimal" value="3">
+                </div>
+              </div>
+              <div class="field row" id="effectOffsetFields">
+                <div>
+                  <div class="field-label"><label for="nEffectX">水平偏移</label><span>px</span></div>
+                  <input class="number-input" style="width:100%" id="nEffectX" aria-label="水平偏移" inputmode="decimal" value="2">
+                </div>
+                <div>
+                  <div class="field-label"><label for="nEffectY">垂直偏移</label><span>px</span></div>
+                  <input class="number-input" style="width:100%" id="nEffectY" aria-label="垂直偏移" inputmode="decimal" value="3">
+                </div>
+              </div>
+              <p class="field-note" id="effectHint">调整阴影偏移与模糊，让文字轻轻浮起。</p>
+            </div>
+            <div class="field">
+              <div class="field-label"><label for="nStroke">描边宽度</label><span>0 为关闭 · px</span></div>
+              <div class="num-line">
+                <input type="range" id="sStroke" aria-label="描边宽度滑块" min="0" max="10" step=".5" value="0">
+                <input class="number-input" id="nStroke" aria-label="描边宽度" inputmode="decimal" value="0">
+              </div>
+            </div>
+            <div class="field" id="strokeColorField" hidden>
+              <div class="field-label"><label for="txtStrokeColor">描边颜色</label></div>
+              <div class="color-row">
+                <input type="color" id="inpStrokeColor" aria-label="选择描边颜色" value="#fff5de">
+                <input class="color-hex" id="txtStrokeColor" aria-label="描边色值" aria-describedby="strokeColorError" value="#FFF5DE" spellcheck="false" autocomplete="off">
+              </div>
+              <p class="color-error" id="strokeColorError" role="status"></p>
+            </div>
+          </details>
+          <div class="field row text-actions" style="margin-top:20px;">
+            <button class="btn" id="btnDuplicateText">复制文字</button>
+            <button class="btn" id="btnDeleteText" style="color:#b23b2e;border-color:#efd3cd;">删除文字</button>
+          </div>
+        </div>
+        <div class="empty-tip" id="emptyTip" style="margin-top:12px;">尚未选中文字。点击画布上的文字即可编辑，拖动可移动位置；双击文字快速改内容。</div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><h2>导出</h2></div>
+        <div class="export-line">
+          <select id="selScale" style="flex:0 0 96px;">
+            <option value="1">1× 尺寸</option>
+            <option value="2" selected>2× 高清</option>
+            <option value="3">3× 超清</option>
+          </select>
+          <button class="btn primary" id="btnExport">导出合并 PNG</button>
+        </div>
+        <div class="status" id="status"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><h2>操作提示</h2></div>
+        <ul class="tips">
+          <li>标题条加长时，纸签内容区会同步加宽。</li>
+          <li>内容区单独加宽/加高时，标题条长度不变。</li>
+          <li>叶子保持原尺寸；虚线会贴着新纸边等距内缩。</li>
+          <li>纸边加长时会自然补充波浪起伏，而不是把曲线拉平。</li>
+          <li>画布放大后，按住空白处拖动即可平移视图。</li>
+          <li>颜色支持取色器或输入 #RGB / #RRGGBB 色值。</li>
+          <li>选中文字后，方向键微移，Shift + 方向键移动 10px。</li>
+          <li>导出为透明背景 PNG，包含字间距、描边和阴影效果。</li>
+        </ul>
+      </section>
+    </aside>
+
+    <section class="workspace" aria-label="画布工作区">
+      <div class="stage" id="stage">
+      <div class="canvas" id="canvas">
+        <svg id="art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 887 887" width="887" height="887" fill="none">
+          <title>鸟类小百科纸签 · 无字SVG重绘</title>
+  <desc>参照P15老街上的歌手纸签重绘。奶油纸张、橙色装饰虚线、空白金黄标题条、两处绿叶。所有可见元素均为路径、渐变与SVG滤镜；无文字绘制对象、无嵌入位图、无外部资源。透明画布。</desc>
+  <defs>
+    <linearGradient id="paper-edge" x1="250" y1="160" x2="720" y2="720" gradientUnits="userSpaceOnUse"><stop stop-color="#ebd3b8"/><stop offset=".48" stop-color="#e6ccac"/><stop offset="1" stop-color="#cbb192"/></linearGradient>
+    <radialGradient id="paper-warmth" cx=".45" cy=".43" r=".78"><stop stop-color="#ffead2"/><stop offset=".7" stop-color="#ffe6c7"/><stop offset="1" stop-color="#f8d8b1"/></radialGradient>
+    <linearGradient id="header-gold" x1="440" y1="225" x2="530" y2="319" gradientUnits="userSpaceOnUse"><stop stop-color="#ffbf2d"/><stop offset=".48" stop-color="#ffbf26"/><stop offset="1" stop-color="#f6b51d"/></linearGradient>
+    <linearGradient id="branch-green" x1="230" y1="340" x2="360" y2="185" gradientUnits="userSpaceOnUse"><stop stop-color="#799e16"/><stop offset=".55" stop-color="#86ab14"/><stop offset="1" stop-color="#6f970a"/></linearGradient>
+    <linearGradient id="branch-lower" x1="630" y1="681" x2="755" y2="590" gradientUnits="userSpaceOnUse"><stop stop-color="#749d0d"/><stop offset=".5" stop-color="#81a910"/><stop offset="1" stop-color="#9cb919"/></linearGradient>
+    <linearGradient id="leaf-top-01" gradientUnits="userSpaceOnUse" x1="393" y1="177" x2="333" y2="213"><stop offset="0" stop-color="#9dbb17"/><stop offset=".4" stop-color="#83a90a"/><stop offset="1" stop-color="#688f0c"/></linearGradient><linearGradient id="leaf-top-02" gradientUnits="userSpaceOnUse" x1="307" y1="176" x2="298" y2="235"><stop offset="0" stop-color="#9dbb17"/><stop offset=".4" stop-color="#83a90a"/><stop offset="1" stop-color="#688f0c"/></linearGradient><linearGradient id="leaf-top-03" gradientUnits="userSpaceOnUse" x1="266" y1="211" x2="271" y2="275"><stop offset="0" stop-color="#9dbb17"/><stop offset=".4" stop-color="#83a90a"/><stop offset="1" stop-color="#688f0c"/></linearGradient><linearGradient id="leaf-top-04" gradientUnits="userSpaceOnUse" x1="352" y1="239" x2="298" y2="245"><stop offset="0" stop-color="#9dbb17"/><stop offset=".4" stop-color="#83a90a"/><stop offset="1" stop-color="#688f0c"/></linearGradient><linearGradient id="leaf-top-05" gradientUnits="userSpaceOnUse" x1="242" y1="254" x2="248" y2="302"><stop offset="0" stop-color="#9dbb17"/><stop offset=".4" stop-color="#83a90a"/><stop offset="1" stop-color="#688f0c"/></linearGradient><linearGradient id="leaf-top-06" gradientUnits="userSpaceOnUse" x1="320" y1="278" x2="271" y2="280"><stop offset="0" stop-color="#9dbb17"/><stop offset=".4" stop-color="#83a90a"/><stop offset="1" stop-color="#688f0c"/></linearGradient><linearGradient id="leaf-top-07" gradientUnits="userSpaceOnUse" x1="295" y1="310" x2="239" y2="310"><stop offset="0" stop-color="#9dbb17"/><stop offset=".4" stop-color="#83a90a"/><stop offset="1" stop-color="#688f0c"/></linearGradient><linearGradient id="leaf-bottom-01" gradientUnits="userSpaceOnUse" x1="753" y1="591" x2="709" y2="638"><stop offset="0" stop-color="#9dbb17"/><stop offset=".4" stop-color="#83a90a"/><stop offset="1" stop-color="#688f0c"/></linearGradient><linearGradient id="leaf-bottom-02" gradientUnits="userSpaceOnUse" x1="675" y1="615" x2="697" y2="652"><stop offset="0" stop-color="#9dbb17"/><stop offset=".4" stop-color="#83a90a"/><stop offset="1" stop-color="#688f0c"/></linearGradient><linearGradient id="leaf-bottom-03" gradientUnits="userSpaceOnUse" x1="756" y1="646" x2="706" y2="670"><stop offset="0" stop-color="#9dbb17"/><stop offset=".4" stop-color="#83a90a"/><stop offset="1" stop-color="#688f0c"/></linearGradient><linearGradient id="leaf-bottom-04" gradientUnits="userSpaceOnUse" x1="628" y1="659" x2="690" y2="672"><stop offset="0" stop-color="#9dbb17"/><stop offset=".4" stop-color="#83a90a"/><stop offset="1" stop-color="#688f0c"/></linearGradient>
+    <filter id="paper-shadow" x="-8%" y="-8%" width="116%" height="119%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceAlpha" stdDeviation="2.1"/><feOffset dy="3.1" result="offset-shadow"/><feFlood flood-color="#75512d" flood-opacity=".15"/><feComposite in2="offset-shadow" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="paper-fibres" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".075 .10" numOctaves="3" seed="31" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncR type="table" tableValues=".70 1"/><feFuncG type="table" tableValues=".49 .94"/><feFuncB type="table" tableValues=".25 .78"/><feFuncA type="linear" slope=".11"/></feComponentTransfer></filter>
+    <filter id="soft-mottling" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="3" seed="9"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncR type="table" tableValues=".84 1"/><feFuncG type="table" tableValues=".68 .98"/><feFuncB type="table" tableValues=".46 .91"/><feFuncA type="linear" slope=".085"/></feComponentTransfer></filter>
+    <filter id="leaf-watercolour" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".07 .11" numOctaves="3" seed="12" result="noise"/><feColorMatrix in="noise" type="saturate" values="0"/><feComponentTransfer result="wash"><feFuncR type="table" tableValues=".34 .94"/><feFuncG type="table" tableValues=".34 .94"/><feFuncB type="table" tableValues=".34 .94"/><feFuncA type="linear" slope=".38"/></feComponentTransfer><feComposite in="wash" in2="SourceAlpha" operator="in" result="clipped-wash"/><feBlend in="SourceGraphic" in2="clipped-wash" mode="soft-light"/></filter>
+    <filter id="soft-leaf-washes" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation=".8"/></filter>
+    <clipPath id="paper-clip"><path d="M 379.50,161.00 C 384.67,159.96 385.25,159.95 389.00,160.58 C 392.75,161.20 398.80,163.17 402.00,164.74 C 405.20,166.31 406.37,167.38 408.21,170.00 C 410.04,172.62 410.53,178.19 413.00,180.44 C 415.47,182.69 417.67,182.99 423.00,183.49 C 428.33,183.99 436.00,185.04 445.00,183.42 C 454.00,181.81 468.17,175.96 477.00,173.81 C 485.83,171.66 493.00,171.05 498.00,170.51 C 503.00,169.97 502.33,170.07 507.00,170.58 C 511.67,171.09 516.33,171.09 526.00,173.58 C 535.67,176.06 556.17,183.72 565.00,185.49 C 573.83,187.26 572.83,185.81 579.00,184.19 C 585.17,182.58 594.67,177.91 602.00,175.81 C 609.33,173.70 614.50,172.12 623.00,171.58 C 631.50,171.04 644.83,171.54 653.00,172.58 C 661.17,173.61 665.28,175.07 672.00,177.80 C 678.72,180.54 688.05,185.80 693.30,189.00 C 698.55,192.20 700.29,194.00 703.49,197.00 C 706.68,200.00 709.83,203.83 712.45,207.00 C 715.07,210.17 716.42,211.17 719.21,216.00 C 722.00,220.83 726.83,230.33 729.20,236.00 C 731.56,241.67 732.16,244.50 733.42,250.00 C 734.69,255.50 733.32,264.00 736.79,269.00 C 740.27,274.00 748.52,275.83 754.30,280.00 C 760.07,284.17 766.78,289.33 771.44,294.00 C 776.09,298.67 779.25,303.00 782.21,308.00 C 785.17,313.00 787.33,318.50 789.20,324.00 C 791.06,329.50 792.72,335.50 793.42,341.00 C 794.13,346.50 794.46,350.67 793.42,357.00 C 792.39,363.33 789.80,372.17 787.20,379.00 C 784.59,385.83 779.41,393.00 777.81,398.00 C 776.20,403.00 776.91,405.50 777.58,409.00 C 778.24,412.50 778.52,413.00 781.79,419.00 C 785.06,425.00 793.63,437.50 797.20,445.00 C 800.76,452.50 801.81,458.33 803.19,464.00 C 804.58,469.67 805.12,475.17 805.49,479.00 C 805.86,482.83 805.97,482.83 805.42,487.00 C 804.87,491.17 805.00,496.00 802.19,504.00 C 799.39,512.00 790.81,528.50 788.58,535.00 C 786.35,541.50 787.37,538.33 788.81,543.00 C 790.24,547.67 795.25,557.33 797.20,563.00 C 799.14,568.67 799.95,571.83 800.49,577.00 C 801.03,582.17 801.64,587.83 800.42,594.00 C 799.21,600.17 795.54,609.00 793.21,614.00 C 790.88,619.00 789.69,620.00 786.45,624.00 C 783.22,628.00 776.34,633.00 773.79,638.00 C 771.25,643.00 772.74,649.33 771.19,654.00 C 769.64,658.67 768.03,662.29 764.50,666.00 C 760.97,669.71 755.25,673.63 750.00,676.26 C 744.75,678.89 738.28,678.50 733.00,681.79 C 727.72,685.08 723.13,692.27 718.30,696.00 C 713.46,699.73 709.72,701.95 704.00,704.19 C 698.28,706.42 691.00,708.38 684.00,709.42 C 677.00,710.46 669.67,711.13 662.00,710.42 C 654.33,709.72 646.33,707.67 638.00,705.19 C 629.67,702.72 618.33,697.36 612.00,695.58 C 605.67,693.80 603.25,694.44 600.00,694.51 C 596.75,694.58 599.67,694.01 592.50,696.00 C 585.33,697.99 567.75,704.01 557.00,706.42 C 546.25,708.84 537.33,710.32 528.00,710.49 C 518.67,710.66 508.17,708.64 501.00,707.42 C 493.83,706.21 491.00,705.13 485.00,703.19 C 479.00,701.26 470.17,697.43 465.00,695.81 C 459.83,694.20 458.00,693.51 454.00,693.51 C 450.00,693.51 447.17,694.03 441.00,695.81 C 434.83,697.59 423.67,702.13 417.00,704.19 C 410.33,706.26 406.50,707.14 401.00,708.19 C 395.50,709.24 390.67,710.45 384.00,710.49 C 377.33,710.53 371.17,710.74 361.00,708.42 C 350.83,706.10 334.33,697.74 323.00,696.58 C 311.67,695.41 300.83,700.78 293.00,701.42 C 285.17,702.06 281.17,701.13 276.00,700.42 C 270.83,699.72 266.83,698.89 262.00,697.19 C 257.17,695.48 251.67,692.83 247.00,690.21 C 242.33,687.59 237.58,684.32 234.00,681.45 C 230.42,678.58 228.58,677.08 225.55,673.00 C 222.52,668.92 218.52,663.33 215.80,657.00 C 213.09,650.67 211.93,641.00 209.26,635.00 C 206.59,629.00 202.20,625.00 199.79,621.00 C 197.38,617.00 196.17,615.17 194.80,611.00 C 193.44,606.83 191.95,600.50 191.58,596.00 C 191.21,591.50 191.54,588.83 192.58,584.00 C 193.61,579.17 195.37,573.17 197.80,567.00 C 200.24,560.83 205.58,551.83 207.19,547.00 C 208.81,542.17 209.72,544.67 207.49,538.00 C 205.26,531.33 196.63,515.17 193.81,507.00 C 190.99,498.83 191.12,493.83 190.58,489.00 C 190.04,484.17 190.04,482.67 190.58,478.00 C 191.12,473.33 192.44,466.17 193.81,461.00 C 195.18,455.83 196.64,451.67 198.80,447.00 C 200.97,442.33 203.89,437.50 206.79,433.00 C 209.69,428.50 213.97,423.50 216.21,420.00 C 218.44,416.50 219.15,414.83 220.20,412.00 C 221.24,409.17 222.12,405.50 222.49,403.00 C 222.86,400.50 222.79,399.17 222.42,397.00 C 222.05,394.83 223.53,395.67 220.26,390.00 C 216.99,384.33 206.25,369.50 202.80,363.00 C 199.36,356.50 200.11,355.00 199.58,351.00 C 199.04,347.00 198.46,344.67 199.58,339.00 C 200.69,333.33 202.84,324.17 206.27,317.00 C 209.71,309.83 217.83,300.00 220.18,296.00 C 222.54,292.00 220.86,295.00 220.42,293.00 C 219.99,291.00 218.06,287.83 217.58,284.00 C 217.09,280.17 216.96,274.17 217.51,270.00 C 218.06,265.83 219.52,262.00 220.86,259.00 C 222.20,256.00 222.90,255.00 225.55,252.00 C 228.19,249.00 234.89,245.00 236.73,241.00 C 238.56,237.00 236.23,231.67 236.58,228.00 C 236.92,224.33 237.07,222.88 238.81,219.00 C 240.54,215.12 244.47,208.07 247.00,204.70 C 249.53,201.33 250.33,200.83 254.00,198.79 C 257.67,196.75 265.17,195.78 269.00,192.44 C 272.83,189.09 274.17,182.64 277.00,178.70 C 279.83,174.76 282.33,171.44 286.00,168.79 C 289.67,166.14 294.67,163.84 299.00,162.81 C 303.33,161.77 309.00,162.41 312.00,162.58 C 315.00,162.74 315.00,162.95 317.00,163.81 C 319.00,164.68 321.67,165.69 324.00,167.79 C 326.33,169.89 329.17,174.68 331.00,176.44 C 332.83,178.20 330.50,179.95 335.00,178.34 C 339.50,176.74 350.58,169.69 358.00,166.80 C 365.42,163.91 374.33,162.04 379.50,161.00 Z"/></clipPath>
+    <clipPath id="header-clip"><path d="M371 225 H665 C690 225 708 247 706 276 C705 299 688 317 664 317 H367 C347 317 332 308 329 289 C324 273 329 258 342 252 C351 248 355 242 353 236 C353 230 361 225 371 225 Z"/></clipPath>
+    <clipPath id="leaves-clip"><path d="M 308.68,176.00 C 310.77,174.83 310.12,174.83 311.05,176.00 C 311.98,177.17 313.17,179.33 314.24,183.00 C 315.31,186.67 317.29,193.83 317.46,198.00 C 317.63,202.17 317.48,202.99 315.24,208.00 C 313.00,213.01 303.37,226.75 304.00,228.04 C 304.63,229.33 314.50,218.91 319.00,215.75 C 323.50,212.59 327.75,212.38 331.00,209.09 C 334.25,205.80 336.52,198.93 338.52,196.00 C 340.52,193.07 340.92,193.23 343.00,191.52 C 345.08,189.81 348.00,187.54 351.00,185.75 C 354.00,183.95 357.33,182.13 361.00,180.76 C 364.67,179.39 368.00,178.41 373.00,177.54 C 378.00,176.66 387.67,175.77 391.00,175.51 C 394.33,175.24 392.52,175.54 393.00,175.95 C 393.48,176.37 394.36,175.83 393.90,178.00 C 393.44,180.17 391.68,185.67 390.24,189.00 C 388.80,192.33 386.90,195.50 385.25,198.00 C 383.60,200.50 382.38,202.12 380.33,204.00 C 378.29,205.88 375.22,207.88 373.00,209.25 C 370.78,210.63 370.50,211.04 367.00,212.24 C 363.50,213.44 355.83,215.76 352.00,216.46 C 348.17,217.16 346.50,216.78 344.00,216.46 C 341.50,216.14 339.00,214.82 337.00,214.54 C 335.00,214.26 336.23,212.52 332.00,214.76 C 327.77,217.01 317.11,223.63 311.64,228.00 C 306.18,232.37 300.66,238.97 299.22,241.00 C 297.78,243.03 301.54,241.07 303.00,240.19 C 304.46,239.31 305.17,237.32 308.00,235.74 C 310.83,234.17 316.00,231.63 320.00,230.76 C 324.00,229.89 329.17,230.37 332.00,230.54 C 334.83,230.71 334.67,230.89 337.00,231.76 C 339.33,232.64 343.83,234.63 346.00,235.78 C 348.17,236.94 349.33,237.78 350.00,238.70 C 350.67,239.62 351.11,239.92 350.00,241.30 C 348.89,242.68 345.69,245.34 343.36,247.00 C 341.02,248.66 339.56,250.00 336.00,251.24 C 332.44,252.48 325.67,254.13 322.00,254.46 C 318.33,254.79 317.50,254.39 314.00,253.24 C 310.50,252.09 304.33,248.28 301.00,247.54 C 297.67,246.80 296.41,247.54 294.00,248.78 C 291.59,250.03 289.77,251.80 286.52,255.00 C 283.28,258.20 277.49,264.50 274.52,268.00 C 271.55,271.50 269.67,274.50 268.69,276.00 C 267.72,277.50 268.46,276.81 268.67,277.00 C 268.89,277.19 268.11,278.35 270.00,277.14 C 271.89,275.94 277.00,271.52 280.00,269.78 C 283.00,268.05 284.67,267.30 288.00,266.76 C 291.33,266.22 297.17,266.37 300.00,266.54 C 302.83,266.71 302.50,266.60 305.00,267.76 C 307.50,268.93 312.53,271.65 315.00,273.52 C 317.47,275.39 319.49,277.51 319.82,279.00 C 320.16,280.49 318.80,281.10 317.00,282.48 C 315.20,283.85 311.50,286.08 309.00,287.24 C 306.50,288.40 304.50,288.92 302.00,289.46 C 299.50,290.00 297.17,290.66 294.00,290.46 C 290.83,290.26 286.67,289.56 283.00,288.24 C 279.33,286.92 274.50,283.45 272.00,282.54 C 269.50,281.63 269.33,282.39 268.00,282.76 C 266.67,283.13 265.25,283.88 264.00,284.75 C 262.75,285.62 263.30,285.12 260.50,288.00 C 257.70,290.88 249.11,299.63 247.19,302.00 C 245.28,304.37 246.20,302.95 249.00,302.21 C 251.80,301.47 260.17,298.32 264.00,297.54 C 267.83,296.76 269.00,297.00 272.00,297.54 C 275.00,298.08 278.29,298.71 282.00,300.78 C 285.71,302.86 292.20,308.13 294.27,310.00 C 296.34,311.87 295.80,310.80 294.42,312.00 C 293.04,313.20 288.57,315.97 286.00,317.22 C 283.43,318.46 281.67,318.92 279.00,319.46 C 276.33,320.00 273.50,321.00 270.00,320.46 C 266.50,319.93 261.67,318.20 258.00,316.25 C 254.33,314.31 250.17,310.07 248.00,308.79 C 245.83,307.50 246.00,308.38 245.00,308.54 C 244.00,308.70 243.58,308.50 242.00,309.75 C 240.42,310.99 237.40,313.79 235.52,316.00 C 233.65,318.21 232.71,319.17 230.75,323.00 C 228.79,326.83 225.18,334.50 223.76,339.00 C 222.34,343.50 222.84,347.80 222.21,350.00 C 221.59,352.20 220.76,351.88 220.00,352.21 C 219.24,352.54 218.42,352.53 217.68,352.00 C 216.94,351.47 215.90,350.50 215.54,349.00 C 215.18,347.50 215.00,346.00 215.54,343.00 C 216.08,340.00 217.73,334.17 218.76,331.00 C 219.80,327.83 220.22,326.89 221.76,324.00 C 223.30,321.11 224.88,317.64 228.00,313.64 C 231.12,309.64 237.78,303.27 240.48,300.00 C 243.18,296.73 243.69,295.33 244.19,294.00 C 244.68,292.67 244.71,293.67 243.47,292.00 C 242.23,290.33 238.37,286.50 236.75,284.00 C 235.13,281.50 234.30,279.33 233.76,277.00 C 233.23,274.67 233.04,272.50 233.54,270.00 C 234.04,267.50 235.50,264.39 236.75,262.00 C 237.99,259.61 239.96,256.96 241.00,255.65 C 242.04,254.34 242.17,254.16 243.00,254.14 C 243.83,254.12 244.67,254.44 246.00,255.52 C 247.33,256.61 249.59,258.56 251.00,260.64 C 252.41,262.72 253.96,263.92 254.46,268.00 C 254.96,272.08 253.58,282.73 254.00,285.13 C 254.42,287.52 255.29,284.54 257.00,282.36 C 258.71,280.17 262.39,275.23 264.25,272.00 C 266.12,268.77 267.69,265.50 268.19,263.00 C 268.68,260.50 268.45,259.17 267.21,257.00 C 265.97,254.83 262.66,252.67 260.75,250.00 C 258.84,247.33 256.79,243.17 255.76,241.00 C 254.72,238.83 254.74,239.00 254.54,237.00 C 254.34,235.00 253.84,232.33 254.54,229.00 C 255.24,225.67 257.00,220.47 258.75,217.00 C 260.49,213.53 262.54,208.35 265.00,208.19 C 267.46,208.02 271.27,213.36 273.48,216.00 C 275.68,218.64 277.08,221.33 278.24,224.00 C 279.40,226.67 280.09,229.33 280.46,232.00 C 280.83,234.67 280.66,237.67 280.46,240.00 C 280.26,242.33 280.02,243.50 279.24,246.00 C 278.46,248.50 276.31,252.98 275.77,255.00 C 275.23,257.02 273.46,260.40 276.00,258.13 C 278.54,255.85 287.96,245.04 291.00,241.36 C 294.04,237.67 293.35,237.89 294.22,236.00 C 295.08,234.11 296.93,233.00 296.19,230.00 C 295.44,227.00 291.04,220.83 289.76,218.00 C 288.49,215.17 288.74,215.50 288.54,213.00 C 288.34,210.50 288.17,205.83 288.54,203.00 C 288.91,200.17 289.10,199.33 290.76,196.00 C 292.42,192.67 295.54,186.33 298.53,183.00 C 301.51,179.67 306.59,177.17 308.68,176.00 Z"/><path d="M 736.50,590.00 C 740.00,589.46 746.25,589.37 749.00,589.54 C 751.75,589.71 752.27,589.59 753.02,591.00 C 753.76,592.41 754.09,594.33 753.46,598.00 C 752.83,601.67 750.57,609.50 749.24,613.00 C 747.91,616.50 747.52,616.62 745.48,619.00 C 743.44,621.38 739.75,625.21 737.00,627.25 C 734.25,629.29 732.33,629.98 729.00,631.24 C 725.67,632.50 719.25,633.99 717.00,634.78 C 714.75,635.58 716.88,634.46 715.50,636.00 C 714.13,637.54 710.70,641.00 708.75,644.00 C 706.79,647.00 704.75,651.50 703.76,654.00 C 702.77,656.50 702.76,658.11 702.80,659.00 C 702.84,659.89 703.13,659.76 704.00,659.31 C 704.87,658.87 706.58,658.05 708.00,656.33 C 709.42,654.62 710.58,651.39 712.52,649.00 C 714.46,646.61 717.73,643.54 719.64,642.00 C 721.56,640.46 721.77,640.50 724.00,639.76 C 726.23,639.02 730.67,637.91 733.00,637.54 C 735.33,637.17 736.33,637.34 738.00,637.54 C 739.67,637.74 740.26,637.52 743.00,638.76 C 745.74,640.01 752.52,643.63 754.42,645.00 C 756.32,646.37 756.16,644.92 754.42,647.00 C 752.69,649.08 747.07,654.94 744.00,657.48 C 740.93,660.02 738.50,661.08 736.00,662.24 C 733.50,663.40 731.67,664.09 729.00,664.46 C 726.33,664.83 722.83,664.78 720.00,664.46 C 717.17,664.14 714.00,662.82 712.00,662.54 C 710.00,662.26 709.91,661.54 708.00,662.79 C 706.09,664.03 702.44,667.80 700.52,670.00 C 698.60,672.20 698.42,674.09 696.50,676.00 C 694.58,677.91 690.58,680.59 689.00,681.46 C 687.42,682.32 687.53,681.45 687.00,681.21 C 686.47,680.96 685.60,681.20 685.85,680.00 C 686.09,678.80 688.23,676.00 688.46,674.00 C 688.69,672.00 688.13,669.64 687.22,668.00 C 686.31,666.36 685.04,664.14 683.00,664.18 C 680.96,664.22 677.83,667.19 675.00,668.24 C 672.17,669.29 669.17,670.29 666.00,670.46 C 662.83,670.63 658.59,669.82 656.00,669.24 C 653.41,668.66 653.64,668.41 650.47,667.00 C 647.30,665.59 640.74,662.02 637.00,660.76 C 633.26,659.50 629.69,659.88 628.00,659.42 C 626.31,658.96 625.93,659.90 626.85,658.00 C 627.77,656.10 631.50,650.38 633.52,648.00 C 635.55,645.62 636.25,645.29 639.00,643.75 C 641.75,642.21 646.50,639.80 650.00,638.76 C 653.50,637.72 656.67,637.16 660.00,637.50 C 663.33,637.84 667.33,639.61 670.00,640.78 C 672.67,641.95 673.63,642.32 676.00,644.52 C 678.37,646.72 682.71,651.53 684.21,654.00 C 685.71,656.47 684.20,657.88 685.00,659.32 C 685.80,660.77 687.76,661.22 689.00,662.67 C 690.24,664.11 691.62,667.08 692.45,668.00 C 693.28,668.92 693.33,669.34 694.00,668.17 C 694.67,667.00 696.05,663.36 696.46,661.00 C 696.87,658.64 696.67,655.83 696.46,654.00 C 696.25,652.17 696.13,651.38 695.22,650.00 C 694.30,648.62 692.76,646.91 691.00,645.75 C 689.24,644.58 686.69,644.46 684.64,643.00 C 682.60,641.54 680.40,639.33 678.75,637.00 C 677.10,634.67 675.80,632.50 674.76,629.00 C 673.73,625.50 672.84,618.50 672.54,616.00 C 672.24,613.50 672.37,614.53 672.95,614.00 C 673.53,613.47 674.32,612.69 676.00,612.81 C 677.68,612.94 680.67,613.77 683.00,614.76 C 685.33,615.75 688.25,617.54 690.00,618.75 C 691.75,619.95 692.27,620.46 693.48,622.00 C 694.68,623.54 696.41,626.17 697.24,628.00 C 698.07,629.83 698.37,630.33 698.46,633.00 C 698.55,635.67 697.60,641.67 697.77,644.00 C 697.93,646.33 698.91,646.47 699.45,647.00 C 699.99,647.53 699.54,649.21 701.00,647.21 C 702.46,645.21 707.24,638.70 708.21,635.00 C 709.18,631.30 706.92,628.00 706.81,625.00 C 706.70,622.00 706.72,620.00 707.54,617.00 C 708.36,614.00 710.58,609.33 711.75,607.00 C 712.91,604.67 712.98,604.71 714.52,603.00 C 716.06,601.29 718.75,598.45 721.00,596.75 C 723.25,595.04 725.42,593.88 728.00,592.76 C 730.58,591.64 733.00,590.54 736.50,590.00 Z"/></clipPath>
+  </defs>
+  <g id="paper" aria-label="奶油纸张">
+    <path id="paper-outline" d="M 378.50,156.00 C 384.00,154.96 385.75,154.92 390.00,155.56 C 394.25,156.19 400.33,157.97 404.00,159.82 C 407.67,161.68 409.87,163.81 412.00,166.68 C 414.13,169.54 414.93,175.04 416.77,177.00 C 418.60,178.96 418.46,178.20 423.00,178.44 C 427.54,178.68 435.17,180.05 444.00,178.44 C 452.83,176.83 467.17,170.94 476.00,168.79 C 484.83,166.63 491.67,166.04 497.00,165.51 C 502.33,164.97 503.00,165.05 508.00,165.56 C 513.00,166.07 517.33,166.07 527.00,168.56 C 536.67,171.05 557.50,178.72 566.00,180.49 C 574.50,182.27 572.17,180.83 578.00,179.21 C 583.83,177.60 593.50,172.90 601.00,170.79 C 608.50,168.67 614.17,167.04 623.00,166.51 C 631.83,165.97 644.83,166.18 654.00,167.56 C 663.17,168.94 672.00,172.58 678.00,174.78 C 684.00,176.99 685.33,177.81 690.00,180.77 C 694.67,183.73 700.83,187.72 706.00,192.53 C 711.17,197.35 716.30,202.60 721.00,209.67 C 725.70,216.75 731.31,228.45 734.22,235.00 C 737.12,241.55 737.34,243.83 738.44,249.00 C 739.55,254.17 737.69,261.50 740.84,266.00 C 743.99,270.50 751.55,271.83 757.32,276.00 C 763.10,280.17 770.65,286.17 775.47,291.00 C 780.28,295.83 783.10,299.67 786.23,305.00 C 789.35,310.33 792.18,317.17 794.22,323.00 C 796.25,328.83 797.74,334.17 798.44,340.00 C 799.15,345.83 799.48,351.33 798.44,358.00 C 797.40,364.67 794.82,373.17 792.22,380.00 C 789.61,386.83 784.40,394.33 782.79,399.00 C 781.18,403.67 782.06,405.17 782.56,408.00 C 783.06,410.83 783.49,412.00 785.77,416.00 C 788.05,420.00 793.49,427.33 796.23,432.00 C 798.97,436.67 800.22,438.83 802.22,444.00 C 804.21,449.17 806.83,457.33 808.21,463.00 C 809.59,468.67 810.12,473.83 810.49,478.00 C 810.87,482.17 810.99,483.50 810.44,488.00 C 809.90,492.50 810.03,497.00 807.21,505.00 C 804.40,513.00 795.80,529.83 793.56,536.00 C 791.32,542.17 792.34,537.67 793.79,542.00 C 795.23,546.33 800.26,556.33 802.22,562.00 C 804.17,567.67 804.96,570.50 805.49,576.00 C 806.03,581.50 806.16,589.50 805.44,595.00 C 804.73,600.50 802.58,605.33 801.22,609.00 C 799.85,612.67 799.02,614.00 797.23,617.00 C 795.44,620.00 793.70,623.00 790.47,627.00 C 787.23,631.00 780.37,635.83 777.83,641.00 C 775.29,646.17 776.48,653.67 775.22,658.00 C 773.95,662.33 771.85,664.67 770.23,667.00 C 768.61,669.33 769.04,669.46 765.50,672.00 C 761.96,674.54 753.92,679.91 749.00,682.22 C 744.08,684.52 740.61,682.87 736.00,685.83 C 731.39,688.79 726.49,696.10 721.33,700.00 C 716.16,703.90 711.05,706.80 705.00,709.21 C 698.95,711.62 692.33,713.40 685.00,714.44 C 677.67,715.48 669.00,716.15 661.00,715.44 C 653.00,714.74 645.33,712.70 637.00,710.21 C 628.67,707.73 617.00,702.34 611.00,700.56 C 605.00,698.77 603.83,699.47 601.00,699.51 C 598.17,699.54 601.17,698.80 594.00,700.79 C 586.83,702.78 568.83,708.99 558.00,711.44 C 547.17,713.89 538.67,715.33 529.00,715.49 C 519.33,715.66 507.50,713.66 500.00,712.44 C 492.50,711.23 490.00,710.16 484.00,708.21 C 478.00,706.27 469.17,702.41 464.00,700.79 C 458.83,699.17 456.67,698.51 453.00,698.51 C 449.33,698.51 447.83,699.00 442.00,700.79 C 436.17,702.57 424.67,707.14 418.00,709.21 C 411.33,711.29 407.50,712.17 402.00,713.21 C 396.50,714.26 392.00,715.46 385.00,715.49 C 378.00,715.53 370.50,715.77 360.00,713.44 C 349.50,711.12 333.00,702.72 322.00,701.56 C 311.00,700.39 301.83,705.80 294.00,706.44 C 286.17,707.09 280.50,706.15 275.00,705.44 C 269.50,704.74 266.17,704.08 261.00,702.21 C 255.83,700.34 249.00,697.02 244.00,694.23 C 239.00,691.44 234.74,688.50 231.00,685.47 C 227.26,682.43 224.90,680.58 221.53,676.00 C 218.17,671.42 213.59,664.50 210.78,658.00 C 207.98,651.50 207.23,642.67 204.73,637.00 C 202.22,631.33 198.26,628.17 195.77,624.00 C 193.28,619.83 191.32,616.50 189.78,612.00 C 188.25,607.50 186.93,601.83 186.56,597.00 C 186.19,592.17 186.52,588.17 187.56,583.00 C 188.60,577.83 190.51,571.67 192.78,566.00 C 195.06,560.33 199.60,553.50 201.22,549.00 C 202.83,544.50 202.49,541.50 202.49,539.00 C 202.49,536.50 203.50,539.17 201.22,534.00 C 198.93,528.83 191.40,515.33 188.79,508.00 C 186.18,500.67 186.10,495.17 185.56,490.00 C 185.02,484.83 185.02,482.00 185.56,477.00 C 186.10,472.00 187.41,465.17 188.79,460.00 C 190.16,454.83 191.45,451.00 193.78,446.00 C 196.12,441.00 199.70,434.83 202.77,430.00 C 205.84,425.17 209.77,421.67 212.23,417.00 C 214.68,412.33 216.99,406.33 217.49,402.00 C 217.99,397.67 218.51,397.33 215.23,391.00 C 211.94,384.67 201.23,370.50 197.78,364.00 C 194.34,357.50 195.10,356.33 194.56,352.00 C 194.02,347.67 194.19,342.00 194.56,338.00 C 194.93,334.00 195.59,331.83 196.79,328.00 C 197.98,324.17 198.67,320.50 201.73,315.00 C 204.80,309.50 213.36,300.00 215.16,295.00 C 216.97,290.00 213.00,289.33 212.56,285.00 C 212.11,280.67 211.97,273.50 212.51,269.00 C 213.04,264.50 214.28,261.33 215.78,258.00 C 217.29,254.67 218.82,252.17 221.53,249.00 C 224.25,245.83 230.42,242.67 232.09,239.00 C 233.76,235.33 231.28,230.50 231.56,227.00 C 231.84,223.50 231.88,222.22 233.79,218.00 C 235.69,213.78 240.13,205.55 243.00,201.67 C 245.87,197.80 247.28,196.88 251.00,194.77 C 254.72,192.66 261.62,192.18 265.29,189.00 C 268.96,185.82 270.05,179.71 273.00,175.67 C 275.95,171.64 278.83,167.75 283.00,164.77 C 287.17,161.79 293.00,158.99 298.00,157.79 C 303.00,156.58 309.67,157.39 313.00,157.56 C 316.33,157.72 315.67,157.75 318.00,158.79 C 320.33,159.83 324.17,161.44 327.00,163.77 C 329.83,166.10 330.00,173.11 335.00,172.78 C 340.00,172.45 349.75,164.58 357.00,161.78 C 364.25,158.99 373.00,157.04 378.50,156.00 Z" fill="url(#paper-edge)" stroke="#c4a886" stroke-width=".95" stroke-linejoin="round" filter="url(#paper-shadow)"/>
+    <path id="paper-face" d="M 379.50,161.00 C 384.67,159.96 385.25,159.95 389.00,160.58 C 392.75,161.20 398.80,163.17 402.00,164.74 C 405.20,166.31 406.37,167.38 408.21,170.00 C 410.04,172.62 410.53,178.19 413.00,180.44 C 415.47,182.69 417.67,182.99 423.00,183.49 C 428.33,183.99 436.00,185.04 445.00,183.42 C 454.00,181.81 468.17,175.96 477.00,173.81 C 485.83,171.66 493.00,171.05 498.00,170.51 C 503.00,169.97 502.33,170.07 507.00,170.58 C 511.67,171.09 516.33,171.09 526.00,173.58 C 535.67,176.06 556.17,183.72 565.00,185.49 C 573.83,187.26 572.83,185.81 579.00,184.19 C 585.17,182.58 594.67,177.91 602.00,175.81 C 609.33,173.70 614.50,172.12 623.00,171.58 C 631.50,171.04 644.83,171.54 653.00,172.58 C 661.17,173.61 665.28,175.07 672.00,177.80 C 678.72,180.54 688.05,185.80 693.30,189.00 C 698.55,192.20 700.29,194.00 703.49,197.00 C 706.68,200.00 709.83,203.83 712.45,207.00 C 715.07,210.17 716.42,211.17 719.21,216.00 C 722.00,220.83 726.83,230.33 729.20,236.00 C 731.56,241.67 732.16,244.50 733.42,250.00 C 734.69,255.50 733.32,264.00 736.79,269.00 C 740.27,274.00 748.52,275.83 754.30,280.00 C 760.07,284.17 766.78,289.33 771.44,294.00 C 776.09,298.67 779.25,303.00 782.21,308.00 C 785.17,313.00 787.33,318.50 789.20,324.00 C 791.06,329.50 792.72,335.50 793.42,341.00 C 794.13,346.50 794.46,350.67 793.42,357.00 C 792.39,363.33 789.80,372.17 787.20,379.00 C 784.59,385.83 779.41,393.00 777.81,398.00 C 776.20,403.00 776.91,405.50 777.58,409.00 C 778.24,412.50 778.52,413.00 781.79,419.00 C 785.06,425.00 793.63,437.50 797.20,445.00 C 800.76,452.50 801.81,458.33 803.19,464.00 C 804.58,469.67 805.12,475.17 805.49,479.00 C 805.86,482.83 805.97,482.83 805.42,487.00 C 804.87,491.17 805.00,496.00 802.19,504.00 C 799.39,512.00 790.81,528.50 788.58,535.00 C 786.35,541.50 787.37,538.33 788.81,543.00 C 790.24,547.67 795.25,557.33 797.20,563.00 C 799.14,568.67 799.95,571.83 800.49,577.00 C 801.03,582.17 801.64,587.83 800.42,594.00 C 799.21,600.17 795.54,609.00 793.21,614.00 C 790.88,619.00 789.69,620.00 786.45,624.00 C 783.22,628.00 776.34,633.00 773.79,638.00 C 771.25,643.00 772.74,649.33 771.19,654.00 C 769.64,658.67 768.03,662.29 764.50,666.00 C 760.97,669.71 755.25,673.63 750.00,676.26 C 744.75,678.89 738.28,678.50 733.00,681.79 C 727.72,685.08 723.13,692.27 718.30,696.00 C 713.46,699.73 709.72,701.95 704.00,704.19 C 698.28,706.42 691.00,708.38 684.00,709.42 C 677.00,710.46 669.67,711.13 662.00,710.42 C 654.33,709.72 646.33,707.67 638.00,705.19 C 629.67,702.72 618.33,697.36 612.00,695.58 C 605.67,693.80 603.25,694.44 600.00,694.51 C 596.75,694.58 599.67,694.01 592.50,696.00 C 585.33,697.99 567.75,704.01 557.00,706.42 C 546.25,708.84 537.33,710.32 528.00,710.49 C 518.67,710.66 508.17,708.64 501.00,707.42 C 493.83,706.21 491.00,705.13 485.00,703.19 C 479.00,701.26 470.17,697.43 465.00,695.81 C 459.83,694.20 458.00,693.51 454.00,693.51 C 450.00,693.51 447.17,694.03 441.00,695.81 C 434.83,697.59 423.67,702.13 417.00,704.19 C 410.33,706.26 406.50,707.14 401.00,708.19 C 395.50,709.24 390.67,710.45 384.00,710.49 C 377.33,710.53 371.17,710.74 361.00,708.42 C 350.83,706.10 334.33,697.74 323.00,696.58 C 311.67,695.41 300.83,700.78 293.00,701.42 C 285.17,702.06 281.17,701.13 276.00,700.42 C 270.83,699.72 266.83,698.89 262.00,697.19 C 257.17,695.48 251.67,692.83 247.00,690.21 C 242.33,687.59 237.58,684.32 234.00,681.45 C 230.42,678.58 228.58,677.08 225.55,673.00 C 222.52,668.92 218.52,663.33 215.80,657.00 C 213.09,650.67 211.93,641.00 209.26,635.00 C 206.59,629.00 202.20,625.00 199.79,621.00 C 197.38,617.00 196.17,615.17 194.80,611.00 C 193.44,606.83 191.95,600.50 191.58,596.00 C 191.21,591.50 191.54,588.83 192.58,584.00 C 193.61,579.17 195.37,573.17 197.80,567.00 C 200.24,560.83 205.58,551.83 207.19,547.00 C 208.81,542.17 209.72,544.67 207.49,538.00 C 205.26,531.33 196.63,515.17 193.81,507.00 C 190.99,498.83 191.12,493.83 190.58,489.00 C 190.04,484.17 190.04,482.67 190.58,478.00 C 191.12,473.33 192.44,466.17 193.81,461.00 C 195.18,455.83 196.64,451.67 198.80,447.00 C 200.97,442.33 203.89,437.50 206.79,433.00 C 209.69,428.50 213.97,423.50 216.21,420.00 C 218.44,416.50 219.15,414.83 220.20,412.00 C 221.24,409.17 222.12,405.50 222.49,403.00 C 222.86,400.50 222.79,399.17 222.42,397.00 C 222.05,394.83 223.53,395.67 220.26,390.00 C 216.99,384.33 206.25,369.50 202.80,363.00 C 199.36,356.50 200.11,355.00 199.58,351.00 C 199.04,347.00 198.46,344.67 199.58,339.00 C 200.69,333.33 202.84,324.17 206.27,317.00 C 209.71,309.83 217.83,300.00 220.18,296.00 C 222.54,292.00 220.86,295.00 220.42,293.00 C 219.99,291.00 218.06,287.83 217.58,284.00 C 217.09,280.17 216.96,274.17 217.51,270.00 C 218.06,265.83 219.52,262.00 220.86,259.00 C 222.20,256.00 222.90,255.00 225.55,252.00 C 228.19,249.00 234.89,245.00 236.73,241.00 C 238.56,237.00 236.23,231.67 236.58,228.00 C 236.92,224.33 237.07,222.88 238.81,219.00 C 240.54,215.12 244.47,208.07 247.00,204.70 C 249.53,201.33 250.33,200.83 254.00,198.79 C 257.67,196.75 265.17,195.78 269.00,192.44 C 272.83,189.09 274.17,182.64 277.00,178.70 C 279.83,174.76 282.33,171.44 286.00,168.79 C 289.67,166.14 294.67,163.84 299.00,162.81 C 303.33,161.77 309.00,162.41 312.00,162.58 C 315.00,162.74 315.00,162.95 317.00,163.81 C 319.00,164.68 321.67,165.69 324.00,167.79 C 326.33,169.89 329.17,174.68 331.00,176.44 C 332.83,178.20 330.50,179.95 335.00,178.34 C 339.50,176.74 350.58,169.69 358.00,166.80 C 365.42,163.91 374.33,162.04 379.50,161.00 Z" fill="url(#paper-warmth)" stroke="#f8e5d0" stroke-width="1.3"/>
+    <g id="paper-texture" clip-path="url(#paper-clip)"><rect x="175" y="145" width="650" height="585" fill="#fff0d9" filter="url(#soft-mottling)"/><rect x="175" y="145" width="650" height="585" fill="#fff0d9" filter="url(#paper-fibres)"/></g>
+  </g>
+  <g id="inset-dashes" aria-label="沿纸边内侧的橙色装饰虚线">
+    <path d="M403 195 C426 202 441 205 461 197 C484 189 499 184 520 190 C540 195 552 205 573 204 C589 202 608 190 631 189 C652 187 674 194 688 202 C711 216 718 239 721 269 C736 279 752 280 765 299 C781 318 781 339 770 362 C759 383 756 394 765 415 C778 443 795 464 788 489 C781 511 765 522 771 542 C775 558 785 574 783 593 C781 610 769 626 756 636 C752 647 746 663 731 674 C714 688 699 693 679 693 C659 692 647 685 631 680 C614 674 599 679 584 684 C565 691 546 697 526 693 C504 691 491 685 472 680 C456 673 443 677 424 684 C405 692 392 694 378 692 C358 690 346 685 330 680 C318 675 305 680 294 681 C270 686 246 676 235 666 C223 654 216 632 213 619 C207 608 202 596 207 582 C211 567 226 553 225 540 C224 529 214 518 210 507 C201 490 206 474 212 462 C221 441 233 427 238 412 C249 391 234 375 220 358" stroke="#ff790b" stroke-width="4.25" stroke-dasharray="10.9 9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="blank-title-strip" aria-label="无字金黄标题条">
+    <path id="header-shape" d="M371 225 H665 C690 225 708 247 706 276 C705 299 688 317 664 317 H367 C347 317 332 308 329 289 C324 273 329 258 342 252 C351 248 355 242 353 236 C353 230 361 225 371 225 Z" fill="url(#header-gold)" stroke="#dc951c" stroke-width="2.3"/>
+    <g clip-path="url(#header-clip)" opacity=".42"><rect x="322" y="220" width="389" height="103" filter="url(#soft-mottling)"/></g>
+  </g>
+  <g id="leaf-decorations" aria-label="左上与右下绿叶">
+    <g clip-path="url(#leaves-clip)" filter="url(#leaf-watercolour)">
+      <path id="upper-branch-silhouette" d="M 308.68,176.00 C 310.77,174.83 310.12,174.83 311.05,176.00 C 311.98,177.17 313.17,179.33 314.24,183.00 C 315.31,186.67 317.29,193.83 317.46,198.00 C 317.63,202.17 317.48,202.99 315.24,208.00 C 313.00,213.01 303.37,226.75 304.00,228.04 C 304.63,229.33 314.50,218.91 319.00,215.75 C 323.50,212.59 327.75,212.38 331.00,209.09 C 334.25,205.80 336.52,198.93 338.52,196.00 C 340.52,193.07 340.92,193.23 343.00,191.52 C 345.08,189.81 348.00,187.54 351.00,185.75 C 354.00,183.95 357.33,182.13 361.00,180.76 C 364.67,179.39 368.00,178.41 373.00,177.54 C 378.00,176.66 387.67,175.77 391.00,175.51 C 394.33,175.24 392.52,175.54 393.00,175.95 C 393.48,176.37 394.36,175.83 393.90,178.00 C 393.44,180.17 391.68,185.67 390.24,189.00 C 388.80,192.33 386.90,195.50 385.25,198.00 C 383.60,200.50 382.38,202.12 380.33,204.00 C 378.29,205.88 375.22,207.88 373.00,209.25 C 370.78,210.63 370.50,211.04 367.00,212.24 C 363.50,213.44 355.83,215.76 352.00,216.46 C 348.17,217.16 346.50,216.78 344.00,216.46 C 341.50,216.14 339.00,214.82 337.00,214.54 C 335.00,214.26 336.23,212.52 332.00,214.76 C 327.77,217.01 317.11,223.63 311.64,228.00 C 306.18,232.37 300.66,238.97 299.22,241.00 C 297.78,243.03 301.54,241.07 303.00,240.19 C 304.46,239.31 305.17,237.32 308.00,235.74 C 310.83,234.17 316.00,231.63 320.00,230.76 C 324.00,229.89 329.17,230.37 332.00,230.54 C 334.83,230.71 334.67,230.89 337.00,231.76 C 339.33,232.64 343.83,234.63 346.00,235.78 C 348.17,236.94 349.33,237.78 350.00,238.70 C 350.67,239.62 351.11,239.92 350.00,241.30 C 348.89,242.68 345.69,245.34 343.36,247.00 C 341.02,248.66 339.56,250.00 336.00,251.24 C 332.44,252.48 325.67,254.13 322.00,254.46 C 318.33,254.79 317.50,254.39 314.00,253.24 C 310.50,252.09 304.33,248.28 301.00,247.54 C 297.67,246.80 296.41,247.54 294.00,248.78 C 291.59,250.03 289.77,251.80 286.52,255.00 C 283.28,258.20 277.49,264.50 274.52,268.00 C 271.55,271.50 269.67,274.50 268.69,276.00 C 267.72,277.50 268.46,276.81 268.67,277.00 C 268.89,277.19 268.11,278.35 270.00,277.14 C 271.89,275.94 277.00,271.52 280.00,269.78 C 283.00,268.05 284.67,267.30 288.00,266.76 C 291.33,266.22 297.17,266.37 300.00,266.54 C 302.83,266.71 302.50,266.60 305.00,267.76 C 307.50,268.93 312.53,271.65 315.00,273.52 C 317.47,275.39 319.49,277.51 319.82,279.00 C 320.16,280.49 318.80,281.10 317.00,282.48 C 315.20,283.85 311.50,286.08 309.00,287.24 C 306.50,288.40 304.50,288.92 302.00,289.46 C 299.50,290.00 297.17,290.66 294.00,290.46 C 290.83,290.26 286.67,289.56 283.00,288.24 C 279.33,286.92 274.50,283.45 272.00,282.54 C 269.50,281.63 269.33,282.39 268.00,282.76 C 266.67,283.13 265.25,283.88 264.00,284.75 C 262.75,285.62 263.30,285.12 260.50,288.00 C 257.70,290.88 249.11,299.63 247.19,302.00 C 245.28,304.37 246.20,302.95 249.00,302.21 C 251.80,301.47 260.17,298.32 264.00,297.54 C 267.83,296.76 269.00,297.00 272.00,297.54 C 275.00,298.08 278.29,298.71 282.00,300.78 C 285.71,302.86 292.20,308.13 294.27,310.00 C 296.34,311.87 295.80,310.80 294.42,312.00 C 293.04,313.20 288.57,315.97 286.00,317.22 C 283.43,318.46 281.67,318.92 279.00,319.46 C 276.33,320.00 273.50,321.00 270.00,320.46 C 266.50,319.93 261.67,318.20 258.00,316.25 C 254.33,314.31 250.17,310.07 248.00,308.79 C 245.83,307.50 246.00,308.38 245.00,308.54 C 244.00,308.70 243.58,308.50 242.00,309.75 C 240.42,310.99 237.40,313.79 235.52,316.00 C 233.65,318.21 232.71,319.17 230.75,323.00 C 228.79,326.83 225.18,334.50 223.76,339.00 C 222.34,343.50 222.84,347.80 222.21,350.00 C 221.59,352.20 220.76,351.88 220.00,352.21 C 219.24,352.54 218.42,352.53 217.68,352.00 C 216.94,351.47 215.90,350.50 215.54,349.00 C 215.18,347.50 215.00,346.00 215.54,343.00 C 216.08,340.00 217.73,334.17 218.76,331.00 C 219.80,327.83 220.22,326.89 221.76,324.00 C 223.30,321.11 224.88,317.64 228.00,313.64 C 231.12,309.64 237.78,303.27 240.48,300.00 C 243.18,296.73 243.69,295.33 244.19,294.00 C 244.68,292.67 244.71,293.67 243.47,292.00 C 242.23,290.33 238.37,286.50 236.75,284.00 C 235.13,281.50 234.30,279.33 233.76,277.00 C 233.23,274.67 233.04,272.50 233.54,270.00 C 234.04,267.50 235.50,264.39 236.75,262.00 C 237.99,259.61 239.96,256.96 241.00,255.65 C 242.04,254.34 242.17,254.16 243.00,254.14 C 243.83,254.12 244.67,254.44 246.00,255.52 C 247.33,256.61 249.59,258.56 251.00,260.64 C 252.41,262.72 253.96,263.92 254.46,268.00 C 254.96,272.08 253.58,282.73 254.00,285.13 C 254.42,287.52 255.29,284.54 257.00,282.36 C 258.71,280.17 262.39,275.23 264.25,272.00 C 266.12,268.77 267.69,265.50 268.19,263.00 C 268.68,260.50 268.45,259.17 267.21,257.00 C 265.97,254.83 262.66,252.67 260.75,250.00 C 258.84,247.33 256.79,243.17 255.76,241.00 C 254.72,238.83 254.74,239.00 254.54,237.00 C 254.34,235.00 253.84,232.33 254.54,229.00 C 255.24,225.67 257.00,220.47 258.75,217.00 C 260.49,213.53 262.54,208.35 265.00,208.19 C 267.46,208.02 271.27,213.36 273.48,216.00 C 275.68,218.64 277.08,221.33 278.24,224.00 C 279.40,226.67 280.09,229.33 280.46,232.00 C 280.83,234.67 280.66,237.67 280.46,240.00 C 280.26,242.33 280.02,243.50 279.24,246.00 C 278.46,248.50 276.31,252.98 275.77,255.00 C 275.23,257.02 273.46,260.40 276.00,258.13 C 278.54,255.85 287.96,245.04 291.00,241.36 C 294.04,237.67 293.35,237.89 294.22,236.00 C 295.08,234.11 296.93,233.00 296.19,230.00 C 295.44,227.00 291.04,220.83 289.76,218.00 C 288.49,215.17 288.74,215.50 288.54,213.00 C 288.34,210.50 288.17,205.83 288.54,203.00 C 288.91,200.17 289.10,199.33 290.76,196.00 C 292.42,192.67 295.54,186.33 298.53,183.00 C 301.51,179.67 306.59,177.17 308.68,176.00 Z" fill="url(#branch-green)"/>
+      <path id="lower-branch-silhouette" d="M 736.50,590.00 C 740.00,589.46 746.25,589.37 749.00,589.54 C 751.75,589.71 752.27,589.59 753.02,591.00 C 753.76,592.41 754.09,594.33 753.46,598.00 C 752.83,601.67 750.57,609.50 749.24,613.00 C 747.91,616.50 747.52,616.62 745.48,619.00 C 743.44,621.38 739.75,625.21 737.00,627.25 C 734.25,629.29 732.33,629.98 729.00,631.24 C 725.67,632.50 719.25,633.99 717.00,634.78 C 714.75,635.58 716.88,634.46 715.50,636.00 C 714.13,637.54 710.70,641.00 708.75,644.00 C 706.79,647.00 704.75,651.50 703.76,654.00 C 702.77,656.50 702.76,658.11 702.80,659.00 C 702.84,659.89 703.13,659.76 704.00,659.31 C 704.87,658.87 706.58,658.05 708.00,656.33 C 709.42,654.62 710.58,651.39 712.52,649.00 C 714.46,646.61 717.73,643.54 719.64,642.00 C 721.56,640.46 721.77,640.50 724.00,639.76 C 726.23,639.02 730.67,637.91 733.00,637.54 C 735.33,637.17 736.33,637.34 738.00,637.54 C 739.67,637.74 740.26,637.52 743.00,638.76 C 745.74,640.01 752.52,643.63 754.42,645.00 C 756.32,646.37 756.16,644.92 754.42,647.00 C 752.69,649.08 747.07,654.94 744.00,657.48 C 740.93,660.02 738.50,661.08 736.00,662.24 C 733.50,663.40 731.67,664.09 729.00,664.46 C 726.33,664.83 722.83,664.78 720.00,664.46 C 717.17,664.14 714.00,662.82 712.00,662.54 C 710.00,662.26 709.91,661.54 708.00,662.79 C 706.09,664.03 702.44,667.80 700.52,670.00 C 698.60,672.20 698.42,674.09 696.50,676.00 C 694.58,677.91 690.58,680.59 689.00,681.46 C 687.42,682.32 687.53,681.45 687.00,681.21 C 686.47,680.96 685.60,681.20 685.85,680.00 C 686.09,678.80 688.23,676.00 688.46,674.00 C 688.69,672.00 688.13,669.64 687.22,668.00 C 686.31,666.36 685.04,664.14 683.00,664.18 C 680.96,664.22 677.83,667.19 675.00,668.24 C 672.17,669.29 669.17,670.29 666.00,670.46 C 662.83,670.63 658.59,669.82 656.00,669.24 C 653.41,668.66 653.64,668.41 650.47,667.00 C 647.30,665.59 640.74,662.02 637.00,660.76 C 633.26,659.50 629.69,659.88 628.00,659.42 C 626.31,658.96 625.93,659.90 626.85,658.00 C 627.77,656.10 631.50,650.38 633.52,648.00 C 635.55,645.62 636.25,645.29 639.00,643.75 C 641.75,642.21 646.50,639.80 650.00,638.76 C 653.50,637.72 656.67,637.16 660.00,637.50 C 663.33,637.84 667.33,639.61 670.00,640.78 C 672.67,641.95 673.63,642.32 676.00,644.52 C 678.37,646.72 682.71,651.53 684.21,654.00 C 685.71,656.47 684.20,657.88 685.00,659.32 C 685.80,660.77 687.76,661.22 689.00,662.67 C 690.24,664.11 691.62,667.08 692.45,668.00 C 693.28,668.92 693.33,669.34 694.00,668.17 C 694.67,667.00 696.05,663.36 696.46,661.00 C 696.87,658.64 696.67,655.83 696.46,654.00 C 696.25,652.17 696.13,651.38 695.22,650.00 C 694.30,648.62 692.76,646.91 691.00,645.75 C 689.24,644.58 686.69,644.46 684.64,643.00 C 682.60,641.54 680.40,639.33 678.75,637.00 C 677.10,634.67 675.80,632.50 674.76,629.00 C 673.73,625.50 672.84,618.50 672.54,616.00 C 672.24,613.50 672.37,614.53 672.95,614.00 C 673.53,613.47 674.32,612.69 676.00,612.81 C 677.68,612.94 680.67,613.77 683.00,614.76 C 685.33,615.75 688.25,617.54 690.00,618.75 C 691.75,619.95 692.27,620.46 693.48,622.00 C 694.68,623.54 696.41,626.17 697.24,628.00 C 698.07,629.83 698.37,630.33 698.46,633.00 C 698.55,635.67 697.60,641.67 697.77,644.00 C 697.93,646.33 698.91,646.47 699.45,647.00 C 699.99,647.53 699.54,649.21 701.00,647.21 C 702.46,645.21 707.24,638.70 708.21,635.00 C 709.18,631.30 706.92,628.00 706.81,625.00 C 706.70,622.00 706.72,620.00 707.54,617.00 C 708.36,614.00 710.58,609.33 711.75,607.00 C 712.91,604.67 712.98,604.71 714.52,603.00 C 716.06,601.29 718.75,598.45 721.00,596.75 C 723.25,595.04 725.42,593.88 728.00,592.76 C 730.58,591.64 733.00,590.54 736.50,590.00 Z" fill="url(#branch-lower)"/>
+      <path id="leaf-paint-top-01" d="M333 213 C336 191 362 178 394 177 C389 205 361 224 333 213Z" fill="url(#leaf-top-01)"/><path id="leaf-paint-top-02" d="M298 236 C278 218 286 191 307 175 C323 202 317 224 298 236Z" fill="url(#leaf-top-02)"/><path id="leaf-paint-top-03" d="M271 276 C248 256 252 229 266 210 C286 232 287 258 271 276Z" fill="url(#leaf-top-03)"/><path id="leaf-paint-top-04" d="M298 246 C318 223 338 232 354 239 C337 258 315 260 298 246Z" fill="url(#leaf-top-04)"/><path id="leaf-paint-top-05" d="M248 303 C228 292 229 273 242 253 C259 269 259 288 248 303Z" fill="url(#leaf-top-05)"/><path id="leaf-paint-top-06" d="M271 281 C289 262 310 269 322 278 C306 294 286 295 271 281Z" fill="url(#leaf-top-06)"/><path id="leaf-paint-top-07" d="M239 310 C254 294 277 297 297 310 C280 328 257 327 239 310Z" fill="url(#leaf-top-07)"/><path id="leaf-paint-bottom-01" d="M709 639 C703 610 730 590 754 591 C756 615 733 639 709 639Z" fill="url(#leaf-bottom-01)"/><path id="leaf-paint-bottom-02" d="M698 653 C677 648 674 630 675 614 C695 618 705 638 698 653Z" fill="url(#leaf-bottom-02)"/><path id="leaf-paint-bottom-03" d="M706 670 C717 647 738 638 757 646 C745 666 726 678 706 670Z" fill="url(#leaf-bottom-03)"/><path id="leaf-paint-bottom-04" d="M691 672 C671 643 644 645 627 659 C652 664 671 678 691 672Z" fill="url(#leaf-bottom-04)"/>
+      <g id="leaf-colour-washes" filter="url(#soft-leaf-washes)"><path d="M 388.50,178.00 C 390.27,177.71 391.18,177.50 391.64,178.00 C 392.10,178.50 391.71,179.96 391.27,181.00 C 390.83,182.04 390.21,183.73 389.00,184.26 C 387.79,184.78 385.33,184.69 384.00,184.13 C 382.67,183.58 382.00,181.23 381.00,180.92 C 380.00,180.60 378.87,182.22 378.00,182.24 C 377.13,182.25 376.14,181.37 375.79,181.00 C 375.45,180.63 375.72,180.24 375.93,180.00 C 376.13,179.76 376.15,179.59 377.00,179.54 C 377.85,179.50 379.08,179.98 381.00,179.72 C 382.92,179.47 386.73,178.29 388.50,178.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 745.12,592.00 C 745.84,591.75 748.85,591.42 750.00,591.52 C 751.15,591.63 751.62,591.89 752.00,592.64 C 752.38,593.38 752.44,595.09 752.27,596.00 C 752.10,596.91 751.45,597.76 751.00,598.09 C 750.55,598.43 750.91,598.02 749.56,598.00 C 748.20,597.98 743.98,598.42 742.89,598.00 C 741.79,597.58 742.53,596.30 743.00,595.46 C 743.47,594.63 745.34,593.58 745.70,593.00 C 746.05,592.42 744.41,592.25 745.12,592.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 284.50,307.00 C 285.00,306.69 285.42,306.11 286.00,306.06 C 286.58,306.02 286.96,305.90 288.00,306.72 C 289.04,307.54 291.53,310.12 292.21,311.00 C 292.89,311.88 292.38,311.67 292.09,312.00 C 291.81,312.33 291.51,312.56 290.50,313.00 C 289.48,313.44 286.92,314.39 286.00,314.67 C 285.08,314.94 285.33,315.10 285.00,314.64 C 284.67,314.18 285.17,312.62 284.00,311.88 C 282.83,311.15 279.15,310.72 278.00,310.24 C 276.85,309.76 277.09,309.42 277.09,309.00 C 277.09,308.58 277.52,308.06 278.00,307.74 C 278.48,307.41 279.17,307.01 280.00,307.04 C 280.83,307.07 282.25,307.95 283.00,307.94 C 283.75,307.93 284.00,307.31 284.50,307.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 297.64,233.00 C 298.85,231.62 299.27,232.58 300.00,232.73 C 300.73,232.88 301.63,233.52 302.00,233.90 C 302.37,234.28 302.39,234.42 302.22,235.00 C 302.06,235.58 301.75,236.54 301.00,237.38 C 300.25,238.21 298.40,239.06 297.72,240.00 C 297.04,240.94 296.21,242.35 296.92,243.00 C 297.63,243.65 301.12,243.59 302.00,243.93 C 302.88,244.26 302.36,244.67 302.19,245.00 C 302.03,245.33 302.20,245.85 301.00,245.93 C 299.80,246.01 296.52,245.80 295.00,245.48 C 293.48,245.15 292.29,244.75 291.91,244.00 C 291.53,243.25 291.76,242.83 292.72,241.00 C 293.68,239.17 296.43,234.38 297.64,233.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 244.11,272.00 C 244.03,269.86 244.48,270.96 245.00,271.13 C 245.52,271.30 246.80,271.52 247.26,273.00 C 247.71,274.48 247.08,278.33 247.74,280.00 C 248.41,281.67 250.67,282.17 251.25,283.00 C 251.84,283.83 251.69,283.83 251.27,285.00 C 250.84,286.17 249.42,288.85 248.71,290.00 C 247.99,291.15 247.82,292.24 247.00,291.91 C 246.18,291.58 244.03,289.32 243.78,288.00 C 243.52,286.68 245.42,286.67 245.48,284.00 C 245.53,281.33 244.19,274.14 244.11,272.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 273.55,224.00 C 274.55,223.42 274.55,223.61 275.00,223.78 C 275.45,223.94 276.05,224.30 276.25,225.00 C 276.46,225.70 277.21,226.67 276.26,228.00 C 275.30,229.33 271.72,231.78 270.51,233.00 C 269.30,234.22 269.42,234.86 269.00,235.34 C 268.58,235.83 268.33,235.89 268.00,235.91 C 267.67,235.93 267.71,235.95 267.00,235.47 C 266.29,234.98 264.29,233.91 263.74,233.00 C 263.20,232.09 263.37,230.88 263.74,230.00 C 264.12,229.12 265.12,228.20 266.00,227.74 C 266.88,227.29 267.74,227.88 269.00,227.26 C 270.26,226.63 272.55,224.58 273.55,224.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 722.63,642.00 C 723.69,641.67 726.39,640.98 727.12,642.00 C 727.84,643.02 725.84,647.11 727.00,648.11 C 728.16,649.11 732.89,647.84 734.05,648.00 C 735.22,648.16 734.51,648.63 734.00,649.08 C 733.49,649.53 732.67,649.96 731.00,650.69 C 729.33,651.42 725.77,653.23 724.00,653.45 C 722.23,653.67 720.82,652.74 720.39,652.00 C 719.97,651.26 721.39,650.33 721.45,649.00 C 721.51,647.67 720.55,645.17 720.74,644.00 C 720.94,642.83 721.57,642.33 722.63,642.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 656.63,662.00 C 657.50,661.46 657.94,661.33 659.00,661.74 C 660.06,662.16 661.67,664.02 663.00,664.48 C 664.33,664.93 665.50,664.71 667.00,664.48 C 668.50,664.24 670.96,663.14 672.00,663.06 C 673.04,662.99 672.94,663.51 673.26,664.00 C 673.59,664.49 673.98,665.46 673.93,666.00 C 673.89,666.54 673.49,666.95 673.00,667.24 C 672.51,667.53 671.67,667.52 671.00,667.73 C 670.33,667.93 670.67,668.35 669.00,668.48 C 667.33,668.60 663.33,668.68 661.00,668.48 C 658.67,668.27 656.20,667.83 655.00,667.25 C 653.80,666.68 653.50,665.88 653.78,665.00 C 654.05,664.12 655.76,662.54 656.63,662.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 685.90,623.00 C 686.57,622.26 686.15,622.49 687.00,622.78 C 687.85,623.06 690.13,624.02 691.00,624.72 C 691.87,625.43 692.56,625.94 692.22,627.00 C 691.89,628.06 690.20,630.47 689.00,631.09 C 687.80,631.72 686.00,630.51 685.00,630.74 C 684.00,630.98 683.83,631.84 683.00,632.50 C 682.17,633.16 680.88,634.95 680.00,634.70 C 679.12,634.45 678.11,632.12 677.73,631.00 C 677.35,629.88 677.37,628.74 677.74,628.00 C 678.12,627.26 679.12,626.68 680.00,626.55 C 680.88,626.42 682.02,627.81 683.00,627.22 C 683.98,626.63 685.23,623.74 685.90,623.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 310.62,206.00 C 311.17,205.73 312.52,205.03 313.00,205.36 C 313.48,205.70 313.87,206.89 313.48,208.00 C 313.08,209.11 311.39,210.44 310.64,212.00 C 309.90,213.56 309.77,216.00 309.00,217.37 C 308.23,218.74 307.17,220.04 306.00,220.22 C 304.83,220.41 302.85,218.86 302.00,218.49 C 301.15,218.12 301.26,218.58 300.88,218.00 C 300.51,217.42 299.92,216.17 299.73,215.00 C 299.54,213.83 299.37,211.95 299.74,211.00 C 300.12,210.05 301.29,209.11 302.00,209.30 C 302.71,209.49 303.17,211.64 304.00,212.13 C 304.83,212.63 306.13,212.46 307.00,212.27 C 307.87,212.08 308.74,211.88 309.20,211.00 C 309.66,210.12 309.51,207.83 309.74,207.00 C 309.98,206.17 310.08,206.27 310.62,206.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 268.39,247.00 C 269.55,246.70 269.23,245.72 270.00,246.09 C 270.77,246.46 272.24,248.72 273.00,249.21 C 273.76,249.70 274.21,249.38 274.54,249.00 C 274.88,248.62 274.76,247.29 275.00,246.95 C 275.24,246.62 275.99,246.83 276.01,247.00 C 276.03,247.17 275.27,247.33 275.15,248.00 C 275.02,248.67 275.86,249.33 275.25,251.00 C 274.65,252.67 272.19,256.50 271.51,258.00 C 270.84,259.50 271.45,259.57 271.20,260.00 C 270.95,260.43 270.65,261.43 270.00,260.59 C 269.35,259.76 268.49,256.77 267.28,255.00 C 266.07,253.23 263.46,251.19 262.74,250.00 C 262.03,248.81 262.06,248.39 263.00,247.89 C 263.94,247.39 267.22,247.30 268.39,247.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 697.62,651.00 C 697.79,648.37 698.25,650.33 699.00,650.33 C 699.75,650.33 701.70,650.06 702.11,651.00 C 702.53,651.94 701.52,654.32 701.50,656.00 C 701.48,657.68 701.75,660.21 702.00,661.07 C 702.25,661.94 701.67,661.93 703.00,661.21 C 704.33,660.49 708.65,657.48 710.00,656.78 C 711.35,656.08 710.87,656.46 711.08,657.00 C 711.29,657.54 712.93,658.45 711.26,660.00 C 709.58,661.55 703.21,665.25 701.00,666.27 C 698.79,667.29 698.56,668.66 698.00,666.12 C 697.44,663.57 697.46,653.63 697.62,651.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 336.90,235.00 C 337.61,234.46 337.96,234.50 338.27,235.00 C 338.58,235.50 338.28,237.00 338.76,238.00 C 339.24,239.00 340.72,239.67 341.14,241.00 C 341.55,242.33 341.61,244.79 341.26,246.00 C 340.90,247.21 340.21,247.57 339.00,248.28 C 337.79,248.99 335.85,249.98 334.00,250.27 C 332.15,250.56 328.96,250.21 327.93,250.00 C 326.89,249.79 327.61,249.38 327.79,249.00 C 327.97,248.62 328.13,248.00 329.00,247.75 C 329.87,247.49 332.09,247.76 333.00,247.47 C 333.91,247.18 334.30,246.64 334.47,246.00 C 334.63,245.36 334.82,244.31 334.00,243.64 C 333.18,242.97 330.49,242.44 329.54,242.00 C 328.59,241.56 328.45,241.33 328.31,241.00 C 328.17,240.67 327.77,240.46 328.71,240.00 C 329.66,239.54 332.64,239.09 334.00,238.26 C 335.36,237.42 336.19,235.54 336.90,235.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 741.86,642.00 C 742.68,641.12 743.48,641.27 745.00,641.73 C 746.52,642.19 749.88,644.05 751.00,644.76 C 752.12,645.48 752.47,645.29 751.69,646.00 C 750.91,646.71 747.04,648.17 746.30,649.00 C 745.56,649.83 747.20,650.33 747.23,651.00 C 747.26,651.67 747.02,652.29 746.49,653.00 C 745.95,653.71 744.75,654.78 744.00,655.26 C 743.25,655.73 742.67,655.32 742.00,655.86 C 741.33,656.40 740.75,657.80 740.00,658.49 C 739.25,659.18 738.33,659.54 737.50,660.00 C 736.67,660.46 735.92,661.02 735.00,661.27 C 734.08,661.52 732.83,661.63 732.00,661.48 C 731.17,661.32 730.41,660.77 730.00,660.36 C 729.59,659.95 729.56,659.42 729.56,659.00 C 729.56,658.58 728.93,658.57 730.00,657.86 C 731.07,657.15 734.31,655.37 736.00,654.73 C 737.69,654.09 739.09,654.79 740.12,654.00 C 741.16,653.21 742.22,651.17 742.21,650.00 C 742.20,648.83 740.12,648.33 740.06,647.00 C 740.01,645.67 741.04,642.88 741.86,642.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 380.67,192.00 C 381.34,191.55 381.45,191.62 382.00,191.76 C 382.55,191.90 383.59,192.32 384.00,192.86 C 384.41,193.40 384.64,194.23 384.48,195.00 C 384.31,195.77 383.80,196.82 383.00,197.49 C 382.20,198.15 380.42,198.08 379.67,199.00 C 378.92,199.92 379.77,201.45 378.49,203.00 C 377.21,204.55 373.75,207.07 372.00,208.28 C 370.25,209.49 369.50,209.74 368.00,210.27 C 366.50,210.80 364.01,211.33 363.00,211.46 C 361.99,211.58 361.99,211.41 361.93,211.00 C 361.86,210.59 360.93,210.33 362.63,209.00 C 364.32,207.67 370.85,204.83 372.09,203.00 C 373.34,201.17 370.34,199.00 370.08,198.00 C 369.82,197.00 369.89,197.71 370.54,197.00 C 371.20,196.29 372.76,194.17 374.00,193.74 C 375.24,193.32 376.89,194.73 378.00,194.44 C 379.11,194.15 380.01,192.45 380.67,192.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 248.75,295.00 C 250.09,294.06 250.67,293.67 250.01,295.00 C 249.35,296.33 245.63,301.49 244.79,303.00 C 243.96,304.51 243.80,303.67 245.00,304.08 C 246.20,304.50 249.33,305.24 252.00,305.48 C 254.67,305.72 259.13,305.27 261.00,305.52 C 262.87,305.78 262.98,306.42 263.22,307.00 C 263.47,307.58 263.36,307.96 262.49,309.00 C 261.62,310.04 259.25,312.68 258.00,313.23 C 256.75,313.77 257.00,313.37 255.00,312.29 C 253.00,311.21 248.67,307.07 246.00,306.74 C 243.33,306.41 240.50,309.64 239.00,310.29 C 237.50,310.93 237.39,310.66 237.00,310.61 C 236.61,310.56 236.66,310.33 236.66,310.00 C 236.66,309.67 236.40,309.48 237.00,308.65 C 237.60,307.81 239.42,306.34 240.26,305.00 C 241.09,303.66 240.58,302.28 242.00,300.61 C 243.42,298.94 247.42,295.94 248.75,295.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 649.92,642.00 C 650.21,641.30 650.32,641.37 651.00,641.79 C 651.68,642.21 653.17,643.45 654.00,644.50 C 654.83,645.56 655.17,647.45 656.00,648.12 C 656.83,648.78 658.00,648.53 659.00,648.48 C 660.00,648.42 660.50,647.40 662.00,647.77 C 663.50,648.15 666.17,649.49 668.00,650.74 C 669.83,651.99 670.67,654.60 673.00,655.27 C 675.33,655.94 680.29,654.62 682.00,654.75 C 683.71,654.87 682.82,654.79 683.26,656.00 C 683.69,657.21 685.18,660.95 684.64,662.00 C 684.10,663.05 681.94,662.89 680.00,662.27 C 678.06,661.65 675.17,659.70 673.00,658.28 C 670.83,656.85 670.17,654.53 667.00,653.73 C 663.83,652.93 657.00,653.89 654.00,653.48 C 651.00,653.07 650.04,652.02 649.00,651.28 C 647.96,650.53 647.72,649.88 647.76,649.00 C 647.81,648.12 648.91,647.17 649.27,646.00 C 649.63,644.83 649.64,642.70 649.92,642.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 269.74,266.00 C 270.40,264.94 270.62,265.18 271.00,265.07 C 271.38,264.96 271.63,265.02 272.00,265.34 C 272.37,265.66 274.10,265.22 273.22,267.00 C 272.35,268.78 267.63,274.12 266.76,276.00 C 265.89,277.88 267.29,277.87 268.00,278.26 C 268.71,278.64 269.17,279.20 271.00,278.29 C 272.83,277.38 277.17,273.35 279.00,272.79 C 280.83,272.23 281.33,274.62 282.00,274.93 C 282.67,275.25 282.64,274.82 283.00,274.67 C 283.36,274.51 283.80,274.67 284.13,274.00 C 284.47,273.33 284.36,271.51 285.00,270.64 C 285.64,269.77 287.33,269.07 288.00,268.76 C 288.67,268.45 288.50,268.46 289.00,268.77 C 289.50,269.09 290.66,269.96 291.00,270.66 C 291.34,271.37 290.90,272.40 291.06,273.00 C 291.23,273.60 290.84,274.11 292.00,274.24 C 293.16,274.37 296.83,273.73 298.00,273.77 C 299.17,273.82 298.46,273.98 299.00,274.51 C 299.54,275.05 300.97,276.09 301.23,277.00 C 301.48,277.91 300.60,279.31 300.56,280.00 C 300.52,280.69 300.26,280.91 301.00,281.12 C 301.74,281.33 303.83,281.65 305.00,281.26 C 306.17,280.86 307.00,279.20 308.00,278.74 C 309.00,278.28 309.73,278.46 311.00,278.50 C 312.27,278.54 315.10,278.35 315.60,279.00 C 316.10,279.65 314.60,281.51 314.00,282.39 C 313.40,283.27 313.00,283.63 312.00,284.28 C 311.00,284.93 309.33,285.82 308.00,286.27 C 306.67,286.72 305.00,286.98 304.00,286.96 C 303.00,286.94 302.50,286.65 302.00,286.14 C 301.50,285.62 302.00,284.19 301.00,283.88 C 300.00,283.56 297.04,284.40 296.00,284.25 C 294.96,284.11 295.04,283.71 294.74,283.00 C 294.45,282.29 294.71,280.75 294.26,280.00 C 293.80,279.25 294.88,278.77 292.00,278.52 C 289.12,278.28 281.50,277.87 277.00,278.52 C 272.50,279.18 267.19,281.86 265.00,282.44 C 262.81,283.02 264.26,282.57 263.89,282.00 C 263.51,281.43 262.92,280.00 262.73,279.00 C 262.54,278.00 262.03,277.27 262.74,276.00 C 263.45,274.73 265.83,273.07 267.00,271.40 C 268.17,269.73 269.07,267.06 269.74,266.00 Z" fill="#4e7608" opacity="0.32"/><path d="M 741.52,601.00 C 742.43,600.59 743.22,600.36 744.00,600.52 C 744.78,600.69 745.85,601.59 746.22,602.00 C 746.59,602.41 746.76,602.13 746.22,603.00 C 745.69,603.87 744.20,606.68 743.00,607.22 C 741.80,607.77 739.87,606.63 739.00,606.26 C 738.13,605.88 737.86,605.54 737.78,605.00 C 737.70,604.46 737.89,603.67 738.51,603.00 C 739.14,602.33 740.60,601.41 741.52,601.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 695.82,665.00 C 696.31,664.83 696.50,667.42 696.87,668.00 C 697.23,668.58 697.48,668.41 698.00,668.47 C 698.52,668.53 699.33,668.62 700.00,668.37 C 700.67,668.13 701.66,667.06 702.04,667.00 C 702.41,666.94 702.90,666.78 702.23,668.00 C 701.55,669.22 699.21,672.83 698.00,674.33 C 696.79,675.83 695.22,677.39 694.97,677.00 C 694.71,676.61 696.31,673.06 696.48,672.00 C 696.66,670.94 696.43,671.16 696.00,670.66 C 695.57,670.16 693.94,669.94 693.91,669.00 C 693.88,668.06 695.32,665.17 695.82,665.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 338.71,196.00 C 339.92,194.50 339.90,195.50 340.03,196.00 C 340.16,196.50 339.46,197.67 339.49,199.00 C 339.53,200.33 340.34,202.96 340.25,204.00 C 340.17,205.04 339.88,205.09 339.00,205.22 C 338.12,205.35 336.00,204.56 335.00,204.78 C 334.00,205.00 333.37,206.51 333.00,206.55 C 332.63,206.59 331.85,206.76 332.80,205.00 C 333.76,203.24 337.51,197.50 338.71,196.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 303.49,268.00 C 302.99,267.45 303.75,267.48 305.00,267.94 C 306.25,268.41 309.17,269.64 311.00,270.78 C 312.83,271.92 315.16,273.89 316.00,274.76 C 316.84,275.63 316.53,276.24 316.03,276.00 C 315.53,275.76 314.34,274.12 313.00,273.32 C 311.66,272.53 309.59,272.11 308.00,271.22 C 306.41,270.33 303.99,268.55 303.49,268.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 723.64,608.00 C 724.18,607.79 725.27,607.38 726.00,607.75 C 726.73,608.11 726.94,609.64 728.00,610.18 C 729.06,610.73 731.45,610.53 732.36,611.00 C 733.27,611.47 733.45,612.33 733.45,613.00 C 733.45,613.67 733.10,614.51 732.36,615.00 C 731.62,615.49 729.73,615.88 729.00,615.93 C 728.27,615.99 728.33,615.93 728.00,615.33 C 727.67,614.73 727.50,612.85 727.00,612.34 C 726.50,611.82 725.69,612.46 725.00,612.24 C 724.31,612.02 723.24,611.54 722.87,611.00 C 722.49,610.46 722.62,609.50 722.75,609.00 C 722.87,608.50 723.10,608.21 723.64,608.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 262.63,313.00 C 263.52,312.67 264.76,312.83 265.36,313.00 C 265.96,313.17 265.98,313.07 266.26,314.00 C 266.53,314.93 266.31,317.60 267.00,318.60 C 267.69,319.60 270.42,319.91 270.42,320.00 C 270.42,320.09 268.40,319.45 267.00,319.16 C 265.60,318.87 263.54,318.80 262.00,318.27 C 260.46,317.74 258.49,316.55 257.74,316.00 C 256.98,315.45 257.07,315.17 257.45,315.00 C 257.83,314.83 259.14,315.30 260.00,314.96 C 260.86,314.63 261.73,313.33 262.63,313.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 256.82,223.00 C 257.59,223.83 260.06,227.50 260.45,229.00 C 260.84,230.50 259.73,231.25 259.16,232.00 C 258.58,232.75 257.69,232.91 257.00,233.51 C 256.31,234.11 255.41,236.33 255.00,235.58 C 254.59,234.82 254.39,230.93 254.52,229.00 C 254.65,227.07 255.40,225.00 255.79,224.00 C 256.17,223.00 256.04,222.17 256.82,223.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 271.56,303.00 C 272.75,302.83 272.76,302.67 273.08,303.00 C 273.40,303.33 273.78,304.17 273.47,305.00 C 273.17,305.83 271.57,306.83 271.27,308.00 C 270.97,309.17 271.88,311.09 271.67,312.00 C 271.46,312.91 270.67,313.30 270.00,313.47 C 269.33,313.63 268.22,313.41 267.64,313.00 C 267.06,312.59 266.59,312.00 266.52,311.00 C 266.46,310.00 267.35,308.00 267.23,307.00 C 267.10,306.00 266.01,305.50 265.79,305.00 C 265.57,304.50 264.96,304.33 265.93,304.00 C 266.89,303.67 270.37,303.17 271.56,303.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 312.99,182.00 C 313.13,181.83 314.49,184.33 315.07,186.00 C 315.66,187.67 316.25,190.50 316.48,192.00 C 316.70,193.50 316.26,194.17 316.42,195.00 C 316.58,195.83 317.31,196.33 317.44,197.00 C 317.57,197.67 317.41,198.50 317.21,199.00 C 317.01,199.50 316.41,199.00 316.22,200.00 C 316.03,201.00 316.28,203.95 316.07,205.00 C 315.87,206.05 315.14,206.48 315.00,206.31 C 314.86,206.15 315.13,205.89 315.23,204.00 C 315.32,202.11 315.77,196.71 315.57,195.00 C 315.36,193.29 314.76,194.03 314.00,193.74 C 313.24,193.45 311.74,193.71 311.00,193.26 C 310.26,192.80 309.72,191.56 309.56,191.00 C 309.39,190.44 309.43,190.20 310.00,189.89 C 310.57,189.58 312.30,189.62 313.00,189.14 C 313.70,188.65 314.22,188.19 314.22,187.00 C 314.22,185.81 312.85,182.17 312.99,182.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 674.63,613.00 C 675.82,612.96 678.27,613.31 680.00,613.77 C 681.73,614.23 683.28,614.89 685.00,615.76 C 686.72,616.64 688.85,617.79 690.35,619.00 C 691.85,620.21 693.56,622.33 694.00,623.03 C 694.44,623.74 694.05,623.90 693.00,623.23 C 691.95,622.55 688.86,619.97 687.69,619.00 C 686.52,618.03 686.78,617.67 686.00,617.38 C 685.22,617.09 684.67,617.75 683.00,617.25 C 681.33,616.76 677.36,614.79 676.00,614.42 C 674.64,614.04 675.15,614.40 674.84,615.00 C 674.52,615.60 674.04,617.00 674.14,618.00 C 674.24,619.00 675.29,620.07 675.43,621.00 C 675.57,621.93 675.27,623.41 675.00,623.57 C 674.73,623.74 673.99,622.93 673.79,622.00 C 673.59,621.07 673.99,619.00 673.78,618.00 C 673.58,617.00 672.71,616.67 672.56,616.00 C 672.41,615.33 672.54,614.50 672.89,614.00 C 673.23,613.50 673.45,613.04 674.63,613.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 271.61,216.00 C 272.61,215.24 272.56,215.42 273.00,215.59 C 273.44,215.76 273.45,215.43 274.28,217.00 C 275.11,218.57 277.96,224.35 278.00,225.02 C 278.04,225.69 275.36,221.71 274.52,221.00 C 273.69,220.29 273.42,220.69 273.00,220.77 C 272.58,220.86 272.67,220.93 272.00,221.51 C 271.33,222.09 270.17,223.60 269.00,224.26 C 267.83,224.91 265.85,225.32 265.00,225.44 C 264.15,225.57 264.05,225.63 263.89,225.00 C 263.72,224.37 263.48,222.45 264.00,221.64 C 264.52,220.83 265.73,221.08 267.00,220.14 C 268.27,219.20 270.61,216.76 271.61,216.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 279.80,236.00 C 280.14,235.70 279.89,234.75 280.00,235.42 C 280.11,236.08 280.64,238.49 280.48,240.00 C 280.31,241.51 279.75,244.17 279.00,244.46 C 278.25,244.75 277.00,242.20 276.00,241.74 C 275.00,241.29 273.83,241.67 273.00,241.73 C 272.17,241.78 271.41,242.20 271.00,242.08 C 270.59,241.95 270.58,241.68 270.54,241.00 C 270.50,240.32 270.56,238.67 270.74,238.00 C 270.93,237.33 270.93,237.25 271.64,237.00 C 272.35,236.75 273.94,236.49 275.00,236.52 C 276.06,236.56 277.20,237.31 278.00,237.23 C 278.80,237.14 279.47,236.30 279.80,236.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 288.89,207.00 C 288.97,205.90 288.48,206.04 289.00,206.42 C 289.52,206.80 291.00,208.70 292.00,209.26 C 293.00,209.81 294.12,209.29 295.00,209.74 C 295.88,210.20 296.90,211.12 297.26,212.00 C 297.61,212.88 297.66,214.42 297.12,215.00 C 296.57,215.58 294.87,215.33 294.00,215.50 C 293.13,215.67 292.37,215.40 291.87,216.00 C 291.37,216.60 291.31,218.71 291.00,219.11 C 290.69,219.50 290.41,219.37 290.00,218.35 C 289.59,217.33 288.71,214.89 288.52,213.00 C 288.34,211.11 288.81,208.10 288.89,207.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 694.99,626.00 C 694.85,625.49 695.66,625.59 696.00,625.93 C 696.34,626.26 696.64,626.82 697.06,628.00 C 697.47,629.18 698.32,631.40 698.48,633.00 C 698.63,634.60 698.30,637.08 698.00,637.58 C 697.70,638.08 697.03,636.39 696.69,636.00 C 696.36,635.61 696.45,635.39 696.00,635.26 C 695.55,635.13 694.54,635.44 694.00,635.22 C 693.46,635.01 692.84,634.54 692.78,634.00 C 692.71,633.46 692.97,632.67 693.62,632.00 C 694.28,631.33 696.18,630.50 696.72,630.00 C 697.25,629.50 697.13,629.67 696.84,629.00 C 696.55,628.33 695.13,626.51 694.99,626.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 262.88,298.00 C 265.29,297.37 264.57,297.74 264.42,298.00 C 264.27,298.26 262.57,298.71 262.00,299.56 C 261.43,300.41 262.83,302.47 261.00,303.12 C 259.17,303.76 253.02,303.47 251.00,303.46 C 248.98,303.44 249.06,303.28 248.89,303.00 C 248.73,302.72 247.67,302.62 250.00,301.79 C 252.33,300.96 260.48,298.63 262.88,298.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 241.72,255.00 C 242.89,253.37 242.12,253.99 243.00,254.24 C 243.88,254.50 245.67,255.48 247.00,256.55 C 248.33,257.62 250.00,259.24 251.00,260.65 C 252.00,262.06 253.35,264.73 253.01,265.00 C 252.68,265.27 249.99,262.13 249.00,262.30 C 248.01,262.46 247.56,265.37 247.06,266.00 C 246.56,266.63 246.59,266.74 246.00,266.07 C 245.41,265.41 243.60,263.35 243.52,262.00 C 243.43,260.65 245.39,259.10 245.47,258.00 C 245.55,256.90 244.69,255.57 244.00,255.40 C 243.31,255.24 241.81,255.73 241.33,257.00 C 240.84,258.27 241.98,261.83 241.09,263.00 C 240.19,264.17 235.86,265.33 235.97,264.00 C 236.07,262.67 240.55,256.63 241.72,255.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 234.82,268.00 C 235.33,268.33 235.77,271.21 236.64,272.00 C 237.50,272.79 238.99,272.23 240.00,272.73 C 241.01,273.23 242.28,274.29 242.67,275.00 C 243.06,275.71 243.27,276.52 242.33,277.00 C 241.38,277.48 237.99,277.38 237.00,277.88 C 236.01,278.38 236.34,279.15 236.39,280.00 C 236.45,280.85 236.39,281.54 237.32,283.00 C 238.25,284.46 240.89,287.39 242.00,288.73 C 243.11,290.07 243.83,290.62 244.00,291.03 C 244.17,291.45 243.83,291.88 243.00,291.23 C 242.17,290.57 240.55,289.49 239.00,287.12 C 237.45,284.75 234.64,279.85 233.73,277.00 C 232.82,274.15 233.38,271.50 233.56,270.00 C 233.74,268.50 234.31,267.67 234.82,268.00 Z" fill="#bdc727" opacity="0.38"/><path d="M 319.50,231.00 C 322.17,230.62 329.08,230.39 332.00,230.52 C 334.92,230.65 335.98,231.38 337.00,231.79 C 338.02,232.20 339.11,232.38 338.11,233.00 C 337.11,233.62 332.52,235.15 331.00,235.50 C 329.48,235.85 329.40,235.52 329.00,235.11 C 328.60,234.69 328.95,233.39 328.62,233.00 C 328.29,232.61 327.47,232.57 327.00,232.74 C 326.53,232.91 325.77,233.29 325.78,234.00 C 325.79,234.71 327.02,236.43 327.06,237.00 C 327.09,237.57 327.01,237.95 326.00,237.40 C 324.99,236.86 322.83,234.44 321.00,233.73 C 319.17,233.02 316.34,233.10 315.00,233.14 C 313.66,233.19 313.15,234.03 312.98,234.00 C 312.81,233.97 313.50,233.15 314.00,232.95 C 314.50,232.74 315.08,233.11 316.00,232.78 C 316.92,232.46 316.84,231.38 319.50,231.00 Z" fill="#bdc727" opacity="0.38"/></g>
+      <path d="M219 347 C223 316 244 299 261 280 C280 258 302 232 338 210" stroke="#6c9411" stroke-width="4.1" stroke-linecap="round"/>
+      <path d="M690 681 C704 666 700 652 717 630" stroke="#78a018" stroke-width="3.1" stroke-linecap="round"/>
+      <g id="leaf-veins" stroke="#59791a" stroke-width=".9" stroke-linecap="round" opacity=".32"><path d="M333 213 Q363.9 196.6 393 177"/><path d="M349.8 202.9 Q350.9 196.3 354.7 188.0" stroke-width=".55" opacity=".7"/><path d="M349.8 202.9 Q356.2 205.0 365.3 205.6" stroke-width=".55" opacity=".7"/><path d="M361.2 196.1 Q361.6 188.1 364.6 178.6" stroke-width=".55" opacity=".7"/><path d="M361.2 196.1 Q368.4 199.5 378.2 201.3" stroke-width=".55" opacity=".7"/><path d="M372.0 189.6 Q372.7 182.3 376.1 173.3" stroke-width=".55" opacity=".7"/><path d="M372.0 189.6 Q378.8 192.4 388.3 193.6" stroke-width=".55" opacity=".7"/><path d="M381.0 184.2 Q382.8 178.6 387.2 171.4" stroke-width=".55" opacity=".7"/><path d="M381.0 184.2 Q386.8 185.3 395.2 184.8" stroke-width=".55" opacity=".7"/><path d="M298 235 Q300.2 205.1 307 176"/><path d="M300.5 218.5 Q296.8 214.1 293.4 207.1" stroke-width=".55" opacity=".7"/><path d="M300.5 218.5 Q305.4 215.4 310.7 209.8" stroke-width=".55" opacity=".7"/><path d="M302.2 207.3 Q297.2 202.7 292.6 195.5" stroke-width=".55" opacity=".7"/><path d="M302.2 207.3 Q308.4 204.4 314.9 198.9" stroke-width=".55" opacity=".7"/><path d="M303.9 196.7 Q299.4 192.2 295.4 185.1" stroke-width=".55" opacity=".7"/><path d="M303.9 196.7 Q309.4 193.7 315.4 188.1" stroke-width=".55" opacity=".7"/><path d="M305.2 187.8 Q302.5 183.6 300.1 176.8" stroke-width=".55" opacity=".7"/><path d="M305.2 187.8 Q309.1 184.6 313.3 178.8" stroke-width=".55" opacity=".7"/><path d="M271 275 Q270.2 242.9 266 211"/><path d="M269.6 257.1 Q264.6 253.4 259.4 246.9" stroke-width=".55" opacity=".7"/><path d="M269.6 257.1 Q274.0 252.7 278.1 245.5" stroke-width=".55" opacity=".7"/><path d="M268.6 244.9 Q262.3 241.4 255.7 235.0" stroke-width=".55" opacity=".7"/><path d="M268.6 244.9 Q274.4 240.4 279.9 233.1" stroke-width=".55" opacity=".7"/><path d="M267.8 233.4 Q262.0 229.8 256.1 223.4" stroke-width=".55" opacity=".7"/><path d="M267.8 233.4 Q272.9 228.9 277.7 221.7" stroke-width=".55" opacity=".7"/><path d="M267.0 223.8 Q263.1 220.0 259.0 213.5" stroke-width=".55" opacity=".7"/><path d="M267.0 223.8 Q270.3 219.5 273.3 212.4" stroke-width=".55" opacity=".7"/><path d="M298 245 Q324.8 240.6 352 239"/><path d="M313.1 243.3 Q316.1 239.0 321.4 234.4" stroke-width=".55" opacity=".7"/><path d="M313.1 243.3 Q317.0 246.9 323.2 250.2" stroke-width=".55" opacity=".7"/><path d="M323.4 242.2 Q326.2 236.7 331.4 230.9" stroke-width=".55" opacity=".7"/><path d="M323.4 242.2 Q327.3 246.9 333.7 251.4" stroke-width=".55" opacity=".7"/><path d="M333.1 241.1 Q336.0 236.2 341.3 230.9" stroke-width=".55" opacity=".7"/><path d="M333.1 241.1 Q337.0 245.3 343.3 249.2" stroke-width=".55" opacity=".7"/><path d="M341.2 240.2 Q344.3 236.8 349.7 233.1" stroke-width=".55" opacity=".7"/><path d="M341.2 240.2 Q344.9 242.8 351.1 245.2" stroke-width=".55" opacity=".7"/><path d="M248 302 Q246.2 277.8 242 254"/><path d="M246.3 288.6 Q242.4 286.0 238.3 281.3" stroke-width=".55" opacity=".7"/><path d="M246.3 288.6 Q249.5 285.1 252.3 279.5" stroke-width=".55" opacity=".7"/><path d="M245.2 279.4 Q240.3 277.0 235.1 272.4" stroke-width=".55" opacity=".7"/><path d="M245.2 279.4 Q249.3 275.8 253.2 270.1" stroke-width=".55" opacity=".7"/><path d="M244.1 270.8 Q239.7 268.3 235.0 263.7" stroke-width=".55" opacity=".7"/><path d="M244.1 270.8 Q247.8 267.3 251.2 261.6" stroke-width=".55" opacity=".7"/><path d="M243.2 263.6 Q240.1 260.9 236.8 256.1" stroke-width=".55" opacity=".7"/><path d="M243.2 263.6 Q245.5 260.2 247.5 254.8" stroke-width=".55" opacity=".7"/><path d="M271 280 Q295.4 277.1 320 278"/><path d="M284.7 279.4 Q287.7 275.7 292.8 271.9" stroke-width=".55" opacity=".7"/><path d="M284.7 279.4 Q288.0 282.9 293.3 286.3" stroke-width=".55" opacity=".7"/><path d="M294.0 279.1 Q296.9 274.3 302.0 269.5" stroke-width=".55" opacity=".7"/><path d="M294.0 279.1 Q297.3 283.6 302.7 288.0" stroke-width=".55" opacity=".7"/><path d="M302.9 278.7 Q305.8 274.4 310.8 270.1" stroke-width=".55" opacity=".7"/><path d="M302.9 278.7 Q306.1 282.7 311.5 286.7" stroke-width=".55" opacity=".7"/><path d="M310.2 278.4 Q313.2 275.5 318.3 272.6" stroke-width=".55" opacity=".7"/><path d="M310.2 278.4 Q313.4 281.0 318.8 283.5" stroke-width=".55" opacity=".7"/><path d="M239 310 Q267.0 311.1 295 310"/><path d="M254.7 310.0 Q258.2 305.9 264.2 301.8" stroke-width=".55" opacity=".7"/><path d="M254.7 310.0 Q258.2 314.1 264.2 318.2" stroke-width=".55" opacity=".7"/><path d="M265.3 310.0 Q268.8 304.7 274.8 299.4" stroke-width=".55" opacity=".7"/><path d="M265.3 310.0 Q268.8 315.3 274.8 320.6" stroke-width=".55" opacity=".7"/><path d="M275.4 310.0 Q278.9 305.3 284.9 300.5" stroke-width=".55" opacity=".7"/><path d="M275.4 310.0 Q278.9 314.7 284.9 319.5" stroke-width=".55" opacity=".7"/><path d="M283.8 310.0 Q287.3 306.9 293.3 303.7" stroke-width=".55" opacity=".7"/><path d="M283.8 310.0 Q287.3 313.1 293.3 316.3" stroke-width=".55" opacity=".7"/><path d="M709 638 Q729.8 613.4 753 591"/><path d="M721.3 624.8 Q720.7 618.7 721.9 610.4" stroke-width=".55" opacity=".7"/><path d="M721.3 624.8 Q727.5 625.1 735.7 623.3" stroke-width=".55" opacity=".7"/><path d="M729.7 615.9 Q728.0 608.8 728.3 599.6" stroke-width=".55" opacity=".7"/><path d="M729.7 615.9 Q736.9 617.1 746.1 616.2" stroke-width=".55" opacity=".7"/><path d="M737.6 607.5 Q736.4 600.8 737.1 592.0" stroke-width=".55" opacity=".7"/><path d="M737.6 607.5 Q744.4 608.2 753.0 606.9" stroke-width=".55" opacity=".7"/><path d="M744.2 600.4 Q744.3 595.0 746.4 587.5" stroke-width=".55" opacity=".7"/><path d="M744.2 600.4 Q749.6 599.9 756.9 597.3" stroke-width=".55" opacity=".7"/><path d="M697 652 Q686.7 633.1 675 615"/><path d="M690.8 641.6 Q686.7 640.9 681.7 638.6" stroke-width=".55" opacity=".7"/><path d="M690.8 641.6 Q692.2 637.7 692.5 632.1" stroke-width=".55" opacity=".7"/><path d="M686.7 634.6 Q681.8 634.4 675.9 632.5" stroke-width=".55" opacity=".7"/><path d="M686.7 634.6 Q688.8 630.2 689.9 624.2" stroke-width=".55" opacity=".7"/><path d="M682.7 628.0 Q678.2 627.5 672.7 625.4" stroke-width=".55" opacity=".7"/><path d="M682.7 628.0 Q684.4 623.8 685.2 617.9" stroke-width=".55" opacity=".7"/><path d="M679.4 622.4 Q675.9 621.3 671.5 618.6" stroke-width=".55" opacity=".7"/><path d="M679.4 622.4 Q680.1 618.8 679.8 613.7" stroke-width=".55" opacity=".7"/><path d="M706 670 Q730.4 656.7 756 646"/><path d="M720.0 663.3 Q721.4 658.1 725.0 651.9" stroke-width=".55" opacity=".7"/><path d="M720.0 663.3 Q724.9 665.4 732.0 666.5" stroke-width=".55" opacity=".7"/><path d="M729.5 658.7 Q730.4 652.5 733.5 645.2" stroke-width=".55" opacity=".7"/><path d="M729.5 658.7 Q734.9 661.9 742.5 664.1" stroke-width=".55" opacity=".7"/><path d="M738.5 654.4 Q739.6 648.7 742.9 641.9" stroke-width=".55" opacity=".7"/><path d="M738.5 654.4 Q743.7 657.1 751.1 658.8" stroke-width=".55" opacity=".7"/><path d="M746.0 650.8 Q747.8 646.5 751.8 641.1" stroke-width=".55" opacity=".7"/><path d="M746.0 650.8 Q750.5 652.1 757.2 652.3" stroke-width=".55" opacity=".7"/><path d="M690 672 Q659.3 663.9 628 659"/><path d="M672.6 668.4 Q667.8 672.1 660.2 675.2" stroke-width=".55" opacity=".7"/><path d="M672.6 668.4 Q669.7 663.0 664.0 657.1" stroke-width=".55" opacity=".7"/><path d="M660.9 665.9 Q655.7 670.9 647.9 675.4" stroke-width=".55" opacity=".7"/><path d="M660.9 665.9 Q658.2 659.2 652.8 652.0" stroke-width=".55" opacity=".7"/><path d="M649.7 663.5 Q644.7 668.0 637.0 671.8" stroke-width=".55" opacity=".7"/><path d="M649.7 663.5 Q646.9 657.5 641.4 650.8" stroke-width=".55" opacity=".7"/><path d="M640.4 661.6 Q635.8 664.2 628.4 666.3" stroke-width=".55" opacity=".7"/><path d="M640.4 661.6 Q637.2 657.3 631.3 652.5" stroke-width=".55" opacity=".7"/></g>
+      <path d="M222 343 C228 314 247 299 262 282 C282 260 307 231 335 213 M693 676 C706 662 705 645 717 632" stroke="#b4c64c" stroke-width=".9" stroke-linecap="round" opacity=".43"/>
+    </g>
+  </g>
+        </svg>
+      </div>
+      </div>
+      <div class="badge">画布 <b id="badgeSize">887 × 887</b></div>
+      <div class="zoombar" role="group" aria-label="画布缩放">
+        <button id="btnZoomOut" title="缩小" aria-label="缩小画布">−</button>
+        <span class="pct" id="zoomValue">100%</span>
+        <button id="btnZoomIn" title="放大" aria-label="放大画布">+</button>
+        <button class="fit" id="btnActualSize" title="以原始像素显示">100%</button>
+        <button class="fit" id="btnFit" title="适应窗口">适应</button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+(() => {
+  'use strict';
+
+  const NS = 'http://www.w3.org/2000/svg';
+  const BASE = 887;               // 原始画布边长
+  const TEXT_MIN = 12, TEXT_MAX = 160;
+
+  const svg = document.getElementById('art');
+  const canvasWrap = document.getElementById('canvas');
+  const stage = document.getElementById('stage');
+  const uiLayer = document.createElementNS(NS, 'g');
+  uiLayer.id = 'ui-layer';
+
+  const textLayer = document.createElementNS(NS, 'g');
+  textLayer.id = 'text-layer';
+  const textEffectsDefs = document.createElementNS(NS, 'defs');
+  textEffectsDefs.id = 'text-effects';
+
+  /* =====================================================================
+   * 一、路径解析与“局部拉伸”
+   * 说明：不整体缩放路径，而是在指定的两条曲线之间插入水平/垂直延伸，
+   *      其余曲线的形状完全不动，所以装饰线与字形不会被拉扁。
+   * ===================================================================== */
+
+  const CMD_COUNTS = { M: 2, L: 2, H: 1, V: 1, C: 6, S: 4, Q: 4, T: 2, A: 7, Z: 0 };
+  const X_SLOTS = { M: [0], L: [0], H: [0], C: [0, 2, 4] };
+  const Y_SLOTS = { M: [1], L: [1], V: [0], C: [1, 3, 5] };
+
+  /** 把 d 字符串解析成 [{cmd, pts}]（本项目内的路径均为绝对坐标大写命令） */
+  function parsePath(d) {
+    const tokens = d.match(/[a-zA-Z]|-?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?/g) || [];
+    const cmds = [];
+    let i = 0;
+    let last = null;
+    while (i < tokens.length) {
+      let cmd;
+      if (/[a-zA-Z]/.test(tokens[i])) {
+        cmd = tokens[i].toUpperCase();
+        i++;
+      } else {
+        // 省略命令字母的连续参数
+        cmd = last === 'M' ? 'L' : last;
+      }
+      if (!cmd) { i++; continue; }
+      if (cmd === 'Z') { cmds.push({ cmd: 'Z', pts: [] }); last = 'Z'; continue; }
+      const n = CMD_COUNTS[cmd];
+      if (!n) { i++; continue; }
+      const pts = [];
+      for (let k = 0; k < n; k++) pts.push(parseFloat(tokens[i++]));
+      cmds.push({ cmd, pts });
+      last = cmd;
+    }
+    return cmds;
+  }
+
+  function fmtNum(n) {
+    const r = Math.round(n * 100) / 100;
+    return String(r);
+  }
+
+  function serializePath(cmds) {
+    return cmds.map(c => {
+      if (c.cmd === 'Z') return 'Z';
+      return c.cmd + c.pts.map(fmtNum).join(' ');
+    }).join(' ');
+  }
+
+  function cloneCmds(cmds) {
+    return cmds.map(c => ({ cmd: c.cmd, pts: c.pts.slice() }));
+  }
+
+  /** 计算每条命令的终点，用于按坐标定位“切割点” */
+  function endpoints(cmds) {
+    let x = 0, y = 0;
+    return cmds.map(c => {
+      if (c.cmd === 'C') { x = c.pts[4]; y = c.pts[5]; }
+      else if (c.cmd === 'L') { x = c.pts[0]; y = c.pts[1]; }
+      else if (c.cmd === 'H') { x = c.pts[0]; }
+      else if (c.cmd === 'V') { y = c.pts[0]; }
+      else if (c.cmd === 'M') { x = c.pts[0]; y = c.pts[1]; }
+      return { x, y };
+    });
+  }
+
+  /** 找到离目标点最近的一条命令，作为拉伸的边界曲线 */
+  function findCut(cmds, tx, ty) {
+    const pts = endpoints(cmds);
+    let best = -1, bestD = Infinity;
+    pts.forEach((p, i) => {
+      if (cmds[i].cmd === 'Z') return;
+      const dist = Math.hypot(p.x - tx, p.y - ty);
+      if (dist < bestD) { bestD = dist; best = i; }
+    });
+    return best;
+  }
+
+  /** 单位向量 */
+  function unitVec(x, y) {
+    const l = Math.hypot(x, y);
+    return l > 0.0001 ? { x: x / l, y: y / l } : { x: 1, y: 0 };
+  }
+
+  const smoothstep = t => t * t * (3 - 2 * t);
+
+  /** 用 de Casteljau 算法拆分曲线，拆分前后轮廓完全一致。 */
+  function splitCubic({ start, command, t }) {
+    const mix = (a, b) => ({ x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t });
+    const [x1, y1, x2, y2, x3, y3] = command.pts;
+    const a = mix(start, { x: x1, y: y1 });
+    const b = mix({ x: x1, y: y1 }, { x: x2, y: y2 });
+    const c = mix({ x: x2, y: y2 }, { x: x3, y: y3 });
+    const d = mix(a, b), e = mix(b, c), point = mix(d, e);
+    return {
+      point,
+      before: { cmd: 'C', pts: [a.x, a.y, d.x, d.y, point.x, point.y] },
+      after: { cmd: 'C', pts: [e.x, e.y, c.x, c.y, x3, y3] }
+    };
+  }
+
+  /**
+   * 在目标附近找波峰/波谷作为接缝，接缝切线与延展方向平行。
+   * 求原始贝塞尔的法向导数零点，不依赖采样步长或插入后的命令索引。
+   */
+  function findWaveCut({ cmds, axis, target }) {
+    const eps = endpoints(cmds);
+    const normal = axis === 'x' ? 'y' : 'x';
+    const slot = normal === 'x' ? 0 : 1;
+    let best = null, bestDistance = Infinity;
+    cmds.forEach((command, index) => {
+      if (command.cmd !== 'C') return;
+      const start = eps[index - 1];
+      const p0 = start[normal], p1 = command.pts[slot];
+      const p2 = command.pts[slot + 2], p3 = command.pts[slot + 4];
+      const a = -p0 + 3 * p1 - 3 * p2 + p3;
+      const b = 2 * (p0 - 2 * p1 + p2);
+      const c = p1 - p0;
+      const discriminant = b * b - 4 * a * c;
+      let roots = [];
+      if (Math.abs(a) < 1e-9) {
+        if (Math.abs(b) > 1e-9) roots = [-c / b];
+      } else if (discriminant >= 0) {
+        const root = Math.sqrt(discriminant);
+        roots = [(-b - root) / (2 * a), (-b + root) / (2 * a)];
+      }
+      roots.filter(t => t >= 0 && t <= 1).forEach(t => {
+        const cut = splitCubic({ start, command, t });
+        const distance = Math.hypot(cut.point.x - target.x, cut.point.y - target.y);
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          best = { index, ...cut };
+        }
+      });
+    });
+    return best;
+  }
+
+  /**
+   * 从原纸面提取一个完整波形。仅消除首尾的基线高差，使它可以重复拼接；
+   * 波长、不对称的峰谷造型均来自原图，外轮廓、纸面、裁剪共用此模板。
+   */
+  function makeWaveTemplate({ cmds, axis, from, to }) {
+    const first = findWaveCut({ cmds, axis, target: from });
+    const last = findWaveCut({ cmds, axis, target: to });
+    const normal = axis === 'x' ? 'y' : 'x';
+    const span = last.point[axis] - first.point[axis];
+    const drift = last.point[normal] - first.point[normal];
+    const source = [
+      { cmd: 'M', pts: [first.point.x, first.point.y] },
+      first.after,
+      ...cmds.slice(first.index + 1, last.index),
+      last.before
+    ];
+    // 沿用原来的贝塞尔段，避免把一个波形细分成上百段而拖慢滑块刷新。
+    const commands = source.slice(1).map(command => {
+      const pts = [];
+      for (let i = 0; i < command.pts.length; i += 2) {
+        const point = { x: command.pts[i], y: command.pts[i + 1] };
+        const t = (point[axis] - first.point[axis]) / span;
+        pts.push(t * Math.abs(span), point[normal] - first.point[normal] - drift * smoothstep(t));
+      }
+      return { cmd: 'C', pts };
+    });
+    commands[0].pts[1] = 0;
+    const tail = commands[commands.length - 1].pts;
+    tail[3] = 0;
+    tail[4] = Math.abs(span);
+    tail[5] = 0;
+    return { length: Math.abs(span), commands };
+  }
+
+  /** 折线转三次贝塞尔（Catmull-Rom），并允许指定首尾切线 */
+  function polylineToCubics(pts, tA, tB) {
+    const n = pts.length - 1;
+    if (n < 1) return [];
+    const segs = [];
+    for (let i = 0; i < n; i++) {
+      const p0 = i > 0 ? pts[i - 1] : pts[i];
+      const p1 = pts[i];
+      const p2 = pts[i + 1];
+      const p3 = i + 2 <= n ? pts[i + 2] : pts[i + 1];
+      let c1 = { x: p1.x + (p2.x - p0.x) / 6, y: p1.y + (p2.y - p0.y) / 6 };
+      let c2 = { x: p2.x - (p3.x - p1.x) / 6, y: p2.y - (p3.y - p1.y) / 6 };
+      if (i === 0 && tA) {
+        const d = Math.hypot(p2.x - p1.x, p2.y - p1.y);
+        c1 = { x: p1.x + tA.x * d / 3, y: p1.y + tA.y * d / 3 };
+      }
+      if (i === n - 1 && tB) {
+        const d = Math.hypot(p2.x - p1.x, p2.y - p1.y);
+        c2 = { x: p2.x - tB.x * d / 3, y: p2.y - tB.y * d / 3 };
+      }
+      segs.push({ cmd: 'C', pts: [c1.x, c1.y, c2.x, c2.y, p2.x, p2.y] });
+    }
+    const last = segs[segs.length - 1];
+    last.pts[4] = pts[n].x;
+    last.pts[5] = pts[n].y;
+    return segs;
+  }
+
+  /**
+   * 按原波长补充完整波形，剩余长度只影响最后一个正在长出的波形。
+   * 余段振幅从 0 平滑增至原振幅，因此 +1px 不会重绘原边缘，
+   * 跨过整波长时也不会改变已生成波形的相位；横纵两次延展互不干扰。
+   */
+  function makeWave({ start, axis, direction, delta, template }) {
+    const normal = axis === 'x' ? 'y' : 'x';
+    const fullCount = Math.floor(delta / template.length);
+    const remainder = delta - fullCount * template.length;
+    const out = [];
+    for (let i = 0; i <= fullCount; i++) {
+      const length = i < fullCount ? template.length : remainder;
+      if (length <= 1e-9) continue;
+      const ratio = length / template.length;
+      const amplitude = smoothstep(ratio);
+      for (const command of template.commands) {
+        const pts = [];
+        for (let j = 0; j < command.pts.length; j += 2) {
+          const point = {
+            [axis]: start[axis] + direction * (i * template.length + command.pts[j] * ratio),
+            [normal]: start[normal] + command.pts[j + 1] * amplitude
+          };
+          pts.push(point.x, point.y);
+        }
+        out.push({ cmd: 'C', pts });
+      }
+    }
+    return out;
+  }
+
+  /** 把路径离散为折线，用于采样纸边 */
+  function samplePolyline(cmds, steps) {
+    const pts = [];
+    let x = 0, y = 0;
+    for (const c of cmds) {
+      if (c.cmd === 'Z') continue;
+      if (c.cmd === 'M') {
+        x = c.pts[0]; y = c.pts[1];
+        pts.push({ x, y });
+      } else if (c.cmd === 'C') {
+        const [x1, y1, x2, y2, x3, y3] = c.pts;
+        for (let i = 1; i <= steps; i++) {
+          const t = i / steps, mt = 1 - t;
+          pts.push({
+            x: mt * mt * mt * x + 3 * mt * mt * t * x1 + 3 * mt * t * t * x2 + t * t * t * x3,
+            y: mt * mt * mt * y + 3 * mt * mt * t * y1 + 3 * mt * t * t * y2 + t * t * t * y3
+          });
+        }
+        x = x3; y = y3;
+      } else if (c.cmd === 'L') {
+        x = c.pts[0]; y = c.pts[1]; pts.push({ x, y });
+      } else if (c.cmd === 'H') {
+        x = c.pts[0]; pts.push({ x, y });
+      } else if (c.cmd === 'V') {
+        y = c.pts[0]; pts.push({ x, y });
+      }
+    }
+    return pts;
+  }
+
+  /**
+   * 建立纸边采样器：给定坐标，返回纸签外轮廓在该处的边缘位置。
+   * 用于让虚线始终以稳定间距贴着纸边。
+   */
+  function makeEdgeSampler(outlineCmds) {
+    const all = samplePolyline(outlineCmds, 10);
+    // 在相邻的真实线段上求交，不能过滤点后再连线，否则尺寸变大时会产生假边。
+    const cross = (axis, coord, outermost) => {
+      const normal = axis === 'x' ? 'y' : 'x';
+      let best = null;
+      for (let i = 0; i < all.length - 1; i++) {
+        const a = all[i], b = all[i + 1];
+        if (a[axis] === b[axis] || (a[axis] - coord) * (b[axis] - coord) > 0) continue;
+        const t = (coord - a[axis]) / (b[axis] - a[axis]);
+        const value = a[normal] + (b[normal] - a[normal]) * t;
+        best = best === null ? value : outermost(best, value);
+      }
+      return best;
+    };
+
+    return {
+      top: x => cross('x', x, Math.min),
+      bottom: x => cross('x', x, Math.max),
+      left: y => cross('y', y, Math.min),
+      right: y => cross('y', y, Math.max)
+    };
+  }
+
+  /**
+   * 沿纸边生成虚线延长段：等距内缩，自然贴合纸边的波浪。
+   */
+  function followEdgeSegments({ A, B, tA, tB, sampler, edge, baseCommand, delta }) {
+    const horizontal = edge === 'top' || edge === 'bottom';
+    const coordA = horizontal ? A.x : A.y;
+    const coordB = horizontal ? B.x : B.y;
+    const edgeA = horizontal ? sampler[edge](A.x, A.y) : sampler[edge](A.y, A.x);
+    const edgeB = horizontal ? sampler[edge](B.x, B.y) : sampler[edge](B.y, B.x);
+    if (edgeA == null || edgeB == null) {
+      return [{
+        cmd: 'C',
+        pts: [A.x + (B.x - A.x) / 3, A.y + (B.y - A.y) / 3,
+              A.x + (B.x - A.x) * 2 / 3, A.y + (B.y - A.y) * 2 / 3, B.x, B.y]
+      }];
+    }
+    const insetOf = (pt, edgeCoord) => {
+      if (edge === 'top') return pt.y - edgeCoord;
+      if (edge === 'bottom') return edgeCoord - pt.y;
+      if (edge === 'left') return pt.x - edgeCoord;
+      return edgeCoord - pt.x;
+    };
+    const insetA = Math.max(12, insetOf(A, edgeA));
+    const insetB = Math.max(12, insetOf(B, edgeB));
+    const n = Math.max(16, Math.min(220, Math.round(Math.hypot(B.x - A.x, B.y - A.y) / 6)));
+    const pts = [];
+    for (let i = 0; i <= n; i++) {
+      const t = i / n;
+      const coord = coordA + (coordB - coordA) * t;
+      const inset = insetA + (insetB - insetA) * t;
+      let e;
+      if (horizontal) {
+        const hintY = A.y + (B.y - A.y) * t;
+        e = sampler[edge](coord, hintY);
+      } else {
+        const hintX = A.x + (B.x - A.x) * t;
+        e = sampler[edge](coord, hintX);
+      }
+      if (e == null) {
+        pts.push({ x: A.x + (B.x - A.x) * t, y: A.y + (B.y - A.y) * t });
+      } else if (edge === 'top') {
+        pts.push({ x: coord, y: e + inset });
+      } else if (edge === 'bottom') {
+        pts.push({ x: coord, y: e - inset });
+      } else if (edge === 'left') {
+        pts.push({ x: e + inset, y: coord });
+      } else {
+        pts.push({ x: e - inset, y: coord });
+      }
+    }
+    // 小幅调尺寸时从原虚线连续过渡，避免 0 → 1px 就替换整段造型。
+    const blend = smoothstep(Math.min(1, delta / 60));
+    if (blend < 1) {
+      const original = samplePolyline([{ cmd: 'M', pts: [A.x, A.y] }, baseCommand], n);
+      for (let i = 1; i < n; i++) {
+        pts[i].x = original[i].x + (pts[i].x - original[i].x) * blend;
+        pts[i].y = original[i].y + (pts[i].y - original[i].y) * blend;
+      }
+    }
+    pts[0] = A;
+    pts[pts.length - 1] = B;
+    return polylineToCubics(pts, tA, tB);
+  }
+
+  /**
+   * 原曲线只在峰谷处拆开并插入新波形，两侧保持原形状。
+   * 路径按顺时针走向，起始边沿正方向延展，结束边沿反方向返回。
+   */
+  function stretchPath({ cmds, axis, startTarget, endTarget, delta, startTemplate, endTemplate }) {
+    if (delta === 0) return cmds;
+    const first = findWaveCut({ cmds, axis, target: startTarget });
+    const last = findWaveCut({ cmds, axis, target: endTarget });
+    const out = [];
+    for (let i = 0; i < cmds.length; i++) {
+      if (i === first.index) {
+        out.push(first.before);
+        out.push(...makeWave({ start: first.point, axis, direction: 1, delta, template: startTemplate }));
+        out.push(shiftCommand(first.after, axis, delta, 'all'));
+      } else if (i === last.index) {
+        out.push(shiftCommand(last.before, axis, delta, 'all'));
+        const start = { ...last.point, [axis]: last.point[axis] + delta };
+        out.push(...makeWave({ start, axis, direction: -1, delta, template: endTemplate }));
+        out.push(last.after);
+      } else if (i > first.index && i < last.index) {
+        out.push(shiftCommand(cmds[i], axis, delta, 'all'));
+      } else {
+        out.push(cmds[i]);
+      }
+    }
+    return out;
+  }
+
+  /** 平移一条命令的指定坐标分量 */
+  function shiftCommand(cmd, axis, delta, mode) {
+    const c = { cmd: cmd.cmd, pts: cmd.pts.slice() };
+    const slots = (axis === 'x' ? X_SLOTS : Y_SLOTS)[c.cmd];
+    if (!slots) return c;
+    let take;
+    if (mode === 'all') take = slots;
+    else if (mode === 'start') take = c.cmd === 'C' ? slots.slice(-2) : slots.slice(-1);
+    else take = c.cmd === 'C' ? slots.slice(0, 2) : [];
+    take.forEach(k => { c.pts[k] += delta; });
+    return c;
+  }
+
+  /** 取某段曲线首尾的切线方向（用原命令的控制点） */
+  function cutTangents(cmd, p0, p3) {
+    if (cmd.cmd === 'C') {
+      const c1 = { x: cmd.pts[0], y: cmd.pts[1] };
+      const c2 = { x: cmd.pts[2], y: cmd.pts[3] };
+      return [unitVec(c1.x - p0.x, c1.y - p0.y), unitVec(p3.x - c2.x, p3.y - c2.y)];
+    }
+    const t = unitVec(p3.x - p0.x, p3.y - p0.y);
+    return [t, t];
+  }
+
+  /**
+   * 虚线专用拉伸：边界段不再自己生成波浪，而是沿纸签外轮廓等距内缩，
+   * 保证拉伸后虚线始终贴着纸边走。
+   */
+  function stretchDashPath(cmds, axis, startIdx, endIdx, delta, sampler, edgeStart, edgeEnd) {
+    if (!delta || startIdx < 0 || endIdx < 0 || startIdx >= cmds.length || endIdx >= cmds.length) return cmds;
+    const eps = endpoints(cmds);
+    const out = [];
+    for (let i = 0; i < cmds.length; i++) {
+      if (i === startIdx) {
+        const A = eps[i - 1];
+        const B = { x: eps[i].x, y: eps[i].y };
+        B[axis] += delta;
+        const [tA, tB] = cutTangents(cmds[i], A, eps[i]);
+        out.push(...followEdgeSegments({
+          A, B, tA, tB, sampler, edge: edgeStart, delta,
+          baseCommand: shiftCommand(cmds[i], axis, delta, 'start')
+        }));
+      } else if (i === endIdx) {
+        const A = { x: eps[i - 1].x, y: eps[i - 1].y };
+        A[axis] += delta;
+        const B = eps[i];
+        const [tA, tB] = cutTangents(cmds[i], eps[i - 1], B);
+        out.push(...followEdgeSegments({
+          A, B, tA, tB, sampler, edge: edgeEnd, delta,
+          baseCommand: shiftCommand(cmds[i], axis, delta, 'end')
+        }));
+      } else if (i > startIdx && i < endIdx) {
+        out.push(shiftCommand(cmds[i], axis, delta, 'all'));
+      } else {
+        out.push(cmds[i]);
+      }
+    }
+    return out;
+  }
+
+  /* =====================================================================
+   * 二、初始化图形：读取原始路径、拆分叶子图层、建立缓冲
+   * ===================================================================== */
+
+  const paperOutlineEl = svg.getElementById('paper-outline');
+  const paperFaceEl = svg.getElementById('paper-face');
+  const paperClipEl = svg.querySelector('#paper-clip path');
+  const paperTextureRects = [...svg.querySelectorAll('#paper-texture rect')];
+  const dashEl = svg.querySelector('#inset-dashes path');
+  const headerEl = svg.getElementById('header-shape');
+  const headerClipEl = svg.querySelector('#header-clip path');
+  const headerMottleRect = svg.querySelector('#blank-title-strip > g > rect');
+
+  const BASE_D = {
+    outline: paperOutlineEl.getAttribute('d'),
+    face: paperFaceEl.getAttribute('d'),
+    clip: paperClipEl.getAttribute('d'),
+    dash: dashEl.getAttribute('d'),
+    header: headerEl.getAttribute('d')
+  };
+
+  const BASE_CMDS = {
+    outline: parsePath(BASE_D.outline),
+    face: parsePath(BASE_D.face),
+    clip: parsePath(BASE_D.clip),
+    dash: parsePath(BASE_D.dash)
+  };
+
+  // 切割点目标：每次构建时按坐标重新定位，避免插入波浪段后索引失效
+  const CUT_TARGETS = {
+    outline: { top: [527, 169], bottom: [500, 712], right: [810, 484], left: [186, 484] },
+    face: { top: [526, 174], bottom: [501, 707], right: [805, 484], left: [191, 484] },
+    clip: { top: [526, 174], bottom: [501, 707], right: [805, 484], left: [191, 484] },
+    dash: { top: [520, 190], bottom: [472, 680], right: [771, 542], left: [212, 462] }
+  };
+
+  const WAVE_TEMPLATES = {
+    top: makeWaveTemplate({
+      cmds: BASE_CMDS.face, axis: 'x', from: { x: 503, y: 170 }, to: { x: 632, y: 171 }
+    }),
+    bottom: makeWaveTemplate({
+      cmds: BASE_CMDS.face, axis: 'x', from: { x: 528, y: 710 }, to: { x: 384, y: 710 }
+    }),
+    right: makeWaveTemplate({
+      cmds: BASE_CMDS.face, axis: 'y', from: { x: 806, y: 483 }, to: { x: 801, y: 584 }
+    }),
+    left: makeWaveTemplate({
+      cmds: BASE_CMDS.face, axis: 'y', from: { x: 191, y: 593 }, to: { x: 190, y: 484 }
+    })
+  };
+
+  /**
+   * 把右下角的叶子拆成独立组：整组只做平移，不缩放。
+   * 同时把裁剪路径拆开，保证叶子平移后仍被正确裁切。
+   */
+  let bottomLeaves = null;
+
+  function splitLeafDecorations() {
+    const deco = svg.getElementById('leaf-decorations');
+    const inner = deco && deco.firstElementChild;
+    if (!inner) return;
+
+    const clip = svg.getElementById('leaves-clip');
+    const clipPaths = clip ? [...clip.querySelectorAll(':scope > path')] : [];
+    const defs = svg.querySelector('defs');
+    if (!defs) return;
+
+    const makeClip = (id, src) => {
+      if (!src) return;
+      const cp = document.createElementNS(NS, 'clipPath');
+      cp.id = id;
+      cp.appendChild(src.cloneNode(true));
+      defs.appendChild(cp);
+    };
+    makeClip('leaves-top-clip', clipPaths[0]);
+    makeClip('leaves-bottom-clip', clipPaths[1]);
+
+    const gTop = document.createElementNS(NS, 'g');
+    gTop.id = 'leaves-top';
+    gTop.setAttribute('clip-path', 'url(#leaves-top-clip)');
+    gTop.setAttribute('filter', 'url(#leaf-watercolour)');
+
+    const gBottom = document.createElementNS(NS, 'g');
+    gBottom.id = 'leaves-bottom';
+    gBottom.setAttribute('clip-path', 'url(#leaves-bottom-clip)');
+    gBottom.setAttribute('filter', 'url(#leaf-watercolour)');
+
+    const firstX = (d) => {
+      const m = /M\s*(-?\d*\.?\d+)/.exec(d || '');
+      return m ? parseFloat(m[1]) : 0;
+    };
+    const isBottomD = (d) => firstX(d) > 500;
+
+    const bucketFor = (el) => {
+      const d = el.getAttribute && el.getAttribute('d');
+      if (d && (d.match(/\bM/g) || []).length > 1) return 'multi';
+      return isBottomD(d) ? gBottom : gTop;
+    };
+
+    // 逐个搬运原始子元素
+    [...inner.children].forEach(el => {
+      if (el.tagName === 'g') {
+        // 颜色晕染、叶脉：组内元素按 x 坐标拆分，保留组属性
+        const top = el.cloneNode(false);
+        const bottom = el.cloneNode(false);
+        [...el.children].forEach(child => {
+          (isBottomD(child.getAttribute('d')) ? bottom : top).appendChild(child);
+        });
+        if (top.children.length) gTop.appendChild(top);
+        if (bottom.children.length) gBottom.appendChild(bottom);
+        return;
+      }
+      const d = el.getAttribute('d') || '';
+      if ((d.match(/\bM/g) || []).length > 1) {
+        // 一条 path 内包含两组叶子的描边：拆成两条
+        const pieces = d.match(/M[^M]+/g) || [];
+        pieces.forEach(piece => {
+          const p = el.cloneNode(false);
+          p.setAttribute('d', piece.trim());
+          (isBottomD(piece) ? gBottom : gTop).appendChild(p);
+        });
+        return;
+      }
+      (isBottomD(d) ? gBottom : gTop).appendChild(el);
+    });
+
+    inner.remove();
+    deco.appendChild(gTop);
+    deco.appendChild(gBottom);
+    bottomLeaves = gBottom;
+    bottomLeaves.dataset.scale = 'fixed';
+  }
+
+  splitLeafDecorations();
+
+  // 文字层与交互层始终在最上方
+  svg.appendChild(textEffectsDefs);
+  svg.appendChild(textLayer);
+  uiLayer.style.pointerEvents = 'none';
+  svg.appendChild(uiLayer);
+
+  /* =====================================================================
+   * 三、状态与图形刷新
+   * ===================================================================== */
+
+  const state = {
+    barDx: 0,     // 标题条加长
+    paperDx: 0,   // 内容区额外加宽（与标题条独立）
+    paperDy: 0,   // 内容区加高
+    texts: [],
+    selectedId: null
+  };
+  let seq = 0;
+  let viewZoom = null; // null 表示“适应窗口”
+
+  const totalDx = () => state.paperDx + state.barDx;
+  const vbW = () => BASE + totalDx();
+  const vbH = () => BASE + state.paperDy;
+
+  const FONTS = {
+    pingfang: '"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif',
+    songti: '"Songti SC","STSong","SimSun",serif',
+    kaiti: '"Kaiti SC","STKaiti","KaiTi",serif',
+    yuanti: '"Yuanti SC","YouYuan","Microsoft YaHei",sans-serif',
+    hannotate: '"Hannotate SC","HanziPen SC","Kaiti SC",cursive'
+  };
+
+  /** 生成标题条路径：只延长直边，左右两端的圆角造型保持不变 */
+  function headerPath(dxBar) {
+    if (!dxBar) return BASE_D.header;
+    const x1 = 665 + dxBar, cx1 = 690 + dxBar, cx2 = 708 + dxBar, x2 = 706 + dxBar;
+    const cx3 = 705 + dxBar, cx4 = 688 + dxBar, x3 = 664 + dxBar;
+    return `M371 225 H${x1} C${cx1} 225 ${cx2} 247 ${x2} 276 ` +
+           `C${cx3} 299 ${cx4} 317 ${x3} 317 H367 ` +
+           `C347 317 332 308 329 289 C324 273 329 258 342 252 ` +
+           `C351 248 355 242 353 236 C353 230 361 225 371 225 Z`;
+  }
+
+  /** 按当前尺寸生成纸签路径命令（外轮廓 / 纸面 / 裁剪） */
+  function buildPaperCmds(kind) {
+    const dx = totalDx();
+    const dy = state.paperDy;
+    let cmds = cloneCmds(BASE_CMDS[kind]);
+    if (!dx && !dy) return cmds;
+    const targets = CUT_TARGETS[kind];
+
+    if (dx) {
+      cmds = stretchPath({
+        cmds, axis: 'x', delta: dx,
+        startTarget: { x: targets.top[0], y: targets.top[1] },
+        endTarget: { x: targets.bottom[0], y: targets.bottom[1] },
+        startTemplate: WAVE_TEMPLATES.top, endTemplate: WAVE_TEMPLATES.bottom
+      });
+    }
+    if (dy) {
+      // 加宽后右侧整体右移，定位右边界时目标 x 同步偏移
+      cmds = stretchPath({
+        cmds, axis: 'y', delta: dy,
+        startTarget: { x: targets.right[0] + dx, y: targets.right[1] },
+        endTarget: { x: targets.left[0], y: targets.left[1] },
+        startTemplate: WAVE_TEMPLATES.right, endTemplate: WAVE_TEMPLATES.left
+      });
+    }
+    return cmds;
+  }
+
+  function buildPaperD(kind) {
+    if (!totalDx() && !state.paperDy) return BASE_D[kind];
+    return serializePath(buildPaperCmds(kind));
+  }
+
+  /** 虚线与纸边同源：用最终外轮廓做采样，逐点等距内缩 */
+  function buildDashD(outlineCmds) {
+    const dx = totalDx();
+    const dy = state.paperDy;
+    if (!dx && !dy) return BASE_D.dash;
+
+    const sampler = makeEdgeSampler(outlineCmds);
+    let cmds = cloneCmds(BASE_CMDS.dash);
+    const t = CUT_TARGETS.dash;
+
+    if (dx) {
+      const top = findCut(cmds, t.top[0], t.top[1]);
+      const bottom = findCut(cmds, t.bottom[0], t.bottom[1]);
+      cmds = stretchDashPath(cmds, 'x', top, bottom, dx, sampler, 'top', 'bottom');
+    }
+    if (dy) {
+      const right = findCut(cmds, t.right[0] + dx, t.right[1]);
+      const left = findCut(cmds, t.left[0], t.left[1]);
+      cmds = stretchDashPath(cmds, 'y', right, left, dy, sampler, 'right', 'left');
+    }
+    return serializePath(cmds);
+  }
+
+  function renderArtwork() {
+    const dx = totalDx();
+    const dy = state.paperDy;
+
+    // 先算外轮廓（虚线要沿它内缩），再算纸面与裁剪
+    const outlineCmds = buildPaperCmds('outline');
+    paperOutlineEl.setAttribute('d', (!dx && !dy) ? BASE_D.outline : serializePath(outlineCmds));
+    paperFaceEl.setAttribute('d', buildPaperD('face'));
+    // 纹理裁剪跟随内纸面形状，保证纸纹不越界
+    if (paperClipEl) paperClipEl.setAttribute('d', buildPaperD('clip'));
+    dashEl.setAttribute('d', buildDashD(outlineCmds));
+
+    paperTextureRects.forEach(r => {
+      r.setAttribute('x', 175);
+      r.setAttribute('y', 145);
+      r.setAttribute('width', 650 + dx);
+      r.setAttribute('height', 585 + dy);
+    });
+
+    const headerD = headerPath(state.barDx);
+    headerEl.setAttribute('d', headerD);
+    if (headerClipEl) headerClipEl.setAttribute('d', headerD);
+    if (headerMottleRect) headerMottleRect.setAttribute('width', 389 + state.barDx);
+
+    // 右下角叶子：整体平移，尺寸与形状分毫不动
+    if (bottomLeaves) {
+      bottomLeaves.setAttribute('transform', `translate(${dx} ${dy})`);
+    }
+
+    applyViewBox();
+  }
+
+  /* =====================================================================
+   * 四、视图缩放 / 画布适配
+   * ===================================================================== */
+
+  function applyViewBox() {
+    const w = vbW(), h = vbH();
+    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    document.getElementById('badgeSize').textContent = `${Math.round(w)} × ${Math.round(h)}`;
+    applyScale();
+  }
+
+  function fitScale() {
+    const pad = 68;
+    const w = Math.max(120, stage.clientWidth - pad);
+    const h = Math.max(120, stage.clientHeight - pad);
+    return Math.min(w / vbW(), h / vbH());
+  }
+
+  function applyScale() {
+    const w = vbW(), h = vbH();
+    const scale = viewZoom == null ? fitScale() : viewZoom;
+    svg.style.width = (w * scale) + 'px';
+    svg.style.height = (h * scale) + 'px';
+    document.getElementById('zoomValue').textContent = Math.round(scale * 100) + '%';
+    document.getElementById('btnZoomOut').disabled = scale <= 0.12;
+    document.getElementById('btnZoomIn').disabled = scale >= 2.4;
+    const fits = (w * scale + 68) <= stage.clientWidth + 1 && (h * scale + 68) <= stage.clientHeight + 1;
+    canvasWrap.classList.toggle('tight', !fits);
+    stage.classList.toggle('scrollable', !fits);
+  }
+
+  function setZoom(next) {
+    // 记录视口中心对应的 SVG 坐标，避免把画布留白和滚动条一起按比例放大。
+    const viewport = stage.getBoundingClientRect();
+    const before = svg.getBoundingClientRect();
+    const previousScale = before.width / vbW();
+    const center = {
+      x: (viewport.left + stage.clientWidth / 2 - before.left) / previousScale,
+      y: (viewport.top + stage.clientHeight / 2 - before.top) / previousScale
+    };
+    viewZoom = Math.min(2.4, Math.max(0.12, next));
+    applyScale();
+    const after = svg.getBoundingClientRect();
+    stage.scrollLeft += after.left + center.x * viewZoom - viewport.left - stage.clientWidth / 2;
+    stage.scrollTop += after.top + center.y * viewZoom - viewport.top - stage.clientHeight / 2;
+  }
+
+  /* =====================================================================
+   * 五、文字：增删改、拖动、选中框
+   * ===================================================================== */
+
+  const elContent = document.getElementById('txtContent');
+  const elFont = document.getElementById('selFont');
+  const elBold = document.getElementById('btnBold');
+  const elItalic = document.getElementById('btnItalic');
+  const elAlign = document.getElementById('segAlign');
+  const elEditor = document.getElementById('textEditor');
+  const elEmptyTip = document.getElementById('emptyTip');
+  const elStatus = document.getElementById('status');
+  const elTextList = document.getElementById('textList');
+  const elEffect = document.getElementById('selEffect');
+  const numberBindings = [];
+  const colorBindings = [];
+  const EFFECT_PRESETS = {
+    none: { type: 'none', color: '#4b3524', opacity: 40, blur: 3, x: 2, y: 3 },
+    shadow: { type: 'shadow', color: '#4b3524', opacity: 40, blur: 3, x: 2, y: 3 },
+    raised: { type: 'raised', color: '#5b361a', opacity: 85, blur: 0, x: 4, y: 5 },
+    glow: { type: 'glow', color: '#ffcc66', opacity: 85, blur: 6, x: 0, y: 0 }
+  };
+
+  function getSelected() {
+    return state.texts.find(t => t.id === state.selectedId) || null;
+  }
+
+  function addText() {
+    const isFirst = state.texts.length === 0;
+    const bodyOffset = ((state.texts.length - 1) * 64) % (220 + state.paperDy);
+    const item = {
+      id: 't' + (++seq),
+      content: '鸟类小百科',
+      x: isFirst ? 518 + state.barDx / 2 : 500 + totalDx() / 2,
+      y: isFirst ? 286 : 400 + bodyOffset,
+      size: 44,
+      family: 'pingfang',
+      color: isFirst ? '#502B03' : '#230701',
+      bold: true,
+      italic: false,
+      align: 'center',
+      letterSpacing: 0,
+      lineHeight: 1.26,
+      opacity: 100,
+      effect: { ...EFFECT_PRESETS.none },
+      stroke: { width: 0, color: '#fff5de' }
+    };
+    state.texts.push(item);
+    selectText(item.id);
+    renderTexts();
+    elContent.focus();
+    elContent.select();
+  }
+
+  function duplicateSelected() {
+    const item = getSelected();
+    if (!item) return;
+    const copy = {
+      ...item, id: 't' + (++seq), x: item.x + 20, y: item.y + 30,
+      effect: { ...item.effect }, stroke: { ...item.stroke }
+    };
+    state.texts.push(copy);
+    selectText(copy.id);
+    renderTexts();
+  }
+
+  function selectText(id) {
+    state.selectedId = id;
+    const item = getSelected();
+    const on = !!item;
+    elEditor.style.display = on ? 'block' : 'none';
+    elEmptyTip.style.display = on ? 'none' : 'block';
+    if (on) syncTextPanel(item);
+    renderTextList();
+    drawSelection();
+  }
+
+  function syncTextPanel(item) {
+    elContent.value = item.content;
+    elFont.value = item.family;
+    numberBindings.forEach(binding => binding.sync(item));
+    colorBindings.forEach(binding => binding.sync(item));
+    for (const [button, enabled] of [[elBold, item.bold], [elItalic, item.italic]]) {
+      button.classList.toggle('on', enabled);
+      button.setAttribute('aria-pressed', String(enabled));
+    }
+    [...elAlign.children].forEach(button => {
+      const active = button.dataset.align === item.align;
+      button.classList.toggle('on', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    elEffect.value = item.effect.type;
+    syncEffectControls(item);
+  }
+
+  function syncEffectControls(item) {
+    const type = item.effect.type;
+    document.getElementById('effectControls').hidden = type === 'none';
+    document.getElementById('effectBlurField').hidden = type === 'raised';
+    document.getElementById('effectOffsetFields').hidden = type === 'glow';
+    document.getElementById('strokeColorField').hidden = item.stroke.width === 0;
+    document.getElementById('effectHint').textContent = type === 'raised'
+      ? '偏移越大，立体字越厚；负数可改变延伸方向。'
+      : type === 'glow' ? '调整颜色、强度与模糊半径，营造柔和的发光边缘。'
+      : '调整阴影偏移与模糊，让文字轻轻浮起。';
+  }
+
+  function renderTextList() {
+    const buttons = new Map([...elTextList.children].map(button => [button.dataset.id, button]));
+    const ids = new Set(state.texts.map(item => item.id));
+    buttons.forEach((button, id) => { if (!ids.has(id)) button.remove(); });
+    state.texts.forEach((item, index) => {
+      let button = buttons.get(item.id);
+      if (!button) {
+        button = document.createElement('button');
+        button.dataset.id = item.id;
+        const number = document.createElement('span');
+        number.className = 'index';
+        const name = document.createElement('span');
+        name.className = 'name';
+        button.append(number, name);
+        elTextList.appendChild(button);
+      }
+      button.setAttribute('aria-pressed', String(item.id === state.selectedId));
+      const label = item.content.trim().replace(/\s+/g, ' ') || '空白文字';
+      button.setAttribute('aria-label', `选择文字 ${index + 1}：${label}`);
+      button.querySelector('.index').textContent = String(index + 1).padStart(2, '0');
+      button.querySelector('.name').textContent = label;
+    });
+  }
+
+  /** 效果使用 SVG 内部滤镜，预览与 PNG 导出共用同一份定义。 */
+  function applyTextEffect({ element, item }) {
+    const effect = item.effect;
+    if (effect.type === 'none' || effect.opacity === 0) return;
+    const node = (tag, attributes) => {
+      const el = document.createElementNS(NS, tag);
+      Object.entries(attributes).forEach(([key, value]) => el.setAttribute(key, value));
+      return el;
+    };
+    const blur = effect.type === 'raised' ? 0 : effect.blur;
+    const dx = effect.type === 'glow' ? 0 : effect.x;
+    const dy = effect.type === 'glow' ? 0 : effect.y;
+    const box = element.getBBox();
+    const pad = Math.ceil(blur * 4 + item.stroke.width + 3);
+    const filterId = `text-effect-${item.id}`;
+    // 使用实际文字包围盒扩大滤镜区域，防止大字号、多行、负偏移的阴影被截断。
+    const filter = node('filter', {
+      id: filterId, filterUnits: 'userSpaceOnUse', primitiveUnits: 'userSpaceOnUse',
+      x: box.x - pad + Math.min(0, dx), y: box.y - pad + Math.min(0, dy),
+      width: Math.max(1, box.width) + pad * 2 + Math.abs(dx),
+      height: Math.max(1, box.height) + pad * 2 + Math.abs(dy),
+      'color-interpolation-filters': 'sRGB'
+    });
+    if (effect.type === 'raised') {
+      filter.appendChild(node('feFlood', {
+        'flood-color': effect.color, 'flood-opacity': effect.opacity / 100, result: 'tint'
+      }));
+      filter.appendChild(node('feComposite', { in: 'tint', in2: 'SourceAlpha', operator: 'in', result: 'depth' }));
+      const merge = node('feMerge', {});
+      const steps = Math.max(1, Math.ceil(Math.max(Math.abs(dx), Math.abs(dy))));
+      for (let i = steps; i >= 1; i--) {
+        const result = `depth-${i}`;
+        filter.appendChild(node('feOffset', { in: 'depth', dx: dx * i / steps, dy: dy * i / steps, result }));
+        merge.appendChild(node('feMergeNode', { in: result }));
+      }
+      merge.appendChild(node('feMergeNode', { in: 'SourceGraphic' }));
+      filter.appendChild(merge);
+    } else {
+      filter.appendChild(node('feDropShadow', {
+        dx, dy, stdDeviation: blur, 'flood-color': effect.color, 'flood-opacity': effect.opacity / 100
+      }));
+    }
+    textEffectsDefs.appendChild(filter);
+    element.setAttribute('filter', `url(#${filterId})`);
+  }
+
+  function renderTexts() {
+    textLayer.textContent = '';
+    textEffectsDefs.textContent = '';
+    state.texts.forEach(item => {
+      const el = document.createElementNS(NS, 'text');
+      el.dataset.id = item.id;
+      el.setAttribute('tabindex', '0');
+      el.setAttribute('aria-label', item.content.trim() || '空白文字');
+      el.setAttribute('font-family', FONTS[item.family] || FONTS.pingfang);
+      el.setAttribute('font-size', item.size);
+      el.setAttribute('font-weight', item.bold ? '700' : '400');
+      el.setAttribute('font-style', item.italic ? 'italic' : 'normal');
+      el.setAttribute('fill', item.color);
+      el.setAttribute('letter-spacing', item.letterSpacing);
+      el.setAttribute('opacity', item.opacity / 100);
+      el.setAttribute('stroke', item.stroke.color);
+      el.setAttribute('stroke-width', item.stroke.width);
+      el.setAttribute('stroke-linejoin', 'round');
+      el.setAttribute('paint-order', 'stroke fill');
+      el.setAttributeNS('http://www.w3.org/XML/1998/namespace', 'xml:space', 'preserve');
+      el.setAttribute('text-anchor', item.align === 'center' ? 'middle' : item.align === 'right' ? 'end' : 'start');
+      const lines = String(item.content || ' ').split('\n');
+      lines.forEach((line, i) => {
+        const ts = document.createElementNS(NS, 'tspan');
+        ts.setAttribute('x', item.x);
+        ts.setAttribute('y', item.y + i * item.size * item.lineHeight);
+        ts.textContent = line.length ? line : ' ';
+        el.appendChild(ts);
+      });
+      textLayer.appendChild(el);
+      applyTextEffect({ element: el, item });
+    });
+    renderTextList();
+    drawSelection();
+  }
+
+  function drawSelection() {
+    uiLayer.textContent = '';
+    const item = getSelected();
+    if (!item) return;
+    const el = textLayer.querySelector(`[data-id="${item.id}"]`);
+    if (!el || !el.getBBox) return;
+    let box;
+    try { box = el.getBBox(); } catch (e) { return; }
+    const r = document.createElementNS(NS, 'rect');
+    r.setAttribute('x', box.x - 8);
+    r.setAttribute('y', box.y - 8);
+    r.setAttribute('width', Math.max(4, box.width + 16));
+    r.setAttribute('height', Math.max(4, box.height + 16));
+    r.setAttribute('rx', 6);
+    r.setAttribute('fill', 'rgba(255,150,20,.05)');
+    r.setAttribute('stroke', '#ff8a0a');
+    r.setAttribute('stroke-width', '1.4');
+    r.setAttribute('vector-effect', 'non-scaling-stroke');
+    r.setAttribute('stroke-dasharray', '7 5');
+    uiLayer.appendChild(r);
+  }
+
+  function updateSelected(patch) {
+    const item = getSelected();
+    if (!item) return;
+    Object.assign(item, patch);
+    syncEffectControls(item);
+    renderTexts();
+  }
+
+  function deleteSelected() {
+    const idx = state.texts.findIndex(t => t.id === state.selectedId);
+    if (idx < 0) return;
+    state.texts.splice(idx, 1);
+    selectText(null);
+    renderTexts();
+  }
+
+  /* ---- 拖动 ---- */
+  let drag = null;
+
+  function toUser(evt) {
+    const p = svg.createSVGPoint();
+    p.x = evt.clientX;
+    p.y = evt.clientY;
+    const m = svg.getScreenCTM();
+    if (!m) return { x: 0, y: 0 };
+    const q = p.matrixTransform(m.inverse());
+    return { x: q.x, y: q.y };
+  }
+
+  textLayer.addEventListener('pointerdown', e => {
+    if (e.button !== 0) return;
+    const el = e.target.closest('text');
+    if (!el) return;
+    // 先提交旧文字输入框的失焦校验，再切换选择，避免色值写到另一段文字。
+    document.activeElement?.blur?.();
+    const item = state.texts.find(t => t.id === el.dataset.id);
+    if (!item) return;
+    selectText(item.id);
+    const p = toUser(e);
+    drag = { item, sx: p.x, sy: p.y, ox: item.x, oy: item.y };
+    textLayer.querySelector(`[data-id="${item.id}"]`)?.focus();
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+  window.addEventListener('pointermove', e => {
+    if (!drag) return;
+    const p = toUser(e);
+    drag.item.x = Math.round((drag.ox + p.x - drag.sx) * 10) / 10;
+    drag.item.y = Math.round((drag.oy + p.y - drag.sy) * 10) / 10;
+    renderTexts();
+  });
+
+  window.addEventListener('pointerup', () => { drag = null; });
+
+  // 空白处单击才取消选中；拖动平移时保留选中状态
+  let bgDown = null;
+  stage.addEventListener('pointerdown', e => {
+    if (e.button !== 0 || e.target.closest('text')) return;
+    bgDown = { x: e.clientX, y: e.clientY };
+  });
+  window.addEventListener('pointerup', e => {
+    if (!bgDown) return;
+    const moved = Math.hypot(e.clientX - bgDown.x, e.clientY - bgDown.y);
+    if (moved < 4) selectText(null);
+    bgDown = null;
+  });
+
+  /* ---- 画布平移：放大后按住空白处拖动 ---- */
+  let pan = null;
+  stage.addEventListener('pointerdown', e => {
+    if (e.button !== 0) return;
+    if (!stage.classList.contains('scrollable')) return;
+    if (e.pointerType === 'touch') return;               // 触屏交给原生滚动
+    if (e.target.closest('text, .zoombar, .badge')) return;
+    pan = { x: e.clientX, y: e.clientY, left: stage.scrollLeft, top: stage.scrollTop };
+    stage.classList.add('panning');
+    e.preventDefault();
+  });
+  window.addEventListener('pointermove', e => {
+    if (!pan) return;
+    stage.scrollLeft = pan.left - (e.clientX - pan.x);
+    stage.scrollTop = pan.top - (e.clientY - pan.y);
+  });
+  window.addEventListener('pointerup', () => {
+    if (!pan) return;
+    pan = null;
+    stage.classList.remove('panning');
+  });
+  function cancelPointerInteraction() {
+    drag = null;
+    pan = null;
+    bgDown = null;
+    stage.classList.remove('panning');
+  }
+  window.addEventListener('pointercancel', cancelPointerInteraction);
+  window.addEventListener('blur', cancelPointerInteraction);
+
+  textLayer.addEventListener('dblclick', e => {
+    const el = e.target.closest('text');
+    if (!el) return;
+    selectText(el.dataset.id);
+    elContent.focus();
+    elContent.select();
+  });
+
+  /* ---- 面板事件 ---- */
+
+  function readSetting({ item, group, key }) {
+    return group ? item[group][key] : item[key];
+  }
+
+  function writeSetting({ group, key, value }) {
+    const item = getSelected();
+    if (!item) return;
+    if (readSetting({ item, group, key }) === value) return;
+    updateSelected(group ? { [group]: { ...item[group], [key]: value } } : { [key]: value });
+  }
+
+  /**
+   * 滑块实时生效，数字框在失焦/回车时校验。
+   * 输入中允许 "-"、"." 等中间态；0 是有效值，不能用 truthy 判断回退。
+   */
+  function bindNumberControl({ inputId, rangeId, key, group, min, max, step }) {
+    const input = document.getElementById(inputId);
+    const range = rangeId ? document.getElementById(rangeId) : null;
+    const show = value => {
+      input.value = value;
+      if (range) range.value = value;
+    };
+    const commit = () => {
+      const item = getSelected();
+      if (!item) return;
+      const raw = input.value.trim();
+      const value = Number(raw);
+      if (!raw || !Number.isFinite(value)) {
+        show(readSetting({ item, group, key }));
+        return;
+      }
+      const bounded = Math.min(max, Math.max(min, value));
+      const rounded = Number((Math.round(bounded / step) * step).toFixed(2));
+      show(rounded);
+      writeSetting({ group, key, value: rounded });
+    };
+    input.addEventListener('blur', commit);
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); input.blur(); }
+      if (e.key === 'Escape') {
+        const item = getSelected();
+        if (item) show(readSetting({ item, group, key }));
+        input.blur();
+      }
+    });
+    range?.addEventListener('input', () => {
+      const value = Number(range.value);
+      show(value);
+      writeSetting({ group, key, value });
+    });
+    numberBindings.push({ sync: item => show(readSetting({ item, group, key })) });
+  }
+
+  function normalizeHex(value) {
+    const hex = value.trim().replace(/^#/, '');
+    if (/^[0-9a-f]{6}$/i.test(hex)) return '#' + hex.toLowerCase();
+    if (/^[0-9a-f]{3}$/i.test(hex)) return '#' + [...hex].map(c => c + c).join('').toLowerCase();
+    return null;
+  }
+
+  function bindColorControl({ pickerId, inputId, errorId, group, key }) {
+    const picker = document.getElementById(pickerId);
+    const input = document.getElementById(inputId);
+    const error = document.getElementById(errorId);
+    const clearError = () => {
+      input.removeAttribute('aria-invalid');
+      error.textContent = '';
+    };
+    const show = value => {
+      picker.value = value;
+      input.value = value.toUpperCase();
+      clearError();
+      if (!group) document.querySelectorAll('.swatches button').forEach(button => {
+        button.setAttribute('aria-pressed', String(button.dataset.color === value));
+      });
+    };
+    picker.addEventListener('input', () => {
+      show(picker.value);
+      writeSetting({ group, key, value: picker.value });
+    });
+    input.addEventListener('input', clearError);
+    input.addEventListener('blur', () => {
+      if (!getSelected()) return;
+      const value = normalizeHex(input.value);
+      if (value === null) {
+        input.setAttribute('aria-invalid', 'true');
+        error.textContent = '请输入 3 位或 6 位色值，例如 #2F6B45。';
+        return;
+      }
+      show(value);
+      writeSetting({ group, key, value });
+    });
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); input.blur(); }
+      if (e.key === 'Escape') {
+        const item = getSelected();
+        if (item) show(readSetting({ item, group, key }));
+        input.blur();
+      }
+    });
+    colorBindings.push({ sync: item => show(readSetting({ item, group, key })) });
+  }
+
+  [
+    { inputId: 'nSize', rangeId: 'sSize', key: 'size', min: TEXT_MIN, max: TEXT_MAX, step: 1 },
+    { inputId: 'nSpacing', rangeId: 'sSpacing', key: 'letterSpacing', min: -5, max: 30, step: .5 },
+    { inputId: 'nLineHeight', rangeId: 'sLineHeight', key: 'lineHeight', min: .8, max: 3, step: .01 },
+    { inputId: 'nOpacity', rangeId: 'sOpacity', key: 'opacity', min: 0, max: 100, step: 1 },
+    { inputId: 'nStroke', rangeId: 'sStroke', group: 'stroke', key: 'width', min: 0, max: 10, step: .5 },
+    { inputId: 'nEffectOpacity', rangeId: 'sEffectOpacity', group: 'effect', key: 'opacity', min: 0, max: 100, step: 1 },
+    { inputId: 'nEffectBlur', rangeId: 'sEffectBlur', group: 'effect', key: 'blur', min: 0, max: 24, step: .5 },
+    { inputId: 'nEffectX', group: 'effect', key: 'x', min: -24, max: 24, step: .5 },
+    { inputId: 'nEffectY', group: 'effect', key: 'y', min: -24, max: 24, step: .5 }
+  ].forEach(bindNumberControl);
+  [
+    { pickerId: 'inpColor', inputId: 'txtColor', errorId: 'colorError', key: 'color' },
+    { pickerId: 'inpEffectColor', inputId: 'txtEffectColor', errorId: 'effectColorError', group: 'effect', key: 'color' },
+    { pickerId: 'inpStrokeColor', inputId: 'txtStrokeColor', errorId: 'strokeColorError', group: 'stroke', key: 'color' }
+  ].forEach(bindColorControl);
+
+  document.getElementById('btnAddText').addEventListener('click', addText);
+  document.getElementById('btnDuplicateText').addEventListener('click', duplicateSelected);
+  elTextList.addEventListener('click', e => {
+    const button = e.target.closest('button[data-id]');
+    if (!button) return;
+    selectText(button.dataset.id);
+    textLayer.querySelector(`[data-id="${state.selectedId}"]`)?.focus();
+  });
+
+  elContent.addEventListener('input', () => updateSelected({ content: elContent.value }));
+  elFont.addEventListener('change', () => updateSelected({ family: elFont.value }));
+  for (const [button, key] of [[elBold, 'bold'], [elItalic, 'italic']]) {
+    button.addEventListener('click', () => {
+      const item = getSelected();
+      if (!item) return;
+      updateSelected({ [key]: !item[key] });
+      button.classList.toggle('on', item[key]);
+      button.setAttribute('aria-pressed', String(item[key]));
+    });
+  }
+  elEffect.addEventListener('change', () => {
+    updateSelected({ effect: { ...EFFECT_PRESETS[elEffect.value] } });
+    const item = getSelected();
+    if (item) syncTextPanel(item);
+  });
+  elAlign.addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    [...elAlign.children].forEach(b => {
+      b.classList.toggle('on', b === btn);
+      b.setAttribute('aria-pressed', String(b === btn));
+    });
+    updateSelected({ align: btn.dataset.align });
+  });
+  document.getElementById('btnDeleteText').addEventListener('click', deleteSelected);
+
+  document.querySelectorAll('.swatches button').forEach(sw => {
+    sw.addEventListener('click', () => {
+      const c = sw.dataset.color;
+      updateSelected({ color: c });
+      const item = getSelected();
+      if (item) colorBindings.forEach(binding => binding.sync(item));
+    });
+  });
+
+  window.addEventListener('keydown', e => {
+    if (e.target.closest('input,textarea,select,button,summary,[contenteditable]') || e.isComposing) return;
+    if (!state.selectedId) return;
+    const item = getSelected();
+    if (!item) return;
+    if (e.key === 'Delete' || e.key === 'Backspace') {
+      e.preventDefault();
+      deleteSelected();
+      return;
+    }
+    if (e.key === 'Escape') { selectText(null); return; }
+    const step = e.shiftKey ? 10 : 1;
+    const arrows = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] };
+    if (arrows[e.key]) {
+      e.preventDefault();
+      item.x += arrows[e.key][0];
+      item.y += arrows[e.key][1];
+      renderTexts();
+    }
+  });
+
+  /* =====================================================================
+   * 六、尺寸滑块
+   * ===================================================================== */
+
+  const sBar = document.getElementById('sBar');
+  const sPaperW = document.getElementById('sPaperW');
+  const sPaperH = document.getElementById('sPaperH');
+
+  function syncSizeLabels() {
+    document.getElementById('vBar').innerHTML = `+${state.barDx}<span class="unit">px</span>`;
+    document.getElementById('vPaperW').innerHTML = `+${state.paperDx}<span class="unit">px</span>`;
+    document.getElementById('vPaperH').innerHTML = `+${state.paperDy}<span class="unit">px</span>`;
+  }
+
+  function onSizeInput() {
+    const prevBar = state.barDx;
+    state.barDx = +sBar.value;
+    state.paperDx = +sPaperW.value;
+    state.paperDy = +sPaperH.value;
+
+    // 标题条变长时，条内文字按对齐方式跟随，保持视觉居中/贴边
+    const dB = state.barDx - prevBar;
+    if (dB && state.texts.length) {
+      state.texts.forEach(t => {
+        const inBar = t.y >= 225 && t.y <= 320 && t.x >= 340 && t.x <= 700 + prevBar;
+        if (!inBar) return;
+        if (t.align === 'center') t.x += dB / 2;
+        else if (t.align === 'right') t.x += dB;
+      });
+    }
+
+    syncSizeLabels();
+    renderArtwork();
+    renderTexts();
+  }
+
+  sBar.addEventListener('input', onSizeInput);
+  sPaperW.addEventListener('input', onSizeInput);
+  sPaperH.addEventListener('input', onSizeInput);
+
+  document.getElementById('btnReset').addEventListener('click', () => {
+    sBar.value = 0;
+    sPaperW.value = 0;
+    sPaperH.value = 0;
+    onSizeInput();
+  });
+
+  /* =====================================================================
+   * 七、导出 PNG
+   * ===================================================================== */
+
+  function downloadBlob(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+  }
+
+  let exporting = false;
+
+  async function exportPNG() {
+    if (exporting) return;
+    exporting = true;
+    const btns = [document.getElementById('btnExport'), document.getElementById('btnExportTop')];
+    btns.forEach(b => b.disabled = true);
+    elStatus.textContent = '正在合并导出…';
+    let svgUrl = null;
+
+    try {
+      await document.fonts.ready;
+      const scale = +document.getElementById('selScale').value;
+      const w = vbW(), h = vbH();
+
+      const clone = svg.cloneNode(true);
+      const ui = clone.querySelector('#ui-layer');
+      if (ui) ui.remove();
+      clone.removeAttribute('style');
+      clone.setAttribute('xmlns', NS);
+      clone.setAttribute('width', w);
+      clone.setAttribute('height', h);
+      clone.setAttribute('viewBox', `0 0 ${w} ${h}`);
+
+      // 把导入的本地字体嵌进导出用的 SVG，否则 <img> 渲染时会掉回系统字体
+      const usedKeys = new Set(state.texts.map(t => t.family));
+      let faceCss = '';
+      usedKeys.forEach(key => {
+        const f = IMPORTED_FONTS.get(key);
+        if (f) faceCss += `@font-face{font-family:"${f.family}";src:url(${f.dataUrl}) format("${f.format}");}`;
+      });
+      if (faceCss) {
+        const st = document.createElementNS(NS, 'style');
+        st.textContent = faceCss;
+        clone.insertBefore(st, clone.firstChild);
+      }
+
+      const xml = new XMLSerializer().serializeToString(clone);
+      svgUrl = URL.createObjectURL(new Blob([xml], { type: 'image/svg+xml;charset=utf-8' }));
+
+      const img = new Image();
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = svgUrl;
+      });
+
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.round(w * scale);
+      canvas.height = Math.round(h * scale);
+      const ctx = canvas.getContext('2d');
+      if (!ctx) throw new Error('无法创建 PNG 画布');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+      if (!blob) throw new Error('PNG 编码失败');
+      downloadBlob(blob, `鸟类小百科-${canvas.width}x${canvas.height}.png`);
+      elStatus.textContent = `已导出 ${canvas.width} × ${canvas.height} PNG`;
+    } catch (err) {
+      console.error(err);
+      elStatus.textContent = '导出失败，请重试';
+    } finally {
+      if (svgUrl) URL.revokeObjectURL(svgUrl);
+      exporting = false;
+      btns.forEach(b => b.disabled = false);
+    }
+  }
+
+  document.getElementById('btnExport').addEventListener('click', exportPNG);
+  document.getElementById('btnExportTop').addEventListener('click', exportPNG);
+
+  /* =====================================================================
+   * 八、视图控制与启动
+   * ===================================================================== */
+
+  document.getElementById('btnZoomIn').addEventListener('click', () => {
+    setZoom((viewZoom == null ? fitScale() : viewZoom) * 1.15);
+  });
+  document.getElementById('btnZoomOut').addEventListener('click', () => {
+    setZoom((viewZoom == null ? fitScale() : viewZoom) / 1.15);
+  });
+  document.getElementById('btnActualSize').addEventListener('click', () => setZoom(1));
+  document.getElementById('btnFit').addEventListener('click', () => {
+    viewZoom = null;
+    applyScale();
+    stage.scrollLeft = 0;
+    stage.scrollTop = 0;
+  });
+
+  window.addEventListener('resize', () => {
+    applyScale();
+  });
+
+  /* =====================================================================
+   * 九、章节文字导入 + 本地字体导入（2026-11-17 追加）
+   * ===================================================================== */
+
+  const IMPORTED_FONTS = new Map();   // key -> { family, dataUrl, format, label }
+
+  function blobToBase64(blob) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const s = String(reader.result || '');
+        const i = s.indexOf(',');
+        resolve(i >= 0 ? s.slice(i + 1) : '');
+      };
+      reader.onerror = () => reject(reader.error);
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  const elFontFile = document.getElementById('fontFile');
+  const btnLoadFont = document.getElementById('btnLoadFont');
+
+  btnLoadFont.addEventListener('click', () => elFontFile.click());
+
+  elFontFile.addEventListener('change', async () => {
+    const file = elFontFile.files && elFontFile.files[0];
+    elFontFile.value = '';
+    if (!file) return;
+    const n = ++seq;
+    const family = 'CardLocal' + n;
+    const label = file.name.replace(/\.(ttf|otf|woff2?|ttc)$/i, '');
+    try {
+      const buf = await file.arrayBuffer();
+      const face = new FontFace(family, buf);
+      await face.load();
+      document.fonts.add(face);
+      const ext = (file.name.split('.').pop() || 'ttf').toLowerCase();
+      const fmt = { ttf: 'truetype', otf: 'opentype', woff: 'woff', woff2: 'woff2' }[ext] || 'truetype';
+      const b64 = await blobToBase64(new Blob([buf]));
+      const key = 'local' + n;
+      IMPORTED_FONTS.set(key, { family, dataUrl: `data:font/${ext};base64,${b64}`, format: fmt, label });
+      FONTS[key] = `"${family}", ${FONTS.pingfang}`;
+      const opt = document.createElement('option');
+      opt.value = key;
+      opt.textContent = label + ' · 本地';
+      elFont.appendChild(opt);
+      elFont.value = key;
+      updateSelected({ family: key });
+      elStatus.textContent = `已载入字体「${label}」`;
+    } catch (err) {
+      console.error(err);
+      elStatus.textContent = '字体加载失败：' + (err && err.message ? err.message : err);
+      alert('字体加载失败：' + (err && err.message ? err.message : err));
+    }
+  });
+
+  // ---- 章节文字 ----
+  const elChapterRaw = document.getElementById('chapterRaw');
+  const elChapterFile = document.getElementById('chapterFile');
+  const elSelChapter = document.getElementById('selChapter');
+  const elChapterFilter = document.getElementById('chapterFilter');
+  const elParaList = document.getElementById('paraList');
+  let chapterEntries = [];
+
+  function parseChapterText(raw) {
+    const out = [];
+    let chapter = '';
+    let buf = [];
+    const TAGS = /^(鸟类小百科|雨林小百科|科普小百科|百科提示|小百科|提示|正文|标题|旁白)/;
+    const flush = () => {
+      let text = buf.join('\n').trim().replace(/\*\*/g, '');
+      let tag = '';
+      const m = text.match(/^([^：:\n]{1,12})[：:]\s*([\s\S]+)$/);
+      if (m && TAGS.test(m[1].trim())) { tag = m[1].trim(); text = m[2].trim(); }
+      if (text) out.push({ chapter, tag, text });
+      buf = [];
+    };
+    String(raw || '').replace(/\r\n?/g, '\n').split('\n').forEach(line => {
+      const h = line.match(/^\s*#{1,6}\s*(.+?)\s*$/);
+      if (h) { flush(); chapter = h[1]; return; }
+      if (!line.trim()) { flush(); return; }
+      buf.push(line.trim());
+    });
+    flush();
+    return out;
+  }
+
+  function fillFromChapter(text) {
+    let item = getSelected();
+    if (!item) { addText(); item = getSelected(); }
+    if (!item) return;
+    updateSelected({ content: text });
+    elContent.value = text;
+    elStatus.textContent = '已填入段落';
+  }
+
+  function renderChapter() {
+    if (!elParaList) return;
+    const q = elChapterFilter.value.trim();
+    const ch = elSelChapter.value;
+    const list = chapterEntries.filter(e => (!ch || e.chapter === ch) && (!q || e.text.includes(q)));
+    elParaList.textContent = '';
+    if (!list.length) {
+      const p = document.createElement('p');
+      p.className = 'field-note';
+      p.textContent = chapterEntries.length ? '没有匹配的段落' : '还没有导入文字';
+      elParaList.appendChild(p);
+      return;
+    }
+    list.forEach(entry => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'para';
+      b.title = entry.text;
+      const head = document.createElement('span');
+      head.className = 'para-ch';
+      head.textContent = [entry.chapter || '（无章节）', entry.tag].filter(Boolean).join(' · ');
+      const body = document.createElement('span');
+      body.className = 'para-text';
+      body.textContent = entry.text.length > 64 ? entry.text.slice(0, 64) + '…' : entry.text;
+      b.append(head, body);
+      b.addEventListener('click', () => fillFromChapter(entry.text));
+      elParaList.appendChild(b);
+    });
+  }
+
+  function applyEntries(list) {
+    chapterEntries = list;
+    const chapters = [...new Set(chapterEntries.map(e => e.chapter))];
+    elSelChapter.textContent = '';
+    const all = document.createElement('option');
+    all.value = '';
+    all.textContent = `全部（${chapterEntries.length} 段）`;
+    elSelChapter.appendChild(all);
+    chapters.forEach(c => {
+      const o = document.createElement('option');
+      o.value = c;
+      o.textContent = c || '（无章节）';
+      elSelChapter.appendChild(o);
+    });
+    renderChapter();
+    elStatus.textContent = chapterEntries.length ? `已导入 ${chapterEntries.length} 段` : '没有解析到段落';
+  }
+
+  /** 小百科 JSON → 段落列表
+   *  支持 {books:[{book, entries:[{page,title,label,text}]}]}、
+   *  也支持直接是条目数组、或 [{book, entries}] 数组。 */
+  function loadChapterJson(data) {
+    const entries = [];
+    const pushOne = (book, it) => {
+      const text = String(it.text || it.fact || '').trim();
+      if (!text) return;
+      const page = it.page != null ? `P${it.page}` : '';
+      const title = String(it.title || '').replace(/\s*\n\s*/g, ' ').trim();
+      const label = String(it.label || '小百科').trim();
+      const head = [page, title].filter(Boolean).join('｜');
+      entries.push({ chapter: book || '未命名', tag: head ? `${head} · ${label}` : label, text });
+    };
+    const pushBook = (b) => {
+      if (!b) return;
+      if (Array.isArray(b.entries)) b.entries.forEach(it => pushOne(b.book || b.name, it));
+      else if (b.text || b.fact) pushOne(b.book, b);
+    };
+    const root = Array.isArray(data) ? data : (data && Array.isArray(data.books) ? data.books : [data]);
+    root.forEach(b => {
+      if (b && Array.isArray(b.entries)) pushBook(b);
+      else if (b && (b.text || b.fact)) pushOne(b.book, b);
+    });
+    applyEntries(entries);
+  }
+
+  function loadChapter(raw) {
+    applyEntries(parseChapterText(raw));
+  }
+
+  let chapterTimer = null;
+  elChapterRaw.addEventListener('input', () => {
+    clearTimeout(chapterTimer);
+    chapterTimer = setTimeout(() => loadChapter(elChapterRaw.value), 350);
+  });
+  elSelChapter.addEventListener('change', renderChapter);
+  elChapterFilter.addEventListener('input', renderChapter);
+  document.getElementById('btnLoadChapter').addEventListener('click', () => elChapterFile.click());
+  elChapterFile.addEventListener('change', async () => {
+    const f = elChapterFile.files && elChapterFile.files[0];
+    elChapterFile.value = '';
+    if (!f) return;
+    try {
+      const txt = await f.text();
+      const isJson = /\.json$/i.test(f.name) || /^\s*[\[{]/.test(txt);
+      if (isJson) {
+        let data;
+        try {
+          data = JSON.parse(txt);
+        } catch (e) {
+          elStatus.textContent = 'JSON 解析失败：' + e.message;
+          return;
+        }
+        elChapterRaw.value = '';
+        loadChapterJson(data);
+      } else {
+        elChapterRaw.value = txt;
+        loadChapter(txt);
+      }
+    } catch (err) {
+      elStatus.textContent = '读取文件失败';
+    }
+  });
+
+  syncSizeLabels();
+  renderArtwork();
+  renderTexts();
+  requestAnimationFrame(() => { if (viewZoom == null) applyScale(); });
+
+  // 支持用 #bar=200&w=160&h=120 预置尺寸，便于复现与分享
+  const hp = new URLSearchParams(location.hash.slice(1));
+  if (hp.has('bar') || hp.has('w') || hp.has('h')) {
+    if (hp.has('bar')) sBar.value = hp.get('bar');
+    if (hp.has('w')) sPaperW.value = hp.get('w');
+    if (hp.has('h')) sPaperH.value = hp.get('h');
+    onSizeInput();
+  }
+})();
+</script>
+</body>
+</html>
