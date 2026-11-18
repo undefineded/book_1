@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17 09:29:36",
+  "generated": "2026-11-18 08:09:50",
   "method": "Qwen-Image-2.1-Turbo 重绘（非超分）：1254 源图作参考重绘 2496 -> 颜色匹配回该页 1254 源图统计 -> 2508 / 300DPI",
   "model": "qwen_image_2.1_turbo_int8_convrot.safetensors",
   "vae": "qwen_image_2.1_vae_bf16.safetensors",
@@ -10,35 +10,7 @@
   "resolution": 2496,
   "resample": "LANCZOS",
   "colour_reference": "每页 1254px 无字源图（LANCZOS 放大到 Qwen 出图尺寸后取逐通道均值/标准差）",
-  "pending_pages": [
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21,
-    22,
-    23,
-    25,
-    26,
-    27,
-    28,
-    29,
-    30,
-    31,
-    32,
-    33,
-    34,
-    35,
-    36,
-    37,
-    38,
-    39,
-    40
-  ],
+  "pending_pages": [],
   "pages": [
     {
       "page": 1,
@@ -305,6 +277,248 @@
       "bytes": 11188460
     },
     {
+      "page": 13,
+      "chapter": "02-第二章：寻找最美鸟鸣",
+      "folder": "P13｜第二章：寻找最美鸟鸣",
+      "qwen_output": "p13_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 804.6,
+      "sharpness_baseline_2508": 72.8,
+      "sharpness_final": 466.7,
+      "gain_vs_baseline": 6.41,
+      "sha256_source": "d4d987fa573debd69cf193f66f88f74b2fe729eafc8c290f42a38be1463cb5b2",
+      "sha256": "3d0f7e984f84d6edcd57258a5ffa1dc432ee83317532d387c8aaacb074873aaf",
+      "bytes": 11314618
+    },
+    {
+      "page": 14,
+      "chapter": "02-第二章：寻找最美鸟鸣",
+      "folder": "P14｜带上录音机，出发！",
+      "qwen_output": "p14_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 689.5,
+      "sharpness_baseline_2508": 63.1,
+      "sharpness_final": 410.3,
+      "gain_vs_baseline": 6.5,
+      "sha256_source": "750a8bc16fcfd0a7883b6d5ac0aac4a77b43e2b9a18de0447fda5887bdbff346",
+      "sha256": "0f61dc7297eeb8159e40b692b6bf075fd02a89fcff35453c145c77161aa9a5c4",
+      "bytes": 10739767
+    },
+    {
+      "page": 15,
+      "chapter": "02-第二章：寻找最美鸟鸣",
+      "folder": "P15｜老街上的歌手",
+      "qwen_output": "p15_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 868.4,
+      "sharpness_baseline_2508": 78.1,
+      "sharpness_final": 540.5,
+      "gain_vs_baseline": 6.92,
+      "sha256_source": "15f1426c36659a68b0643914ceb3ea8daf1b4721e8f8710e03e92c213cb2fab1",
+      "sha256": "ddf4e101ed4641150bd7aa1a4bad89367299b8feb627809c8180ed260a685230",
+      "bytes": 11246599
+    },
+    {
+      "page": 16,
+      "chapter": "02-第二章：寻找最美鸟鸣",
+      "folder": "P16｜大嗓门与小不点",
+      "qwen_output": "p16_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 829.7,
+      "sharpness_baseline_2508": 74.2,
+      "sharpness_final": 499.2,
+      "gain_vs_baseline": 6.73,
+      "sha256_source": "1639ad29036ad1d151eb2eb9cf471671312514b5a49810b8a1204e3edb9742eb",
+      "sha256": "e917bab215d6eac4ea11b9f8a5fdbb39c281e70f1dcf99a92188ef7d4ae6e8d2",
+      "bytes": 11316139
+    },
+    {
+      "page": 17,
+      "chapter": "02-第二章：寻找最美鸟鸣",
+      "folder": "P17｜月光里的歌",
+      "qwen_output": "p17_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 642.1,
+      "sharpness_baseline_2508": 57.8,
+      "sharpness_final": 547.5,
+      "gain_vs_baseline": 9.46,
+      "sha256_source": "6732598cd11009069a7dd3e3c809a2f2c3aaa713a46bdbec594963c5c5ebf24d",
+      "sha256": "842e7f72c884240d859a78201c4ce0ec9348d5d93827fee4c1be632d66ec2f3a",
+      "bytes": 11266856
+    },
+    {
+      "page": 18,
+      "chapter": "02-第二章：寻找最美鸟鸣",
+      "folder": "P18｜清晨的合唱",
+      "qwen_output": "p18_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 499.3,
+      "sharpness_baseline_2508": 45.2,
+      "sharpness_final": 323.9,
+      "gain_vs_baseline": 7.16,
+      "sha256_source": "a97799ac7f465ef7822196f13f8c9af9a74058604533b9b7c83581771e6d65ae",
+      "sha256": "44aafc32630e1cd0f1acf328bc1f353f750e8f03ed8b72d09684c003b9ee8fa5",
+      "bytes": 10745295
+    },
+    {
+      "page": 19,
+      "chapter": "02-第二章：寻找最美鸟鸣",
+      "folder": "P19｜湿地里的三位邻居",
+      "qwen_output": "p19_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 646.0,
+      "sharpness_baseline_2508": 58.8,
+      "sharpness_final": 375.8,
+      "gain_vs_baseline": 6.39,
+      "sha256_source": "444b9ec8128a2f096333c0a6b456e73841eb11d5e5235bc1d5da11faeb40b6b7",
+      "sha256": "271f3a67097a9de102c954b15f265d2878997cc4f9a3fd210a1cf8ff2ffcd02c",
+      "bytes": 10872370
+    },
+    {
+      "page": 20,
+      "chapter": "02-第二章：寻找最美鸟鸣",
+      "folder": "P20｜把歌声画下来",
+      "qwen_output": "p20_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 387.9,
+      "sharpness_baseline_2508": 36.2,
+      "sharpness_final": 363.4,
+      "gain_vs_baseline": 10.03,
+      "sha256_source": "b564df3f48b9e84dbd44bc2be1887475d15d12987bf15ace0de0d9f8445e5387",
+      "sha256": "9c33961d5359393a7d36df667e1ca6590ecf923c612ad99aadac16731e006ddd",
+      "bytes": 10649392
+    },
+    {
+      "page": 21,
+      "chapter": "03-第三章：隐身大师与特技演员",
+      "folder": "P21｜第三章：隐身大师与特技演员",
+      "qwen_output": "p21_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 1052.5,
+      "sharpness_baseline_2508": 95.5,
+      "sharpness_final": 456.0,
+      "gain_vs_baseline": 4.77,
+      "sha256_source": "0e04ef116dc36037b974de54ff00e6267b4d678278ee6d8164402030e7e162ea",
+      "sha256": "438318c92ce795dd0da2a1dc25bc747efb9451873e981cb3e1a3e62ba5dc597d",
+      "bytes": 11034448
+    },
+    {
+      "page": 22,
+      "chapter": "03-第三章：隐身大师与特技演员",
+      "folder": "P22｜会移动的“小土块”",
+      "qwen_output": "p22_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 1363.6,
+      "sharpness_baseline_2508": 123.5,
+      "sharpness_final": 524.1,
+      "gain_vs_baseline": 4.24,
+      "sha256_source": "e74faa9a69857367c665b572324aee29074b05cc225d912f1d8fcac96ae11ae2",
+      "sha256": "101ba437e63ec2aa05208df05121ed308699d770f6f134e0ecaec2c909f5dd95",
+      "bytes": 11521139
+    },
+    {
+      "page": 23,
+      "chapter": "03-第三章：隐身大师与特技演员",
+      "folder": "P23｜会悬停的蜂鸟",
+      "qwen_output": "p23_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 827.6,
+      "sharpness_baseline_2508": 75.5,
+      "sharpness_final": 523.7,
+      "gain_vs_baseline": 6.94,
+      "sha256_source": "7df09b17486468f27ff6397a4162d727e04d94f6e94e791dd8f241b1ac2e55ef",
+      "sha256": "85c251315205d16543ab243e1ab6b02fa4471395d4df0be20d25bcf545a8c460",
+      "bytes": 11272280
+    },
+    {
       "page": 24,
       "chapter": "03-第三章：隐身大师与特技演员",
       "folder": "P24｜风里的飞行高手",
@@ -325,6 +539,358 @@
       "sha256_source": "9f98e10ad209ca7d3829461fc128eecebb67200eeed04f148ae26242d337023e",
       "sha256": "dcf249ef3a95051eacafe445a91776f1cbb178fe32e5c44f3ae5abcc9ca9ea2f",
       "bytes": 11585801
+    },
+    {
+      "page": 25,
+      "chapter": "03-第三章：隐身大师与特技演员",
+      "folder": "P25｜草原大鸟鸵鸟",
+      "qwen_output": "p25_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 1158.4,
+      "sharpness_baseline_2508": 105.6,
+      "sharpness_final": 542.3,
+      "gain_vs_baseline": 5.13,
+      "sha256_source": "da5831719a2bfcdab4e7e978c0f12a9c023c6434623713f8ef68ae7a52a10358",
+      "sha256": "8249bb4d1adcf99d7b6b73a82ef296e666c2779fbac887ee73515632f427bc96",
+      "bytes": 11707088
+    },
+    {
+      "page": 26,
+      "chapter": "03-第三章：隐身大师与特技演员",
+      "folder": "P26｜南极企鹅",
+      "qwen_output": "p26_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 605.2,
+      "sharpness_baseline_2508": 55.5,
+      "sharpness_final": 222.1,
+      "gain_vs_baseline": 4.0,
+      "sha256_source": "e5b5d2216f72d91fc86b1d22e53debbd307eb955f99d93214249e91fd70aff15",
+      "sha256": "992cb5bc65294e5865e05a4dc699ec4b65def2f8bc5c0ca08bdf151eede29502",
+      "bytes": 10003416
+    },
+    {
+      "page": 27,
+      "chapter": "03-第三章：隐身大师与特技演员",
+      "folder": "P27｜溪流里的蓝宝石",
+      "qwen_output": "p27_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 1370.7,
+      "sharpness_baseline_2508": 123.9,
+      "sharpness_final": 600.1,
+      "gain_vs_baseline": 4.84,
+      "sha256_source": "e5f88ceb97eb27ca62417e49c1ede160c680a50d83231c08f8d28c390e74a7df",
+      "sha256": "75f73adc55f5100d17a3623de72d36b50c16bfb32036a2eed2d08e1058e338ed",
+      "bytes": 11664885
+    },
+    {
+      "page": 28,
+      "chapter": "03-第三章：隐身大师与特技演员",
+      "folder": "P28｜大网兜与“倒立鸭”",
+      "qwen_output": "p28_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 1233.6,
+      "sharpness_baseline_2508": 112.8,
+      "sharpness_final": 551.4,
+      "gain_vs_baseline": 4.89,
+      "sha256_source": "b0ff5a18e03a4a9e21998e0ec60bb4634781aa440952a3ae735bbf5ace3059db",
+      "sha256": "42507024a2ee98ccc1e24c33e84f4b8e645fafed6b8b11f3cf2b54f2d0c22a15",
+      "bytes": 11759351
+    },
+    {
+      "page": 29,
+      "chapter": "03-第三章：隐身大师与特技演员",
+      "folder": "P29｜还有空白的一页",
+      "qwen_output": "p29_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 1344.4,
+      "sharpness_baseline_2508": 123.6,
+      "sharpness_final": 579.9,
+      "gain_vs_baseline": 4.69,
+      "sha256_source": "5c79ff910d5c46fda0b27b93bfacf898dfb33704caba016281a1ad40f0239bc6",
+      "sha256": "499e8f2aae14417b0dcff20c74f4746a25551052412f6473a7910175ee311a25",
+      "bytes": 11662964
+    },
+    {
+      "page": 30,
+      "chapter": "04-第四章：鸟儿怎样生活",
+      "folder": "P30｜第四章：鸟儿怎样生活",
+      "qwen_output": "p30_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 845.2,
+      "sharpness_baseline_2508": 75.2,
+      "sharpness_final": 530.7,
+      "gain_vs_baseline": 7.05,
+      "sha256_source": "7e5ea05f99cb3402bbe92abfbe7e3d35cd6b81dfabc83e9949202ea0fcf20caf",
+      "sha256": "f0c91b67b3d92b468edd0caa6be7437eb31f000bd4159e9c3bb459bbaef4b773",
+      "bytes": 11338591
+    },
+    {
+      "page": 31,
+      "chapter": "04-第四章：鸟儿怎样生活",
+      "folder": "P31｜林下的漂亮邻居",
+      "qwen_output": "p31_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 2052.8,
+      "sharpness_baseline_2508": 183.2,
+      "sharpness_final": 923.2,
+      "gain_vs_baseline": 5.04,
+      "sha256_source": "eeef97e6c2e344ff3300c40a8abdcf73d3c9ea249e84cabc09189ba6fb978557",
+      "sha256": "3921e4ae1db78d8060f54c22afd913c3161079bda15c67090db958622904b71d",
+      "bytes": 12407708
+    },
+    {
+      "page": 32,
+      "chapter": "04-第四章：鸟儿怎样生活",
+      "folder": "P32｜竹林里的野生亲戚",
+      "qwen_output": "p32_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 661.2,
+      "sharpness_baseline_2508": 59.3,
+      "sharpness_final": 499.9,
+      "gain_vs_baseline": 8.43,
+      "sha256_source": "b9c85ec877c12ed9c4c312f8183170adb0d95c2d83f952de29870aba0afb7580",
+      "sha256": "516ca8226764bf6264710b3e9ef13baff71edb664208186d1a863e64505acdb6",
+      "bytes": 11354043
+    },
+    {
+      "page": 33,
+      "chapter": "04-第四章：鸟儿怎样生活",
+      "folder": "P33｜储藏家与编织匠",
+      "qwen_output": "p33_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 1516.2,
+      "sharpness_baseline_2508": 136.5,
+      "sharpness_final": 764.9,
+      "gain_vs_baseline": 5.6,
+      "sha256_source": "b1b528b767d8c1d238503dc8f9737a133d304909d697eac67879b058cb99c5f4",
+      "sha256": "0c33c9c2b1c487f58c12d9b10002cee2a06b6ed8eedc4105f2d2bccdf7e57ddd",
+      "bytes": 11922985
+    },
+    {
+      "page": 34,
+      "chapter": "04-第四章：鸟儿怎样生活",
+      "folder": "P34｜秋林里的藏宝家",
+      "qwen_output": "p34_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 1570.9,
+      "sharpness_baseline_2508": 141.5,
+      "sharpness_final": 719.1,
+      "gain_vs_baseline": 5.08,
+      "sha256_source": "9078e216bec66677e1bea3d9d0b5739003e546f6131a0c12807084f181ccc28c",
+      "sha256": "acb695486de3089f0692b269f7aa00b481d31f06e0203495150e31f84ffc354e",
+      "bytes": 12065981
+    },
+    {
+      "page": 35,
+      "chapter": "04-第四章：鸟儿怎样生活",
+      "folder": "P35｜风暴中的火烈鸟与军舰鸟",
+      "qwen_output": "p35_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 2080.9,
+      "sharpness_baseline_2508": 188.7,
+      "sharpness_final": 852.8,
+      "gain_vs_baseline": 4.52,
+      "sha256_source": "bee00fa54b96bfa49328bda0f9525f42e42a8f4e18357ee3e450302a8f799270",
+      "sha256": "20c5770a1703c637e329e7a8c90e3b1026d4f98ba4c0200aa36a9a9ef1c724fd",
+      "bytes": 12434859
+    },
+    {
+      "page": 36,
+      "chapter": "04-第四章：鸟儿怎样生活",
+      "folder": "P36｜每一种声音，都有自己的位置",
+      "qwen_output": "p36_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 500.8,
+      "sharpness_baseline_2508": 46.4,
+      "sharpness_final": 376.7,
+      "gain_vs_baseline": 8.11,
+      "sha256_source": "ea4b18a1831e2d693daab93934e079b1832d414777913091ca5624b4e36844b1",
+      "sha256": "8d9833763884bf7ff8168b5233f46da54fbb7a9deb1687c795c72556be651ec3",
+      "bytes": 10514952
+    },
+    {
+      "page": 37,
+      "chapter": "05-互动与收尾",
+      "folder": "P37｜我的鸟类观察手册",
+      "qwen_output": "p37_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 422.9,
+      "sharpness_baseline_2508": 40.9,
+      "sharpness_final": 301.7,
+      "gain_vs_baseline": 7.38,
+      "sha256_source": "0a3458cd624794b220ed873c4e1d4bbfbcba6adec8c27a1adad06921e0f3bcf7",
+      "sha256": "a3710b09f59860e7aab064644d6359edcf77c3c9c285a49aafd9e60504d3ac1f",
+      "bytes": 10486540
+    },
+    {
+      "page": 38,
+      "chapter": "05-互动与收尾",
+      "folder": "P38｜致谢与版权信息页",
+      "qwen_output": "p38_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 118.1,
+      "sharpness_baseline_2508": 13.3,
+      "sharpness_final": 79.4,
+      "gain_vs_baseline": 5.98,
+      "sha256_source": "96fbbffc5f5165507147d3095890cc883173cbecd586b3863ef697c5a0c5923f",
+      "sha256": "7d474e4a30fde27e7661387b9e0c12ffd22c459a249cb4773e6a3a2ee938b515",
+      "bytes": 8650467
+    },
+    {
+      "page": 39,
+      "chapter": "05-互动与收尾",
+      "folder": "P39｜封三：故事还在继续",
+      "qwen_output": "p39_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 786.6,
+      "sharpness_baseline_2508": 72.0,
+      "sharpness_final": 444.2,
+      "gain_vs_baseline": 6.17,
+      "sha256_source": "a49f33b63471ae6a3792fe824d13e4748cd0698a134917a9fde3e08787f33e70",
+      "sha256": "e6cc0c3ea597562e80c2e656fe6dc7a735fc4b8c028ef2297da90cc62017adfe",
+      "bytes": 11287111
+    },
+    {
+      "page": 40,
+      "chapter": "05-互动与收尾",
+      "folder": "P40｜封底：听，窗外的第一声鸟鸣",
+      "qwen_output": "p40_00001_.png",
+      "qwen_size": [
+        2496,
+        2496
+      ],
+      "final_size": [
+        2508,
+        2508
+      ],
+      "dpi": 300,
+      "sharpness_source_1254": 693.8,
+      "sharpness_baseline_2508": 64.9,
+      "sharpness_final": 495.4,
+      "gain_vs_baseline": 7.64,
+      "sha256_source": "b91aca9c591af6ad5db2b18c374342cc72fc6f5ba15d2113b635abf1c3f58ae5",
+      "sha256": "3ad0334a53180c932072b4afecb4b1132bcf0367521106910cf8560ea67e70da",
+      "bytes": 11051130
     }
   ]
 }
