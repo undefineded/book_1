@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18 08:09:50",
+  "generated": "2026-11-21 05:55:19",
   "method": "Qwen-Image-2.1-Turbo 重绘（非超分）：1254 源图作参考重绘 2496 -> 颜色匹配回该页 1254 源图统计 -> 2508 / 300DPI",
   "model": "qwen_image_2.1_turbo_int8_convrot.safetensors",
   "vae": "qwen_image_2.1_vae_bf16.safetensors",
@@ -26,13 +26,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 388.8,
-      "sharpness_baseline_2508": 35.6,
-      "sharpness_final": 366.4,
-      "gain_vs_baseline": 10.3,
+      "sharpness_source_1254": 539.4,
+      "sharpness_baseline_2508": 49.5,
+      "sharpness_final": 397.2,
+      "gain_vs_baseline": 8.03,
       "sha256_source": "c53c021ca5c8a359b5ab47cb425ebc9f799abd433cd45e00641ddc99d5bedbf4",
-      "sha256": "17e7114b84b3287286e23215c2cccbd70a57117ac51fab27d65cfe6edfb1fc26",
-      "bytes": 10767933
+      "sha256": "bfab22d1c13749278969fdb9dd2cd84a1499cef830a15fac7cd9099edd020b32",
+      "bytes": 10725865
     },
     {
       "page": 2,
@@ -92,13 +92,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 1128.0,
-      "sharpness_baseline_2508": 104.2,
-      "sharpness_final": 491.2,
-      "gain_vs_baseline": 4.71,
+      "sharpness_source_1254": 779.8,
+      "sharpness_baseline_2508": 71.9,
+      "sharpness_final": 412.9,
+      "gain_vs_baseline": 5.74,
       "sha256_source": "ca6b654c7acb27c0d3c71ef52efae0ef1794864140addd6c6011eed432f622b9",
-      "sha256": "52bf1c88222fb4b532bf8593227f6aab58f54e493588cf798b6628cbcc467a44",
-      "bytes": 11033521
+      "sha256": "bdc8e599452db20dfb55fcac118f15dd1b4e8c33963929ee711aa42e3411c1d1",
+      "bytes": 10800318
     },
     {
       "page": 5,
@@ -246,13 +246,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 1174.6,
-      "sharpness_baseline_2508": 108.2,
-      "sharpness_final": 547.6,
-      "gain_vs_baseline": 5.06,
+      "sharpness_source_1254": 823.5,
+      "sharpness_baseline_2508": 75.3,
+      "sharpness_final": 528.3,
+      "gain_vs_baseline": 7.02,
       "sha256_source": "0ea3ef3aada85b87c6be2ac245833a267fe170e1ac662552e9d7a810360dbff0",
-      "sha256": "369756c473f291ebc3f1f466f9a1b1787c27d3bf03e4231d7b59c91fb412fdf3",
-      "bytes": 11271568
+      "sha256": "3cc7c2c88c34b0f9fd1cb1c23435ad7320518996dc3235533b4a24ef500acf4b",
+      "bytes": 11097491
     },
     {
       "page": 12,
@@ -290,13 +290,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 804.6,
-      "sharpness_baseline_2508": 72.8,
-      "sharpness_final": 466.7,
-      "gain_vs_baseline": 6.41,
+      "sharpness_source_1254": 367.8,
+      "sharpness_baseline_2508": 34.4,
+      "sharpness_final": 396.5,
+      "gain_vs_baseline": 11.52,
       "sha256_source": "d4d987fa573debd69cf193f66f88f74b2fe729eafc8c290f42a38be1463cb5b2",
-      "sha256": "3d0f7e984f84d6edcd57258a5ffa1dc432ee83317532d387c8aaacb074873aaf",
-      "bytes": 11314618
+      "sha256": "49afd6baafdf27f9d14cd66392173eb66e519d105c0fd3c3d4e55b13d1f3eac9",
+      "bytes": 11076230
     },
     {
       "page": 14,
@@ -334,13 +334,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 868.4,
-      "sharpness_baseline_2508": 78.1,
-      "sharpness_final": 540.5,
-      "gain_vs_baseline": 6.92,
+      "sharpness_source_1254": 904.9,
+      "sharpness_baseline_2508": 81.8,
+      "sharpness_final": 514.3,
+      "gain_vs_baseline": 6.29,
       "sha256_source": "15f1426c36659a68b0643914ceb3ea8daf1b4721e8f8710e03e92c213cb2fab1",
-      "sha256": "ddf4e101ed4641150bd7aa1a4bad89367299b8feb627809c8180ed260a685230",
-      "bytes": 11246599
+      "sha256": "4059964a8769c4316eef272ad4b89bf08720f5fdd7782ce9647d0ebd6be0e710",
+      "bytes": 11178733
     },
     {
       "page": 16,
@@ -356,13 +356,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 829.7,
-      "sharpness_baseline_2508": 74.2,
-      "sharpness_final": 499.2,
-      "gain_vs_baseline": 6.73,
+      "sharpness_source_1254": 1123.9,
+      "sharpness_baseline_2508": 98.2,
+      "sharpness_final": 615.9,
+      "gain_vs_baseline": 6.27,
       "sha256_source": "1639ad29036ad1d151eb2eb9cf471671312514b5a49810b8a1204e3edb9742eb",
-      "sha256": "e917bab215d6eac4ea11b9f8a5fdbb39c281e70f1dcf99a92188ef7d4ae6e8d2",
-      "bytes": 11316139
+      "sha256": "9f401886998cbf81fce01992b16d663bfb69031d15a196bfaca114f75d112db1",
+      "bytes": 11683977
     },
     {
       "page": 17,
@@ -378,13 +378,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 642.1,
-      "sharpness_baseline_2508": 57.8,
-      "sharpness_final": 547.5,
-      "gain_vs_baseline": 9.46,
+      "sharpness_source_1254": 1132.8,
+      "sharpness_baseline_2508": 102.4,
+      "sharpness_final": 678.4,
+      "gain_vs_baseline": 6.63,
       "sha256_source": "6732598cd11009069a7dd3e3c809a2f2c3aaa713a46bdbec594963c5c5ebf24d",
-      "sha256": "842e7f72c884240d859a78201c4ce0ec9348d5d93827fee4c1be632d66ec2f3a",
-      "bytes": 11266856
+      "sha256": "dd8db2614db4274fb4e710320675992b93945bc5652938af2da20d7941149586",
+      "bytes": 11596399
     },
     {
       "page": 18,
@@ -400,13 +400,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 499.3,
-      "sharpness_baseline_2508": 45.2,
-      "sharpness_final": 323.9,
-      "gain_vs_baseline": 7.16,
+      "sharpness_source_1254": 1188.1,
+      "sharpness_baseline_2508": 106.7,
+      "sharpness_final": 543.4,
+      "gain_vs_baseline": 5.09,
       "sha256_source": "a97799ac7f465ef7822196f13f8c9af9a74058604533b9b7c83581771e6d65ae",
-      "sha256": "44aafc32630e1cd0f1acf328bc1f353f750e8f03ed8b72d09684c003b9ee8fa5",
-      "bytes": 10745295
+      "sha256": "418e70230ccbd17119882d21d570c6e396fa6fdb1db84197cb5a99c124b8e9b5",
+      "bytes": 11592669
     },
     {
       "page": 19,
@@ -422,13 +422,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 646.0,
-      "sharpness_baseline_2508": 58.8,
-      "sharpness_final": 375.8,
-      "gain_vs_baseline": 6.39,
+      "sharpness_source_1254": 628.9,
+      "sharpness_baseline_2508": 57.3,
+      "sharpness_final": 354.4,
+      "gain_vs_baseline": 6.18,
       "sha256_source": "444b9ec8128a2f096333c0a6b456e73841eb11d5e5235bc1d5da11faeb40b6b7",
-      "sha256": "271f3a67097a9de102c954b15f265d2878997cc4f9a3fd210a1cf8ff2ffcd02c",
-      "bytes": 10872370
+      "sha256": "9c13e3164f970f3a9b3f6ddd0928932bd21cb5babff5a424cf0fdd8a2f024c00",
+      "bytes": 10807730
     },
     {
       "page": 20,
@@ -488,13 +488,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 1363.6,
-      "sharpness_baseline_2508": 123.5,
-      "sharpness_final": 524.1,
-      "gain_vs_baseline": 4.24,
+      "sharpness_source_1254": 957.3,
+      "sharpness_baseline_2508": 85.8,
+      "sharpness_final": 514.1,
+      "gain_vs_baseline": 5.99,
       "sha256_source": "e74faa9a69857367c665b572324aee29074b05cc225d912f1d8fcac96ae11ae2",
-      "sha256": "101ba437e63ec2aa05208df05121ed308699d770f6f134e0ecaec2c909f5dd95",
-      "bytes": 11521139
+      "sha256": "276fbe0e79d449e843920964ed2245cd10a746f0c35d10cd211445ce1a352db0",
+      "bytes": 11400650
     },
     {
       "page": 23,
@@ -532,13 +532,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 1271.2,
-      "sharpness_baseline_2508": 115.2,
-      "sharpness_final": 596.7,
-      "gain_vs_baseline": 5.18,
+      "sharpness_source_1254": 1103.6,
+      "sharpness_baseline_2508": 99.4,
+      "sharpness_final": 534.8,
+      "gain_vs_baseline": 5.38,
       "sha256_source": "9f98e10ad209ca7d3829461fc128eecebb67200eeed04f148ae26242d337023e",
-      "sha256": "dcf249ef3a95051eacafe445a91776f1cbb178fe32e5c44f3ae5abcc9ca9ea2f",
-      "bytes": 11585801
+      "sha256": "e9b0436f317ba2a771f864826acc68a8d41547eebfc7d335438799c7510c1b86",
+      "bytes": 11488595
     },
     {
       "page": 25,
@@ -620,13 +620,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 1233.6,
-      "sharpness_baseline_2508": 112.8,
-      "sharpness_final": 551.4,
-      "gain_vs_baseline": 4.89,
+      "sharpness_source_1254": 1488.5,
+      "sharpness_baseline_2508": 135.9,
+      "sharpness_final": 621.3,
+      "gain_vs_baseline": 4.57,
       "sha256_source": "b0ff5a18e03a4a9e21998e0ec60bb4634781aa440952a3ae735bbf5ace3059db",
-      "sha256": "42507024a2ee98ccc1e24c33e84f4b8e645fafed6b8b11f3cf2b54f2d0c22a15",
-      "bytes": 11759351
+      "sha256": "9824bbd78e815250ab41bc2f90baaa44cc349bd997a9585363598cd70df7b19e",
+      "bytes": 11562390
     },
     {
       "page": 29,
@@ -686,13 +686,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 2052.8,
-      "sharpness_baseline_2508": 183.2,
-      "sharpness_final": 923.2,
-      "gain_vs_baseline": 5.04,
+      "sharpness_source_1254": 981.6,
+      "sharpness_baseline_2508": 86.2,
+      "sharpness_final": 533.6,
+      "gain_vs_baseline": 6.19,
       "sha256_source": "eeef97e6c2e344ff3300c40a8abdcf73d3c9ea249e84cabc09189ba6fb978557",
-      "sha256": "3921e4ae1db78d8060f54c22afd913c3161079bda15c67090db958622904b71d",
-      "bytes": 12407708
+      "sha256": "f32dc5957f0a5fcd34d019c352fef1c2950aa8efa4314539865f79a887bfab62",
+      "bytes": 11440795
     },
     {
       "page": 32,
@@ -708,13 +708,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 661.2,
-      "sharpness_baseline_2508": 59.3,
-      "sharpness_final": 499.9,
-      "gain_vs_baseline": 8.43,
+      "sharpness_source_1254": 897.9,
+      "sharpness_baseline_2508": 81.0,
+      "sharpness_final": 456.7,
+      "gain_vs_baseline": 5.64,
       "sha256_source": "b9c85ec877c12ed9c4c312f8183170adb0d95c2d83f952de29870aba0afb7580",
-      "sha256": "516ca8226764bf6264710b3e9ef13baff71edb664208186d1a863e64505acdb6",
-      "bytes": 11354043
+      "sha256": "5fcf0b7679f8273ab54197ae116d8760d3b4e3ffb9b1cfecdb68f1c17eaf7ed2",
+      "bytes": 11442124
     },
     {
       "page": 33,
@@ -730,13 +730,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 1516.2,
-      "sharpness_baseline_2508": 136.5,
-      "sharpness_final": 764.9,
-      "gain_vs_baseline": 5.6,
+      "sharpness_source_1254": 1131.1,
+      "sharpness_baseline_2508": 101.2,
+      "sharpness_final": 643.3,
+      "gain_vs_baseline": 6.36,
       "sha256_source": "b1b528b767d8c1d238503dc8f9737a133d304909d697eac67879b058cb99c5f4",
-      "sha256": "0c33c9c2b1c487f58c12d9b10002cee2a06b6ed8eedc4105f2d2bccdf7e57ddd",
-      "bytes": 11922985
+      "sha256": "52e561cce01d8dfa5ca70f4b423df803a84f7da9178632fea9b5a16eb1a4b644",
+      "bytes": 11669061
     },
     {
       "page": 34,
@@ -774,13 +774,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 2080.9,
-      "sharpness_baseline_2508": 188.7,
-      "sharpness_final": 852.8,
-      "gain_vs_baseline": 4.52,
+      "sharpness_source_1254": 2000.7,
+      "sharpness_baseline_2508": 181.1,
+      "sharpness_final": 845.0,
+      "gain_vs_baseline": 4.67,
       "sha256_source": "bee00fa54b96bfa49328bda0f9525f42e42a8f4e18357ee3e450302a8f799270",
-      "sha256": "20c5770a1703c637e329e7a8c90e3b1026d4f98ba4c0200aa36a9a9ef1c724fd",
-      "bytes": 12434859
+      "sha256": "4283204f7531e8e5c6cf45de1c68bf13ad7820232fe670cfa1f02f5c5cf027bd",
+      "bytes": 12460194
     },
     {
       "page": 36,
