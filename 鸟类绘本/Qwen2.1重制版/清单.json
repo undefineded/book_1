@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-21 05:55:19",
+  "generated": "2026-11-21 15:02:07",
   "method": "Qwen-Image-2.1-Turbo 重绘（非超分）：1254 源图作参考重绘 2496 -> 颜色匹配回该页 1254 源图统计 -> 2508 / 300DPI",
   "model": "qwen_image_2.1_turbo_int8_convrot.safetensors",
   "vae": "qwen_image_2.1_vae_bf16.safetensors",
@@ -26,13 +26,13 @@
         2508
       ],
       "dpi": 300,
-      "sharpness_source_1254": 539.4,
-      "sharpness_baseline_2508": 49.5,
-      "sharpness_final": 397.2,
-      "gain_vs_baseline": 8.03,
+      "sharpness_source_1254": 484.6,
+      "sharpness_baseline_2508": 44.9,
+      "sharpness_final": 369.8,
+      "gain_vs_baseline": 8.24,
       "sha256_source": "c53c021ca5c8a359b5ab47cb425ebc9f799abd433cd45e00641ddc99d5bedbf4",
-      "sha256": "bfab22d1c13749278969fdb9dd2cd84a1499cef830a15fac7cd9099edd020b32",
-      "bytes": 10725865
+      "sha256": "a0b5a7657d29aed2e179a3b91d279d5a2e0c69f297d309d07786ab92b470ad8f",
+      "bytes": 10545274
     },
     {
       "page": 2,
