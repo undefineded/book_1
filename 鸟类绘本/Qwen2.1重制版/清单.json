@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-21 15:02:07",
+  "generated": "2026-11-21 15:04:21",
   "method": "Qwen-Image-2.1-Turbo 重绘（非超分）：1254 源图作参考重绘 2496 -> 颜色匹配回该页 1254 源图统计 -> 2508 / 300DPI",
   "model": "qwen_image_2.1_turbo_int8_convrot.safetensors",
   "vae": "qwen_image_2.1_vae_bf16.safetensors",
@@ -30,7 +30,7 @@
       "sharpness_baseline_2508": 44.9,
       "sharpness_final": 369.8,
       "gain_vs_baseline": 8.24,
-      "sha256_source": "c53c021ca5c8a359b5ab47cb425ebc9f799abd433cd45e00641ddc99d5bedbf4",
+      "sha256_source": "f2d193dc7edbcc65ec1ac1eb3d6858eae158963b4d4dc76819670d454e87e1b1",
       "sha256": "a0b5a7657d29aed2e179a3b91d279d5a2e0c69f297d309d07786ab92b470ad8f",
       "bytes": 10545274
     },
@@ -96,7 +96,7 @@
       "sharpness_baseline_2508": 71.9,
       "sharpness_final": 412.9,
       "gain_vs_baseline": 5.74,
-      "sha256_source": "ca6b654c7acb27c0d3c71ef52efae0ef1794864140addd6c6011eed432f622b9",
+      "sha256_source": "0d773ecc5b7e513dee84c71a39bc1f3baba22d0fbe72f683beb5cb4ed12e323b",
       "sha256": "bdc8e599452db20dfb55fcac118f15dd1b4e8c33963929ee711aa42e3411c1d1",
       "bytes": 10800318
     },
@@ -250,7 +250,7 @@
       "sharpness_baseline_2508": 75.3,
       "sharpness_final": 528.3,
       "gain_vs_baseline": 7.02,
-      "sha256_source": "0ea3ef3aada85b87c6be2ac245833a267fe170e1ac662552e9d7a810360dbff0",
+      "sha256_source": "44b1f83ff8fb09b2b4c37ddd1c7d84a1ec4c00b1be045cebea42140971829e23",
       "sha256": "3cc7c2c88c34b0f9fd1cb1c23435ad7320518996dc3235533b4a24ef500acf4b",
       "bytes": 11097491
     },
@@ -294,7 +294,7 @@
       "sharpness_baseline_2508": 34.4,
       "sharpness_final": 396.5,
       "gain_vs_baseline": 11.52,
-      "sha256_source": "d4d987fa573debd69cf193f66f88f74b2fe729eafc8c290f42a38be1463cb5b2",
+      "sha256_source": "3d0cc37dff1ffcaf3a294987d9ad425d3f4e13a90b5688ff97d7d8459cfe95cb",
       "sha256": "49afd6baafdf27f9d14cd66392173eb66e519d105c0fd3c3d4e55b13d1f3eac9",
       "bytes": 11076230
     },
@@ -338,7 +338,7 @@
       "sharpness_baseline_2508": 81.8,
       "sharpness_final": 514.3,
       "gain_vs_baseline": 6.29,
-      "sha256_source": "15f1426c36659a68b0643914ceb3ea8daf1b4721e8f8710e03e92c213cb2fab1",
+      "sha256_source": "8e34932ad6832d9d5a16cc701005e0f4135c0514d6fea744c1c8739e4396c46e",
       "sha256": "4059964a8769c4316eef272ad4b89bf08720f5fdd7782ce9647d0ebd6be0e710",
       "bytes": 11178733
     },
@@ -360,7 +360,7 @@
       "sharpness_baseline_2508": 98.2,
       "sharpness_final": 615.9,
       "gain_vs_baseline": 6.27,
-      "sha256_source": "1639ad29036ad1d151eb2eb9cf471671312514b5a49810b8a1204e3edb9742eb",
+      "sha256_source": "1f5109f9b79b4a5cc3ab0cdf5bbfc462fd7fe8698690962743b8987085dc898c",
       "sha256": "9f401886998cbf81fce01992b16d663bfb69031d15a196bfaca114f75d112db1",
       "bytes": 11683977
     },
@@ -382,7 +382,7 @@
       "sharpness_baseline_2508": 102.4,
       "sharpness_final": 678.4,
       "gain_vs_baseline": 6.63,
-      "sha256_source": "6732598cd11009069a7dd3e3c809a2f2c3aaa713a46bdbec594963c5c5ebf24d",
+      "sha256_source": "443351611fd00898bd0b2480c99a763c3bc3c4e602a64e26a36a1988057f91d8",
       "sha256": "dd8db2614db4274fb4e710320675992b93945bc5652938af2da20d7941149586",
       "bytes": 11596399
     },
@@ -404,7 +404,7 @@
       "sharpness_baseline_2508": 106.7,
       "sharpness_final": 543.4,
       "gain_vs_baseline": 5.09,
-      "sha256_source": "a97799ac7f465ef7822196f13f8c9af9a74058604533b9b7c83581771e6d65ae",
+      "sha256_source": "3e0d2bdf6172b73020aab27a0238a8159e799c57058bf301b2a051447a45d863",
       "sha256": "418e70230ccbd17119882d21d570c6e396fa6fdb1db84197cb5a99c124b8e9b5",
       "bytes": 11592669
     },
@@ -426,7 +426,7 @@
       "sharpness_baseline_2508": 57.3,
       "sharpness_final": 354.4,
       "gain_vs_baseline": 6.18,
-      "sha256_source": "444b9ec8128a2f096333c0a6b456e73841eb11d5e5235bc1d5da11faeb40b6b7",
+      "sha256_source": "922c325619d9c39b2d1a7f6f5990f306c6c8cc6d909cc07fd24f4954b5e8c71b",
       "sha256": "9c13e3164f970f3a9b3f6ddd0928932bd21cb5babff5a424cf0fdd8a2f024c00",
       "bytes": 10807730
     },
@@ -492,7 +492,7 @@
       "sharpness_baseline_2508": 85.8,
       "sharpness_final": 514.1,
       "gain_vs_baseline": 5.99,
-      "sha256_source": "e74faa9a69857367c665b572324aee29074b05cc225d912f1d8fcac96ae11ae2",
+      "sha256_source": "e57fb0610d77657d1f3f2ec9a22e0e7a098e6daf42affff6f736a76d88a6bda4",
       "sha256": "276fbe0e79d449e843920964ed2245cd10a746f0c35d10cd211445ce1a352db0",
       "bytes": 11400650
     },
@@ -536,7 +536,7 @@
       "sharpness_baseline_2508": 99.4,
       "sharpness_final": 534.8,
       "gain_vs_baseline": 5.38,
-      "sha256_source": "9f98e10ad209ca7d3829461fc128eecebb67200eeed04f148ae26242d337023e",
+      "sha256_source": "ad7a5f9c1eee2dcc2b43bff396c4d3bb4108d804736fd740b0ec679c91c13a1e",
       "sha256": "e9b0436f317ba2a771f864826acc68a8d41547eebfc7d335438799c7510c1b86",
       "bytes": 11488595
     },
@@ -624,7 +624,7 @@
       "sharpness_baseline_2508": 135.9,
       "sharpness_final": 621.3,
       "gain_vs_baseline": 4.57,
-      "sha256_source": "b0ff5a18e03a4a9e21998e0ec60bb4634781aa440952a3ae735bbf5ace3059db",
+      "sha256_source": "ad9c22c7c307132a6f4d64f27199a68ae6c662fe511fbab5373df90e241406a2",
       "sha256": "9824bbd78e815250ab41bc2f90baaa44cc349bd997a9585363598cd70df7b19e",
       "bytes": 11562390
     },
@@ -690,7 +690,7 @@
       "sharpness_baseline_2508": 86.2,
       "sharpness_final": 533.6,
       "gain_vs_baseline": 6.19,
-      "sha256_source": "eeef97e6c2e344ff3300c40a8abdcf73d3c9ea249e84cabc09189ba6fb978557",
+      "sha256_source": "314f452893a7d9256c87e1dcba7a18f3cbff2e1437d65a1356cef16926255e2c",
       "sha256": "f32dc5957f0a5fcd34d019c352fef1c2950aa8efa4314539865f79a887bfab62",
       "bytes": 11440795
     },
@@ -712,7 +712,7 @@
       "sharpness_baseline_2508": 81.0,
       "sharpness_final": 456.7,
       "gain_vs_baseline": 5.64,
-      "sha256_source": "b9c85ec877c12ed9c4c312f8183170adb0d95c2d83f952de29870aba0afb7580",
+      "sha256_source": "1dfc4cd5703b3943e3e56ef1cc0b7a83ad9801d37529cfa388e57c062d99f0cf",
       "sha256": "5fcf0b7679f8273ab54197ae116d8760d3b4e3ffb9b1cfecdb68f1c17eaf7ed2",
       "bytes": 11442124
     },
@@ -734,7 +734,7 @@
       "sharpness_baseline_2508": 101.2,
       "sharpness_final": 643.3,
       "gain_vs_baseline": 6.36,
-      "sha256_source": "b1b528b767d8c1d238503dc8f9737a133d304909d697eac67879b058cb99c5f4",
+      "sha256_source": "ba31865b3701e641b75b30b5617c92439c763d88723ba291abe856440a9f5ec1",
       "sha256": "52e561cce01d8dfa5ca70f4b423df803a84f7da9178632fea9b5a16eb1a4b644",
       "bytes": 11669061
     },
@@ -778,7 +778,7 @@
       "sharpness_baseline_2508": 181.1,
       "sharpness_final": 845.0,
       "gain_vs_baseline": 4.67,
-      "sha256_source": "bee00fa54b96bfa49328bda0f9525f42e42a8f4e18357ee3e450302a8f799270",
+      "sha256_source": "4ccc9c6cd53fce6600972e6d753e21612872fb9c15b4ab68ad9888df81deefe3",
       "sha256": "4283204f7531e8e5c6cf45de1c68bf13ad7820232fe670cfa1f02f5c5cf027bd",
       "bytes": 12460194
     },
